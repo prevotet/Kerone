@@ -1,0 +1,14 @@
+/*
+ * config.h
+ *
+ *  Created on: 26 mai 2016
+ *      Author: XIATAN
+ */
+
+#ifndef CONFIG_H_
+#define CONFIG_H_
+
+#define DEMO_UART		1
+
+
+#endif /* CONFIG_H_ */

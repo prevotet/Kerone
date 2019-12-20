@@ -1,0 +1,4 @@
+1408635010453	Move 'guest_os_fctns.c' to 'port'
+1408635890562	Rename resource 'guest_os_fctns.c'
+1408636070484	Rename resource 'guest_os_fctns.cc'
+1408636097156	Rename resource 'syscall_list.cc'

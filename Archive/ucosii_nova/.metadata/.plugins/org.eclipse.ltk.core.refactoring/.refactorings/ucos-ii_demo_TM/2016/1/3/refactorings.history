@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ucos-ii_demo_TM/src/uC-CPU/ARM-Cortex-A9/GNU/cpu_a.s&apos; to &apos;cpu_a.S&apos;" description="Rename resource &apos;cpu_a.s&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/uC-CPU/ARM-Cortex-A9/GNU/cpu_a.s" name="cpu_a.S" stamp="1453310317225" updateReferences="true"/>
+</session>

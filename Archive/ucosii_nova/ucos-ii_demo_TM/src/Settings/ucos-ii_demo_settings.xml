@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdtprojectproperties>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.IncludePaths">
+<language name="s">
+<includepath>src/App</includepath>
+<includepath>src/BSP</includepath>
+<includepath>src/Init</includepath>
+<includepath>src/uC-CPU</includepath>
+<includepath>src/uC-LIB</includepath>
+<includepath>src/uC-CPU/ARM-Cortex-A9/GNU</includepath>
+<includepath>src/uC-CSP/MCU</includepath>
+<includepath>src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore</includepath>
+<includepath>src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/Zynq-7000</includepath>
+<includepath>src/uCOS-II/Source</includepath>
+<includepath>src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU</includepath>
+<includepath>src/uCOS-II/Ports/ARM-Cortex-A9/CSP</includepath>
+<includepath>src/uCOS-II/Ports/ARM-Cortex-A9/CSP/Xilinx/Cortex-A9_MPCore</includepath>
+
+</language>
+<language name="c,S">
+<includepath>src/App</includepath>
+<includepath>src/BSP</includepath>
+<includepath>src/Init</includepath>
+<includepath>src/uC-CPU</includepath>
+<includepath>src/uC-LIB</includepath>
+<includepath>src/uC-CPU/ARM-Cortex-A9/GNU</includepath>
+<includepath>src/uC-CSP/MCU</includepath>
+<includepath>src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore</includepath>
+<includepath>src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/Zynq-7000</includepath>
+<includepath>src/uCOS-II/Source</includepath>
+<includepath>src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU</includepath>
+<includepath>src/uCOS-II/Ports/ARM-Cortex-A9/CSP</includepath>
+<includepath>src/uCOS-II/Ports/ARM-Cortex-A9/CSP/Xilinx/Cortex-A9_MPCore</includepath>
+</language>
+<language name="ld">
+
+</language>
+<language name="Object File">
+
+</language>
+</section>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.Macros">
+<language name="s">
+
+</language>
+<language name="c,S">
+
+</language>
+<language name="ld">
+
+</language>
+<language name="Object File">
+
+</language>
+</section>
+</cdtprojectproperties>

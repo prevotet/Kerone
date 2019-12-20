@@ -1,0 +1,579 @@
+17:31:55.371 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:31:55.465 INFO  - PS initialization will be done as it is not done before. 
+17:31:55.465 INFO  - Running PS initialization.... 
+17:31:56.043 INFO  - ps7_init is completed. 
+17:31:56.153 INFO  - PS Initialization is complete. 
+17:31:57.528 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:35:40.762 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:35:41.278 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:39:22.168 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:39:22.684 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:41:29.184 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:41:29.575 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:42:48.934 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:42:49.418 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:43:35.278 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:43:36.059 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:44:02.700 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:44:03.200 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:45:26.278 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:45:26.793 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:59:22.856 INFO  - Running PS initialization.... 
+17:59:23.356 INFO  - ps7_init is completed. 
+17:59:23.450 INFO  - PS Initialization is complete. 
+17:59:24.793 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:59:24.903 INFO  - PS initialization will be done as it is not done before. 
+17:59:24.903 INFO  - Running PS initialization.... 
+17:59:25.450 INFO  - ps7_init is completed. 
+17:59:25.559 INFO  - PS Initialization is complete. 
+17:59:26.340 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+18:01:30.528 INFO  - Running PS initialization.... 
+18:01:31.090 INFO  - ps7_init is completed. 
+18:01:31.184 INFO  - PS Initialization is complete. 
+18:01:32.575 INFO  - Processor reset is completed for ps7_cortexa9_0 
+18:01:33.090 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+18:02:47.121 INFO  - Processor reset is completed for ps7_cortexa9_0 
+18:02:47.637 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+18:03:05.778 INFO  - Processor reset is completed for ps7_cortexa9_0 
+18:03:06.293 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+18:03:24.543 INFO  - Processor reset is completed for ps7_cortexa9_0 
+18:03:25.059 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+18:10:50.512 INFO  - Running PS initialization.... 
+18:10:51.043 INFO  - ps7_init is completed. 
+18:10:51.137 INFO  - PS Initialization is complete. 
+18:10:52.325 INFO  - Processor reset is completed for ps7_cortexa9_0 
+18:10:52.418 INFO  - PS initialization will be done as it is not done before. 
+18:10:52.418 INFO  - Running PS initialization.... 
+18:10:52.981 INFO  - ps7_init is completed. 
+18:10:53.075 INFO  - PS Initialization is complete. 
+18:10:53.981 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+18:12:45.231 INFO  - Processor reset is completed for ps7_cortexa9_0 
+18:12:45.715 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+18:17:53.090 INFO  - Processor reset is completed for ps7_cortexa9_0 
+18:17:53.590 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:58:15.450 INFO  - Running PS initialization.... 
+11:58:15.965 INFO  - ps7_init is completed. 
+11:58:16.059 INFO  - PS Initialization is complete. 
+11:58:17.403 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:58:17.496 INFO  - PS initialization will be done as it is not done before. 
+11:58:17.496 INFO  - Running PS initialization.... 
+11:58:18.090 INFO  - ps7_init is completed. 
+11:58:18.200 INFO  - PS Initialization is complete. 
+11:58:19.121 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:58:36.575 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:58:37.090 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+12:03:23.950 INFO  - Processor reset is completed for ps7_cortexa9_0 
+12:03:24.450 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+12:03:56.184 INFO  - Processor reset is completed for ps7_cortexa9_0 
+12:03:56.684 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+12:06:34.231 INFO  - FPGA Cable Disconnected. All active launches will be terminated. 
+12:07:03.325 INFO  - Running PS initialization.... 
+12:07:04.028 INFO  - ps7_init is completed. 
+12:07:04.028 INFO  - PS Initialization is complete. 
+12:07:05.309 INFO  - Processor reset is completed for ps7_cortexa9_0 
+12:07:05.403 INFO  - PS initialization will be done as it is not done before. 
+12:07:05.403 INFO  - Running PS initialization.... 
+12:07:06.121 INFO  - ps7_init is completed. 
+12:07:06.231 INFO  - PS Initialization is complete. 
+12:07:07.028 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+12:13:20.762 INFO  - Running PS initialization.... 
+12:13:21.668 INFO  - ps7_init is completed. 
+12:13:21.762 INFO  - PS Initialization is complete. 
+12:13:23.090 INFO  - Processor reset is completed for ps7_cortexa9_0 
+12:13:23.184 INFO  - PS initialization will be done as it is not done before. 
+12:13:23.184 INFO  - Running PS initialization.... 
+12:13:23.871 INFO  - ps7_init is completed. 
+12:13:23.981 INFO  - PS Initialization is complete. 
+12:13:24.700 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+15:44:42.809 INFO  - Running PS initialization.... 
+15:44:43.700 INFO  - ps7_init is completed. 
+15:44:43.793 INFO  - PS Initialization is complete. 
+15:44:45.153 INFO  - Processor reset is completed for ps7_cortexa9_0 
+15:44:45.246 INFO  - PS initialization will be done as it is not done before. 
+15:44:45.246 INFO  - Running PS initialization.... 
+15:44:45.950 INFO  - ps7_init is completed. 
+15:44:46.059 INFO  - PS Initialization is complete. 
+15:44:46.965 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+15:46:59.653 INFO  - Processor reset is completed for ps7_cortexa9_0 
+15:47:00.153 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+15:48:19.106 INFO  - Processor reset is completed for ps7_cortexa9_0 
+15:48:20.200 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+15:48:54.731 INFO  - Running PS initialization.... 
+15:48:55.543 INFO  - ps7_init is completed. 
+15:48:55.637 INFO  - PS Initialization is complete. 
+15:48:57.168 INFO  - Processor reset is completed for ps7_cortexa9_0 
+15:48:57.700 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+15:49:51.887 INFO  - Running PS initialization.... 
+15:49:52.496 INFO  - ps7_init is completed. 
+15:49:52.606 INFO  - PS Initialization is complete. 
+15:49:54.325 INFO  - Processor reset is completed for ps7_cortexa9_0 
+15:49:54.840 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+15:54:16.668 INFO  - Running PS initialization.... 
+15:54:17.465 INFO  - ps7_init is completed. 
+15:54:17.575 INFO  - PS Initialization is complete. 
+15:54:18.887 INFO  - Processor reset is completed for ps7_cortexa9_0 
+15:54:19.403 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+15:56:06.231 INFO  - Running PS initialization.... 
+15:56:07.090 INFO  - ps7_init is completed. 
+15:56:07.200 INFO  - PS Initialization is complete. 
+15:56:08.481 INFO  - Processor reset is completed for ps7_cortexa9_0 
+15:56:08.996 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:21:14.871 INFO  - Running PS initialization.... 
+16:21:15.512 INFO  - ps7_init is completed. 
+16:21:15.606 INFO  - PS Initialization is complete. 
+16:21:16.934 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:21:17.028 INFO  - PS initialization will be done as it is not done before. 
+16:21:17.028 INFO  - Running PS initialization.... 
+16:21:17.965 INFO  - ps7_init is completed. 
+16:21:18.059 INFO  - PS Initialization is complete. 
+16:21:18.996 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:03:37.825 INFO  - Running PS initialization.... 
+17:03:38.387 INFO  - ps7_init is completed. 
+17:03:38.496 INFO  - PS Initialization is complete. 
+17:03:39.809 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:03:40.325 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:07:26.043 INFO  - Running PS initialization.... 
+17:07:26.731 INFO  - ps7_init is completed. 
+17:07:26.840 INFO  - PS Initialization is complete. 
+17:07:28.168 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:07:28.684 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:11:35.590 INFO  - Running PS initialization.... 
+17:11:36.121 INFO  - ps7_init is completed. 
+17:11:36.231 INFO  - PS Initialization is complete. 
+17:11:37.575 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:11:38.090 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:21:19.090 INFO  - Running PS initialization.... 
+17:21:19.965 INFO  - ps7_init is completed. 
+17:21:20.059 INFO  - PS Initialization is complete. 
+17:21:21.387 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:21:21.918 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:01:47.825 INFO  - Running PS initialization.... 
+11:01:48.184 INFO  - ps7_init is completed. 
+11:01:48.293 INFO  - PS Initialization is complete. 
+11:01:49.637 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:01:49.746 INFO  - PS initialization will be done as it is not done before. 
+11:01:49.746 INFO  - Running PS initialization.... 
+11:01:50.106 INFO  - ps7_init is completed. 
+11:01:50.215 INFO  - PS Initialization is complete. 
+11:01:51.231 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:03:48.903 INFO  - Running PS initialization.... 
+11:03:49.215 INFO  - ps7_init is completed. 
+11:03:49.325 INFO  - PS Initialization is complete. 
+11:03:50.715 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:03:51.262 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:04:31.871 INFO  - Running PS initialization.... 
+11:04:32.168 INFO  - ps7_init is completed. 
+11:04:32.278 INFO  - PS Initialization is complete. 
+11:04:33.637 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:04:33.746 INFO  - PS initialization will be done as it is not done before. 
+11:04:33.746 INFO  - Running PS initialization.... 
+11:04:34.043 INFO  - ps7_init is completed. 
+11:04:34.153 INFO  - PS Initialization is complete. 
+11:04:35.137 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:12:21.621 INFO  - Running PS initialization.... 
+11:12:21.934 INFO  - ps7_init is completed. 
+11:12:22.043 INFO  - PS Initialization is complete. 
+11:12:23.450 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:12:23.981 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:15:23.215 INFO  - Running PS initialization.... 
+11:15:23.543 INFO  - ps7_init is completed. 
+11:15:23.653 INFO  - PS Initialization is complete. 
+11:15:25.090 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:15:25.637 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:16:17.340 INFO  - Running PS initialization.... 
+11:16:24.090 INFO  - FPGA Cable Disconnected. All active launches will be terminated. 
+11:16:33.215 INFO  - Running PS initialization.... 
+11:16:33.543 INFO  - ps7_init is completed. 
+11:16:33.653 INFO  - PS Initialization is complete. 
+11:16:35.028 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:16:35.137 INFO  - PS initialization will be done as it is not done before. 
+11:16:35.137 INFO  - Running PS initialization.... 
+11:16:35.512 INFO  - ps7_init is completed. 
+11:16:35.621 INFO  - PS Initialization is complete. 
+11:16:36.606 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:24:26.668 INFO  - Running PS initialization.... 
+11:24:27.043 INFO  - ps7_init is completed. 
+11:24:27.153 INFO  - PS Initialization is complete. 
+11:24:28.543 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:24:28.653 INFO  - PS initialization will be done as it is not done before. 
+11:24:28.653 INFO  - Running PS initialization.... 
+11:24:28.965 INFO  - ps7_init is completed. 
+11:24:29.075 INFO  - PS Initialization is complete. 
+11:24:30.028 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:30:07.528 INFO  - Running PS initialization.... 
+11:30:07.856 INFO  - ps7_init is completed. 
+11:30:07.965 INFO  - PS Initialization is complete. 
+11:30:09.340 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:30:09.450 INFO  - PS initialization will be done as it is not done before. 
+11:30:09.450 INFO  - Running PS initialization.... 
+11:30:09.762 INFO  - ps7_init is completed. 
+11:30:09.871 INFO  - PS Initialization is complete. 
+11:30:10.840 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:31:19.746 INFO  - Running PS initialization.... 
+11:31:20.059 INFO  - ps7_init is completed. 
+11:31:20.168 INFO  - PS Initialization is complete. 
+11:31:21.575 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:31:22.137 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:37:42.965 INFO  - Running PS initialization.... 
+11:37:43.278 INFO  - ps7_init is completed. 
+11:37:43.387 INFO  - PS Initialization is complete. 
+11:37:44.731 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:37:44.840 INFO  - PS initialization will be done as it is not done before. 
+11:37:44.840 INFO  - Running PS initialization.... 
+11:37:45.137 INFO  - ps7_init is completed. 
+11:37:45.246 INFO  - PS Initialization is complete. 
+11:37:46.356 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:38:32.059 INFO  - Running PS initialization.... 
+11:38:32.387 INFO  - ps7_init is completed. 
+11:38:32.496 INFO  - PS Initialization is complete. 
+11:38:33.871 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:38:34.387 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:48:20.621 INFO  - Running PS initialization.... 
+11:48:20.950 INFO  - ps7_init is completed. 
+11:48:21.059 INFO  - PS Initialization is complete. 
+11:48:22.434 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:48:22.950 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:50:39.090 INFO  - Running PS initialization.... 
+11:50:39.918 INFO  - ps7_init is completed. 
+11:50:40.028 INFO  - PS Initialization is complete. 
+11:50:41.512 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:50:42.028 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:52:05.731 INFO  - Running PS initialization.... 
+11:52:06.043 INFO  - ps7_init is completed. 
+11:52:06.153 INFO  - PS Initialization is complete. 
+11:52:07.543 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:52:08.075 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:52:52.340 INFO  - Running PS initialization.... 
+11:52:52.668 INFO  - ps7_init is completed. 
+11:52:52.778 INFO  - PS Initialization is complete. 
+11:52:54.137 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:52:54.653 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:53:08.934 INFO  - Running PS initialization.... 
+11:53:09.246 INFO  - ps7_init is completed. 
+11:53:09.356 INFO  - PS Initialization is complete. 
+11:53:10.700 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:53:11.215 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:58:42.371 INFO  - Running PS initialization.... 
+11:58:42.762 INFO  - ps7_init is completed. 
+11:58:42.871 INFO  - PS Initialization is complete. 
+11:58:44.184 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:58:44.715 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:59:08.996 INFO  - Running PS initialization.... 
+11:59:09.325 INFO  - ps7_init is completed. 
+11:59:09.434 INFO  - PS Initialization is complete. 
+11:59:10.825 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:59:11.371 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+15:26:27.575 INFO  - Running PS initialization.... 
+15:26:27.950 INFO  - ps7_init is completed. 
+15:26:28.059 INFO  - PS Initialization is complete. 
+15:26:29.403 INFO  - Processor reset is completed for ps7_cortexa9_0 
+15:26:29.512 INFO  - PS initialization will be done as it is not done before. 
+15:26:29.512 INFO  - Running PS initialization.... 
+15:26:30.028 INFO  - ps7_init is completed. 
+15:26:30.137 INFO  - PS Initialization is complete. 
+15:26:31.090 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+15:30:32.293 INFO  - Running PS initialization.... 
+15:30:32.606 INFO  - ps7_init is completed. 
+15:30:32.715 INFO  - PS Initialization is complete. 
+15:30:34.090 INFO  - Processor reset is completed for ps7_cortexa9_0 
+15:30:34.606 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+15:35:42.278 INFO  - Running PS initialization.... 
+15:35:42.575 INFO  - ps7_init is completed. 
+15:35:42.684 INFO  - PS Initialization is complete. 
+15:35:44.075 INFO  - Processor reset is completed for ps7_cortexa9_0 
+15:35:44.590 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+15:42:35.184 INFO  - Running PS initialization.... 
+15:42:35.481 INFO  - ps7_init is completed. 
+15:42:35.590 INFO  - PS Initialization is complete. 
+15:42:36.981 INFO  - Processor reset is completed for ps7_cortexa9_0 
+15:42:37.496 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+15:43:41.028 INFO  - Running PS initialization.... 
+15:43:41.403 INFO  - ps7_init is completed. 
+15:43:41.512 INFO  - PS Initialization is complete. 
+15:43:42.903 INFO  - Processor reset is completed for ps7_cortexa9_0 
+15:43:43.418 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+15:47:53.731 INFO  - Running PS initialization.... 
+15:47:54.028 INFO  - ps7_init is completed. 
+15:47:54.137 INFO  - PS Initialization is complete. 
+15:47:55.715 INFO  - Processor reset is completed for ps7_cortexa9_0 
+15:47:56.246 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+15:56:30.934 INFO  - Running PS initialization.... 
+15:56:31.246 INFO  - ps7_init is completed. 
+15:56:31.356 INFO  - PS Initialization is complete. 
+15:56:32.809 INFO  - Processor reset is completed for ps7_cortexa9_0 
+15:56:33.340 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+15:59:04.043 INFO  - Running PS initialization.... 
+15:59:04.340 INFO  - ps7_init is completed. 
+15:59:04.450 INFO  - PS Initialization is complete. 
+15:59:05.793 INFO  - Processor reset is completed for ps7_cortexa9_0 
+15:59:06.309 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+15:59:46.887 INFO  - Running PS initialization.... 
+15:59:47.200 INFO  - ps7_init is completed. 
+15:59:47.309 INFO  - PS Initialization is complete. 
+15:59:48.684 INFO  - Processor reset is completed for ps7_cortexa9_0 
+15:59:49.215 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:05:24.184 INFO  - Running PS initialization.... 
+16:05:24.496 INFO  - ps7_init is completed. 
+16:05:24.606 INFO  - PS Initialization is complete. 
+16:05:25.981 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:05:26.512 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:07:24.950 INFO  - Running PS initialization.... 
+16:07:25.246 INFO  - ps7_init is completed. 
+16:07:25.356 INFO  - PS Initialization is complete. 
+16:07:26.700 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:07:27.231 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:35:39.653 INFO  - Running PS initialization.... 
+16:35:40.012 INFO  - ps7_init is completed. 
+16:35:40.121 INFO  - PS Initialization is complete. 
+16:35:41.387 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:35:41.903 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:36:23.918 INFO  - Running PS initialization.... 
+16:36:24.215 INFO  - ps7_init is completed. 
+16:36:24.325 INFO  - PS Initialization is complete. 
+16:36:25.684 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:36:26.090 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:36:48.028 INFO  - Running PS initialization.... 
+16:36:48.340 INFO  - ps7_init is completed. 
+16:36:48.450 INFO  - PS Initialization is complete. 
+16:36:49.840 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:36:50.356 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:38:19.559 INFO  - Running PS initialization.... 
+16:38:19.856 INFO  - ps7_init is completed. 
+16:38:19.965 INFO  - PS Initialization is complete. 
+16:38:21.309 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:38:21.825 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:06:41.746 INFO  - Running PS initialization.... 
+16:06:42.371 INFO  - ps7_init is completed. 
+16:06:42.465 INFO  - PS Initialization is complete. 
+16:06:43.668 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:06:43.762 INFO  - PS initialization will be done as it is not done before. 
+16:06:43.762 INFO  - Running PS initialization.... 
+16:06:44.356 INFO  - ps7_init is completed. 
+16:06:44.450 INFO  - PS Initialization is complete. 
+16:06:45.309 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:20:40.200 INFO  - Running PS initialization.... 
+16:20:40.606 INFO  - ps7_init is completed. 
+16:20:40.715 INFO  - PS Initialization is complete. 
+16:20:41.996 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:20:42.106 INFO  - PS initialization will be done as it is not done before. 
+16:20:42.106 INFO  - Running PS initialization.... 
+16:20:42.543 INFO  - ps7_init is completed. 
+16:20:42.653 INFO  - PS Initialization is complete. 
+16:20:43.543 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:54:52.403 INFO  - Running PS initialization.... 
+16:54:52.856 INFO  - ps7_init is completed. 
+16:54:52.950 INFO  - PS Initialization is complete. 
+16:54:54.278 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:54:54.371 INFO  - PS initialization will be done as it is not done before. 
+16:54:54.371 INFO  - Running PS initialization.... 
+16:54:54.778 INFO  - ps7_init is completed. 
+16:54:54.887 INFO  - PS Initialization is complete. 
+16:54:55.778 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:00:58.575 INFO  - Running PS initialization.... 
+17:00:58.996 INFO  - ps7_init is completed. 
+17:00:59.106 INFO  - PS Initialization is complete. 
+17:01:00.387 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:01:00.871 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:01:35.840 INFO  - Running PS initialization.... 
+17:01:36.231 INFO  - ps7_init is completed. 
+17:01:36.340 INFO  - PS Initialization is complete. 
+17:01:37.621 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:01:37.731 INFO  - PS initialization will be done as it is not done before. 
+17:01:37.731 INFO  - Running PS initialization.... 
+17:01:38.090 INFO  - ps7_init is completed. 
+17:01:38.200 INFO  - PS Initialization is complete. 
+17:01:38.996 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:10:33.715 INFO  - Running PS initialization.... 
+17:10:34.075 INFO  - ps7_init is completed. 
+17:10:34.184 INFO  - PS Initialization is complete. 
+17:10:35.481 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:10:35.996 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:44:24.715 INFO  - Running PS initialization.... 
+17:44:25.200 INFO  - ps7_init is completed. 
+17:44:25.309 INFO  - PS Initialization is complete. 
+17:44:26.606 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:44:26.700 INFO  - PS initialization will be done as it is not done before. 
+17:44:26.700 INFO  - Running PS initialization.... 
+17:44:27.246 INFO  - ps7_init is completed. 
+17:44:27.340 INFO  - PS Initialization is complete. 
+17:44:28.153 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+15:57:06.703 INFO  - Running PS initialization.... 
+15:57:07.125 INFO  - ps7_init is completed. 
+15:57:07.234 INFO  - PS Initialization is complete. 
+15:57:08.484 INFO  - Processor reset is completed for ps7_cortexa9_0 
+15:57:08.578 INFO  - PS initialization will be done as it is not done before. 
+15:57:08.578 INFO  - Running PS initialization.... 
+15:57:09.062 INFO  - ps7_init is completed. 
+15:57:09.156 INFO  - PS Initialization is complete. 
+15:57:09.968 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:15:05.281 INFO  - Running PS initialization.... 
+16:15:06.062 INFO  - ps7_init is completed. 
+16:15:06.171 INFO  - PS Initialization is complete. 
+16:15:07.500 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:15:08.031 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:19:07.031 INFO  - Running PS initialization.... 
+16:19:07.453 INFO  - ps7_init is completed. 
+16:19:07.562 INFO  - PS Initialization is complete. 
+16:19:08.937 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:19:09.437 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:20:38.031 INFO  - Running PS initialization.... 
+16:20:38.593 INFO  - ps7_init is completed. 
+16:20:38.687 INFO  - PS Initialization is complete. 
+16:20:39.984 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:20:40.500 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:22:24.671 INFO  - Running PS initialization.... 
+16:22:25.125 INFO  - ps7_init is completed. 
+16:22:25.218 INFO  - PS Initialization is complete. 
+16:22:26.562 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:22:27.093 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:29:35.234 INFO  - Running PS initialization.... 
+16:29:35.953 INFO  - ps7_init is completed. 
+16:29:36.046 INFO  - PS Initialization is complete. 
+16:29:37.375 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:29:37.890 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:30:27.968 INFO  - Running PS initialization.... 
+16:30:28.453 INFO  - ps7_init is completed. 
+16:30:28.546 INFO  - PS Initialization is complete. 
+16:30:29.859 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:30:30.375 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:33:42.281 INFO  - Running PS initialization.... 
+16:33:42.687 INFO  - ps7_init is completed. 
+16:33:42.781 INFO  - PS Initialization is complete. 
+16:33:44.109 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:33:44.625 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:35:39.140 INFO  - Running PS initialization.... 
+16:35:40.046 INFO  - ps7_init is completed. 
+16:35:40.156 INFO  - PS Initialization is complete. 
+16:35:41.437 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:35:41.937 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:56:49.359 INFO  - Running PS initialization.... 
+16:56:49.718 INFO  - ps7_init is completed. 
+16:56:49.828 INFO  - PS Initialization is complete. 
+16:56:51.156 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:56:51.265 INFO  - PS initialization will be done as it is not done before. 
+16:56:51.265 INFO  - Running PS initialization.... 
+16:56:51.921 INFO  - ps7_init is completed. 
+16:56:52.031 INFO  - PS Initialization is complete. 
+16:56:52.937 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:57:50.625 INFO  - Running PS initialization.... 
+16:57:51.109 INFO  - ps7_init is completed. 
+16:57:51.218 INFO  - PS Initialization is complete. 
+16:57:52.562 INFO  - Processor reset is completed for ps7_cortexa9_0 
+16:57:53.062 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:46:28.265 INFO  - Running PS initialization.... 
+17:46:28.734 INFO  - ps7_init is completed. 
+17:46:28.828 INFO  - PS Initialization is complete. 
+17:46:30.140 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:46:30.250 INFO  - PS initialization will be done as it is not done before. 
+17:46:30.250 INFO  - Running PS initialization.... 
+17:46:30.656 INFO  - ps7_init is completed. 
+17:46:30.750 INFO  - PS Initialization is complete. 
+17:46:31.703 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:47:50.812 INFO  - Running PS initialization.... 
+17:47:51.234 INFO  - ps7_init is completed. 
+17:47:51.328 INFO  - PS Initialization is complete. 
+17:47:52.640 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:47:53.125 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:49:31.562 INFO  - Running PS initialization.... 
+17:49:32.046 INFO  - ps7_init is completed. 
+17:49:32.140 INFO  - PS Initialization is complete. 
+17:49:33.500 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:49:34.000 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:50:32.015 INFO  - Running PS initialization.... 
+17:50:32.390 INFO  - ps7_init is completed. 
+17:50:32.484 INFO  - PS Initialization is complete. 
+17:50:33.796 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:50:34.312 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+17:51:54.765 INFO  - Running PS initialization.... 
+17:51:55.156 INFO  - ps7_init is completed. 
+17:51:55.250 INFO  - PS Initialization is complete. 
+17:51:56.578 INFO  - Processor reset is completed for ps7_cortexa9_0 
+17:51:57.093 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+18:34:59.437 INFO  - Running PS initialization.... 
+18:35:00.328 INFO  - ps7_init is completed. 
+18:35:00.421 INFO  - PS Initialization is complete. 
+18:35:01.703 INFO  - Processor reset is completed for ps7_cortexa9_0 
+18:35:01.812 INFO  - PS initialization will be done as it is not done before. 
+18:35:01.812 INFO  - Running PS initialization.... 
+18:35:02.187 INFO  - ps7_init is completed. 
+18:35:02.296 INFO  - PS Initialization is complete. 
+18:35:03.203 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+18:36:36.609 INFO  - Running PS initialization.... 
+18:36:37.000 INFO  - ps7_init is completed. 
+18:36:37.093 INFO  - PS Initialization is complete. 
+18:36:38.406 INFO  - Processor reset is completed for ps7_cortexa9_0 
+18:36:38.984 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:33:29.368 INFO  - Running PS initialization.... 
+11:33:30.008 INFO  - ps7_init is completed. 
+11:33:30.118 INFO  - PS Initialization is complete. 
+11:33:31.430 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:33:31.539 INFO  - PS initialization will be done as it is not done before. 
+11:33:31.539 INFO  - Running PS initialization.... 
+11:33:31.961 INFO  - ps7_init is completed. 
+11:33:32.055 INFO  - PS Initialization is complete. 
+11:33:32.977 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:44:11.317 INFO  - Running PS initialization.... 
+11:44:11.707 INFO  - ps7_init is completed. 
+11:44:11.817 INFO  - PS Initialization is complete. 
+11:44:13.145 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:44:13.238 INFO  - PS initialization will be done as it is not done before. 
+11:44:13.238 INFO  - Running PS initialization.... 
+11:44:13.692 INFO  - ps7_init is completed. 
+11:44:13.801 INFO  - PS Initialization is complete. 
+11:44:14.754 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:46:42.547 INFO  - Running PS initialization.... 
+11:46:43.001 INFO  - ps7_init is completed. 
+11:46:43.110 INFO  - PS Initialization is complete. 
+11:46:44.422 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:46:44.922 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:47:04.654 INFO  - Running PS initialization.... 
+11:47:05.091 INFO  - ps7_init is completed. 
+11:47:05.185 INFO  - PS Initialization is complete. 
+11:47:06.451 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:47:06.951 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+11:51:56.632 INFO  - Running PS initialization.... 
+11:51:57.070 INFO  - ps7_init is completed. 
+11:51:57.163 INFO  - PS Initialization is complete. 
+11:51:58.429 INFO  - Processor reset is completed for ps7_cortexa9_0 
+11:51:59.194 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+18:14:35.781 INFO  - Running PS initialization.... 
+18:14:36.172 INFO  - ps7_init is completed. 
+18:14:36.281 INFO  - PS Initialization is complete. 
+18:14:37.578 INFO  - Processor reset is completed for ps7_cortexa9_0 
+18:14:37.672 INFO  - PS initialization will be done as it is not done before. 
+18:14:37.672 INFO  - Running PS initialization.... 
+18:14:38.203 INFO  - ps7_init is completed. 
+18:14:38.297 INFO  - PS Initialization is complete. 
+18:14:39.219 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+18:17:42.703 INFO  - Running PS initialization.... 
+18:17:43.062 INFO  - ps7_init is completed. 
+18:17:43.172 INFO  - PS Initialization is complete. 
+18:17:44.515 INFO  - Processor reset is completed for ps7_cortexa9_0 
+18:17:45.062 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+18:29:27.750 INFO  - Running PS initialization.... 
+18:29:28.312 INFO  - ps7_init is completed. 
+18:29:28.422 INFO  - PS Initialization is complete. 
+18:29:30.062 INFO  - Processor reset is completed for ps7_cortexa9_0 
+18:29:30.594 INFO  - Application is downloaded for ps7_cortexa9_0. (C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0\Debug\ucos-ii_demo_0.elf) 
+16:47:55.562 ERROR - Unable to read in MSS file C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0_bsp\system.mss. 
+14:50:10.796 ERROR - Unable to read in MSS file C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0_bsp\system.mss. 
+18:53:54.937 WARN  - Unable to obtain port 2350 for use by XMD, java.net.BindException: Address already in use: JVM_Bind 
+11:24:21.703 ERROR - Unable to read in MSS file C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0_bsp\system.mss. 
+15:26:58.296 ERROR - Unable to read in MSS file C:\Xilinx\XIATAN\Xilinx\proj\tutoral\myproj\ucosii_nova\ucos-ii_demo_0_bsp\system.mss. 
+14:49:53.249 ERROR - Unexpected error while reading linker script. org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/ucos-ii_demo_1/src/lscript.ld'.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:793)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+
+14:50:00.922 ERROR - Unexpected error while reading linker script. org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/ucos-ii_demo_1/src/lscript.ld'.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:793)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+
+14:50:20.611 ERROR - Unexpected error while reading linker script. org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/ucos-ii_demo_1/src/lscript.ld'.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:793)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+
+14:51:40.108 ERROR - Unexpected error while reading linker script. org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/ucos-ii_demo_1/src/lscript.ld'.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:793)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+
+15:45:26.615 ERROR - Unable to read in MSS file D:\users\work\KERONE2\ucosii_nova\ucos-ii_demo_0_bsp\system.mss. 

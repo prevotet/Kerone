@@ -1,0 +1,11 @@
+14:07:58 **** Build of configuration Debug for project Copy of ucos-ii_demo_3 ****
+make all 
+'Building target: Copy of ucos-ii_demo_3.elf'
+'Invoking: ARM gcc linker'
+arm-xilinx-eabi-gcc -gc-sections -static -n -Wl,-T -Wl,../src/lscript.ld -L../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib -o "Copy of ucos-ii_demo_3.elf"  ./src/uCOS-II/Source/os_core.o ./src/uCOS-II/Source/os_dbg_r.o ./src/uCOS-II/Source/os_flag.o ./src/uCOS-II/Source/os_mbox.o ./src/uCOS-II/Source/os_mem.o ./src/uCOS-II/Source/os_mutex.o ./src/uCOS-II/Source/os_q.o ./src/uCOS-II/Source/os_sem.o ./src/uCOS-II/Source/os_task.o ./src/uCOS-II/Source/os_time.o ./src/uCOS-II/Source/os_tmr.o  ./src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU/os_cpu_a.o ./src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU/os_cpu_c.o  ./src/uCOS-II/Ports/ARM-Cortex-A9/CSP/Xilinx/Cortex-A9_MPCore/os_csp.o  ./src/uC-LIB/lib_ascii.o ./src/uC-LIB/lib_math.o ./src/uC-LIB/lib_mem.o ./src/uC-LIB/lib_str.o  ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_gpio.o ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_int.o ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_pm.o ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_tmr.o  ./src/uC-CSP/MCU/csp.o  ./src/uC-CPU/ARM-Cortex-A9/GNU/cpu_a.o  ./src/uC-CPU/cpu_core.o  ./src/Init/platform.o  ./src/BSP/bsp.o ./src/BSP/bsp_os.o  ./src/App/port/guest_os_fctns.o ./src/App/port/guest_os_start.o ./src/App/port/guest_os_start_pre.o ./src/App/port/performance.o ./src/App/port/syscall.o ./src/App/port/syscall_list.o  ./src/App/app.o ./src/App/app_hooks.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: Copy of ucos-ii_demo_3.elf'
+' '
+make: *** Pas de règle pour fabriquer la cible « Copy », nécessaire pour « secondary-outputs ». Arrêt.
+
+14:07:59 Build Finished (took 1s.484ms)
+

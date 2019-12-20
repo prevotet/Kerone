@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;nova/src/irq_init.cc&apos; to &apos;vgic.cc&apos;" description="Rename resource &apos;irq_init.cc&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/irq_init.cc" name="vgic.cc" stamp="1427899068843" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;nova/src/include/irq_init.h&apos; to &apos;vgic.h&apos;" description="Rename resource &apos;irq_init.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/include/irq_init.h" name="vgic.h" stamp="1427899084656" updateReferences="true"/>
+</session>

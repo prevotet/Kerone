@@ -1,0 +1,32 @@
+/*
+ * demo.cc
+ *
+ *  Created on: May 27, 2016
+ *      Author: Summer
+ */
+
+
+#include "include/config.h"
+
+#if DEMO_UART
+
+int demo_cmd_handler(char *ptr){
+	char rx;
+
+	/* Skip all spaces */
+	while(*ptr == " ")
+		ptr++;
+
+	switch(*ptr){
+		case("r"):
+		case("s"):
+		case("c"):
+		default:
+			print("invalid cmd");
+	}
+}
+
+
+
+
+#endif

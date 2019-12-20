@@ -1,0 +1,18 @@
+/*
+ * PM_Cfg.h
+ *
+ *  Created on: 27 janv. 2016
+ *      Author: XIATAN
+ */
+
+#ifndef PM_CFG_H_
+#define PM_CFG_H_
+
+#define IS_KERNEL_FUNCTION_MEASURE 0
+#define IS_KERNEL_CRITICAL_MEASURE 0
+#define IS_PRRMONITOR_MEASURE 0
+
+#define IS_PM_MEASURE IS_KERNEL_FUNCTION_MEASURE | IS_KERNEL_CRITICAL_MEASURE
+
+
+#endif /* PM_CFG_H_ */

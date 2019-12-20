@@ -1,0 +1,50 @@
+/*
+ * demo.cc
+ *
+ *  Created on: May 27, 2016
+ *      Author: Summer
+ */
+
+
+#include "include/config.h"
+
+#if DEMO_UART
+
+int demo_cmd_handler(char *ptr){
+	char rx[2];
+
+	/* Skip all spaces */
+	while(*ptr == " ")
+		ptr++;
+
+	switch(*ptr){
+		case("r"):
+
+		case("s"):
+
+		case("c"):
+			rx[0] = *(++ptr);
+			rx[1] = *(++ptr);
+			switch(*(++ptr)){
+				case("01"):
+				case("00"):
+				case("11"):
+				case("10"):
+				case("21"):
+				case("20"):
+				case("31"):
+				case("30"):
+				default:
+					print("invalid cfg");
+			}
+			break;
+
+		default:
+			print("invalid cmd");
+	}
+}
+
+
+
+
+#endif

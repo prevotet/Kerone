@@ -1,0 +1,315 @@
+section,.text
+('\t#', 'cpsid', 'if')
+	write32,0x1000c4,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r0')
+	write32,0x100118,0xef062000
+('\t#', 'msr', 'CPSR_c,', 'r0')
+	write32,0x10012c,0xef062000
+('\t#', 'msr', 'CPSR_c,', 'r0')
+	write32,0x100140,0xef062000
+('\t#', 'msr', 'CPSR_c,', 'r0')
+	write32,0x100154,0xef062000
+('\t#', 'msr', 'CPSR_c,', 'r0')
+	write32,0x100168,0xef062000
+('\t#', 'mrs', 'r0,', 'CPSR')
+	write32,0x1006b0,0xef020000
+('\t#', 'cpsid', 'if')
+	write32,0x1006b4,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r0')
+	write32,0x1006c4,0xef062000
+('\t#', 'msr', 'CPSR_c,', '#211')
+	write32,0x1006cc,0xef0421a6
+('\t#', 'msr', 'SPSR_fsxc,', 'r0')
+	write32,0x100714,0xef07e100
+('\t#', 'ldm', 'sp!,', '{r0,')
+	write32,0x100718,0xef4ddfff
+('\t#', 'mrs', 'r0,', 'CPSR')
+	write32,0x100728,0xef020000
+('\t#', 'msr', 'SPSR_fsxc,', 'r0')
+	write32,0x1007b8,0xef07e100
+('\t#', 'ldm', 'sp!,', '{r0,')
+	write32,0x1007bc,0xef4ddfff
+('\t#', 'msr', 'SPSR_fsxc,', 'r0')
+	write32,0x100818,0xef07e100
+('\t#', 'ldm', 'sp!,', '{r0,')
+	write32,0x10081c,0xef4ddfff
+('\t#', 'mrs', 'r1,', 'SPSR')
+	write32,0x1008a4,0xef023000
+('\t#', 'msr', 'CPSR_c,', '#211')
+	write32,0x1008b0,0xef0421a6
+('\t#', 'msr', 'CPSR_c,', '#211')
+	write32,0x100948,0xef0421a6
+('\t#', 'msr', 'SPSR_fsxc,', 'r0')
+	write32,0x100984,0xef07e100
+('\t#', 'ldm', 'sp!,', '{r0,')
+	write32,0x100988,0xef4ddfff
+('\t#', 'msr', 'CPSR_c,', '#211')
+	write32,0x1009a8,0xef0421a6
+('\t#', 'msr', 'SPSR_fsxc,', 'r0')
+	write32,0x1009dc,0xef07e100
+('\t#', 'ldm', 'sp!,', '{r0,')
+	write32,0x1009e0,0xef4ddfff
+('\t#', 'msr', 'CPSR_c,', '#211')
+	write32,0x100a00,0xef0421a6
+('\t#', 'msr', 'SPSR_fsxc,', 'r0')
+	write32,0x100a20,0xef07e100
+('\t#', 'ldm', 'sp!,', '{r0,')
+	write32,0x100a24,0xef4ddfff
+('\t#', 'mrs', 'r0,', 'CPSR')
+	write32,0x100a2c,0xef020000
+('\t#', 'msr', 'CPSR_c,', 'r0')
+	write32,0x100a34,0xef062000
+('\t#', 'mrs', 'r0,', 'CPSR')
+	write32,0x100a3c,0xef020000
+('\t#', 'msr', 'CPSR_c,', 'r0')
+	write32,0x100a44,0xef062000
+('\t#', 'mrs', 'r0,', 'CPSR')
+	write32,0x100a54,0xef020000
+('\t#', 'msr', 'CPSR_c,', 'r0')
+	write32,0x100a5c,0xef062000
+('\t#', 'mrs', 'r0,', 'CPSR')
+	write32,0x100a64,0xef020000
+('\t#', 'msr', 'CPSR_c,', 'r0')
+	write32,0x100a6c,0xef062000
+('\t#', 'mrs', 'r0,', 'CPSR')
+	write32,0x100a7c,0xef020000
+('\t#', 'msr', 'CPSR_c,', 'r0')
+	write32,0x100a84,0xef062000
+('\t#', 'mrs', 'r0,', 'CPSR')
+	write32,0x100a8c,0xef020000
+('\t#', 'msr', 'CPSR_c,', 'r0')
+	write32,0x100a94,0xef062000
+('\t#', 'mrs', 'ip,', 'CPSR')
+	write32,0x1014ac,0xef038000
+('\t#', 'cpsid', 'if')
+	write32,0x1014b0,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'ip')
+	write32,0x1014dc,0xef063800
+('\t#', 'mrs', 'ip,', 'CPSR')
+	write32,0x1014f4,0xef038000
+('\t#', 'cpsid', 'if')
+	write32,0x1014f8,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'ip')
+	write32,0x101524,0xef063800
+('\t#', 'mrs', 'r6,', 'CPSR')
+	write32,0x1015dc,0xef02c000
+('\t#', 'cpsid', 'if')
+	write32,0x1015e0,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r6')
+	write32,0x101620,0xef062c00
+('\t#', 'mrs', 'r5,', 'CPSR')
+	write32,0x10195c,0xef02a000
+('\t#', 'cpsid', 'if')
+	write32,0x101960,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r5')
+	write32,0x1019d4,0xef062a00
+('\t#', 'msr', 'CPSR_c,', 'r5')
+	write32,0x1019f8,0xef062a00
+('\t#', 'mrs', 'ip,', 'CPSR')
+	write32,0x101b64,0xef038000
+('\t#', 'cpsid', 'if')
+	write32,0x101b68,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'ip')
+	write32,0x101ba4,0xef063800
+('\t#', 'mrs', 'lr,', 'CPSR')
+	write32,0x101fe4,0xef03c000
+('\t#', 'cpsid', 'if')
+	write32,0x101fe8,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'lr')
+	write32,0x10201c,0xef063c00
+('\t#', 'mrs', 'r3,', 'CPSR')
+	write32,0x10202c,0xef026000
+('\t#', 'cpsid', 'if')
+	write32,0x102030,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r3')
+	write32,0x102044,0xef062600
+('\t#', 'mrs', 'r4,', 'CPSR')
+	write32,0x102068,0xef028000
+('\t#', 'cpsid', 'if')
+	write32,0x10206c,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r4')
+	write32,0x102094,0xef062800
+('\t#', 'mrs', 'r8,', 'CPSR')
+	write32,0x1021c8,0xef030000
+('\t#', 'cpsid', 'if')
+	write32,0x1021cc,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r8')
+	write32,0x10231c,0xef063000
+('\t#', 'msr', 'CPSR_c,', 'r8')
+	write32,0x102330,0xef063000
+('\t#', 'msr', 'CPSR_c,', 'r8')
+	write32,0x102448,0xef063000
+('\t#', 'mrs', 'ip,', 'CPSR')
+	write32,0x10247c,0xef038000
+('\t#', 'cpsid', 'if')
+	write32,0x102480,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'ip')
+	write32,0x1024b0,0xef063800
+('\t#', 'mrs', 'ip,', 'CPSR')
+	write32,0x1024cc,0xef038000
+('\t#', 'cpsid', 'if')
+	write32,0x1024d0,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'ip')
+	write32,0x1024fc,0xef063800
+('\t#', 'msr', 'CPSR_c,', 'ip')
+	write32,0x102510,0xef063800
+('\t#', 'mrs', 'r3,', 'CPSR')
+	write32,0x102520,0xef026000
+('\t#', 'cpsid', 'if')
+	write32,0x102524,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r3')
+	write32,0x102534,0xef062600
+('\t#', 'mrs', 'r0,', 'CPSR')
+	write32,0x1025d0,0xef020000
+('\t#', 'cpsid', 'if')
+	write32,0x1025d4,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r0')
+	write32,0x1025f8,0xef062000
+('\t#', 'mrs', 'r2,', 'CPSR')
+	write32,0x1025fc,0xef024000
+('\t#', 'cpsid', 'if')
+	write32,0x102600,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r2')
+	write32,0x102620,0xef062400
+('\t#', 'msr', 'CPSR_c,', 'r0')
+	write32,0x10263c,0xef062000
+('\t#', 'msr', 'CPSR_c,', 'r2')
+	write32,0x102658,0xef062400
+('\t#', 'mrs', 'ip,', 'CPSR')
+	write32,0x102688,0xef038000
+('\t#', 'cpsid', 'if')
+	write32,0x10268c,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'ip')
+	write32,0x1026ac,0xef063800
+('\t#', 'mrs', 'r3,', 'CPSR')
+	write32,0x1026b0,0xef026000
+('\t#', 'cpsid', 'if')
+	write32,0x1026b4,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r3')
+	write32,0x1026cc,0xef062600
+('\t#', 'msr', 'CPSR_c,', 'ip')
+	write32,0x1026e0,0xef063800
+('\t#', 'mrs', 'r2,', 'CPSR')
+	write32,0x10270c,0xef024000
+('\t#', 'cpsid', 'if')
+	write32,0x102710,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r2')
+	write32,0x102728,0xef062400
+('\t#', 'mrs', 'r2,', 'CPSR')
+	write32,0x102758,0xef024000
+('\t#', 'cpsid', 'if')
+	write32,0x10275c,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r2')
+	write32,0x102784,0xef062400
+('\t#', 'mrs', 'r3,', 'CPSR')
+	write32,0x1027cc,0xef026000
+('\t#', 'cpsid', 'if')
+	write32,0x1027d0,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r3')
+	write32,0x1027e4,0xef062600
+('\t#', 'msr', 'CPSR_c,', 'r2')
+	write32,0x1027fc,0xef062400
+('\t#', 'mrs', 'ip,', 'CPSR')
+	write32,0x102810,0xef038000
+('\t#', 'cpsid', 'if')
+	write32,0x102814,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'ip')
+	write32,0x102828,0xef063800
+('\t#', 'mrs', 'r3,', 'CPSR')
+	write32,0x10292c,0xef026000
+('\t#', 'cpsid', 'if')
+	write32,0x102930,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r3')
+	write32,0x102944,0xef062600
+('\t#', 'mrs', 'r6,', 'CPSR')
+	write32,0x102e40,0xef02c000
+('\t#', 'cpsid', 'if')
+	write32,0x102e44,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r6')
+	write32,0x102e68,0xef062c00
+('\t#', 'mrs', 'r1,', 'CPSR')
+	write32,0x102e94,0xef022000
+('\t#', 'cpsid', 'if')
+	write32,0x102e98,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r1')
+	write32,0x102eb8,0xef062200
+('\t#', 'msr', 'CPSR_c,', 'r6')
+	write32,0x102efc,0xef062c00
+('\t#', 'mrs', 'r1,', 'CPSR')
+	write32,0x102f44,0xef022000
+('\t#', 'cpsid', 'if')
+	write32,0x102f48,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r1')
+	write32,0x102f68,0xef062200
+('\t#', 'msr', 'CPSR_c,', 'r1')
+	write32,0x102fac,0xef062200
+('\t#', 'mrs', 'r3,', 'CPSR')
+	write32,0x10303c,0xef026000
+('\t#', 'cpsid', 'if')
+	write32,0x103040,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r3')
+	write32,0x10305c,0xef062600
+('\t#', 'cpsid', 'if')
+	write32,0x103938,0xef019800
+('\t#', 'cpsie', 'if')
+	write32,0x103948,0xef011800
+('\t#', 'mrs', 'r0,', 'CPSR')
+	write32,0x103950,0xef020000
+('\t#', 'cpsid', 'if')
+	write32,0x103954,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r0')
+	write32,0x103964,0xef062000
+('\t#', 'wfi')
+	write32,0x103970,0xef0c0000
+('\t#', 'wfe')
+	write32,0x10397c,0xef0c8000
+('\t#', 'mrs', 'ip,', 'CPSR')
+	write32,0x107f40,0xef038000
+('\t#', 'cpsid', 'if')
+	write32,0x107f44,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'ip')
+	write32,0x107f7c,0xef063800
+('\t#', 'mrs', 'ip,', 'CPSR')
+	write32,0x107f88,0xef038000
+('\t#', 'cpsid', 'if')
+	write32,0x107f8c,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'ip')
+	write32,0x107fc4,0xef063800
+('\t#', 'mrs', 'ip,', 'CPSR')
+	write32,0x107fd8,0xef038000
+('\t#', 'cpsid', 'if')
+	write32,0x107fdc,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'ip')
+	write32,0x108018,0xef063800
+('\t#', 'mrs', 'r1,', 'CPSR')
+	write32,0x1080b0,0xef022000
+('\t#', 'cpsid', 'if')
+	write32,0x1080b4,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r1')
+	write32,0x1080d0,0xef062200
+('\t#', 'mrs', 'r1,', 'CPSR')
+	write32,0x1080e0,0xef022000
+('\t#', 'cpsid', 'if')
+	write32,0x1080e4,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r1')
+	write32,0x108100,0xef062200
+('\t#', 'mrs', 'r7,', 'CPSR')
+	write32,0x108390,0xef02e000
+('\t#', 'cpsid', 'if')
+	write32,0x108394,0xef019800
+('\t#', 'mrs', 'r1,', 'CPSR')
+	write32,0x1083a8,0xef022000
+('\t#', 'cpsid', 'if')
+	write32,0x1083ac,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r1')
+	write32,0x1083c8,0xef062200
+('\t#', 'mrs', 'r2,', 'CPSR')
+	write32,0x108404,0xef024000
+('\t#', 'cpsid', 'if')
+	write32,0x108408,0xef019800
+('\t#', 'msr', 'CPSR_c,', 'r2')
+	write32,0x108424,0xef062400
+('\t#', 'msr', 'CPSR_c,', 'r7')
+	write32,0x10842c,0xef062e00
+section,.init
+section,.fini

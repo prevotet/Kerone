@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ucos-ii_demo_0/src/App/port/guest_os_assembly.S&apos; to &apos;guest_os_assembly.h&apos;" description="Rename resource &apos;guest_os_assembly.S&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/App/port/guest_os_assembly.S" name="guest_os_assembly.h" stamp="1429719690050" updateReferences="true"/>
+</session>

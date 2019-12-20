@@ -1,0 +1,48 @@
+/*
+ * guest_os_parameters.h
+ *
+ *  Created on: 29 août 2014
+ *      Author: XIATAN
+ */
+
+#ifndef GUEST_OS_PARAMETERS_H_
+#define GUEST_OS_PARAMETERS_H_
+
+
+#define IS_RTOS 0
+
+#if IS_RTOS
+#define GUEST_OS_CPU_IRQ_ID	CSP_INT_SRC_NBR_TTC0_01
+#else
+#define GUEST_OS_CPU_IRQ_ID	CSP_INT_SRC_NBR_TTC0_00
+#endif
+
+#define IS_TASK_RELEASE_TEST 0
+
+#define IS_TASK_GENERAL_TEST 0
+
+#define IS_TM_BENCHMARCK 	0
+#define IS_TM_BASIC 		0
+#define IS_TM_CTX_SWITCH 	0
+#define IS_TM_INT_PROC 		0
+#define IS_TM_INT_PREEMPT 	0
+#define IS_TM_MEM_ALLOC 	0
+#define IS_TM_MESSAGE 		0
+#define IS_TM_SYNCHRON 		0
+
+#define IS_MIBENCH_FFT   	0
+#define IS_MIBENCH_GSM   	0
+#define IS_MIBENCH_ADPCM 	0
+#define IS_MIBENCH_CRC32 	0
+
+#define IS_MIBENCH_BASICMATH 0
+#define IS_MIBENCH_BITCNT   0
+#define IS_MIBENCH_QSORT	0
+#define IS_MIBENCH_SUSAN	0
+
+#define IS_MIBENCH 		IS_MIBENCH_FFT | IS_MIBENCH_GSM | IS_MIBENCH_ADPCM | IS_MIBENCH_CRC32 | \
+						IS_MIBENCH_BASICMATH |IS_MIBENCH_BITCNT |IS_MIBENCH_QSORT |IS_MIBENCH_SUSAN
+
+#define IS_PM_MEASURE    0
+
+#endif /* GUEST_OS_PARAMETERS_H_ */

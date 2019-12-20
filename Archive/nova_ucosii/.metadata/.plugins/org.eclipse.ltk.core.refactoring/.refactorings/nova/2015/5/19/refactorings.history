@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;nova/src/bsp/performance.c&apos; to &apos;performance.cc&apos;" description="Rename resource &apos;performance.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/bsp/performance.c" name="performance.cc" stamp="1430909213671" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;nova/src/bsp/sd/mmc.c&apos; to &apos;mmc.cc&apos;" description="Rename resource &apos;mmc.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/bsp/sd/mmc.c" name="mmc.cc" stamp="1431002240468" updateReferences="true"/>
+</session>

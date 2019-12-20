@@ -1,0 +1,96 @@
+/*
+ * Virtual memory layout
+ *
+ *  Created on: 28 nov. 2013
+ *      Author: XIATAN
+ */
+
+
+#ifndef MEMORY_
+#define MEMORY_
+
+
+
+#define PAGE_BITS       12
+#define PAGE_SIZE       (1 << PAGE_BITS)
+#define PAGE_MASK       (PAGE_SIZE - 1)
+#define PAGE_SHIFT		12
+
+#define SECTION_BITS    20
+#define SECTION_SIZE    (1 << SECTION_BITS)
+#define SECTION_MASK    (SECTION_SIZE - 1)
+#define SECTION_SHIFT	12
+
+#define LOAD_ADDR       0x200000
+//#define INIT_STCK		0x202000
+
+#define PM_DATA_ADDR	0xc0000000 + 0x1800000
+#define PM_DATA_PHYS	0x10000000
+#define PM_DATA_E		0x11400000
+
+#define LINK_ADDR       0xc0000000
+#define KSTCK_ADDR      0xcffff000
+#define KSTCK_E			KSTCK_ADDR + PAGE_SIZE
+
+#define IRQ_STCK_ADDR   0xcfffe000
+#define IRQ_STCK_E		IRQ_STCK_ADDR + PAGE_SIZE
+
+#define UND_STCK_ADDR   0xcfffd000
+#define UND_STCK_E		UND_STCK_ADDR + PAGE_SIZE
+
+#define ABT_STCK_ADDR   0xcfffc000
+#define ABT_STCK_E		ABT_STCK_ADDR + PAGE_SIZE
+
+#define PRE_STCK_ADDR   0xcfffc000 //Currently prefetch and abort modes SHARE the same stack
+#define PRE_STCK_E		PRE_STCK_ADDR + PAGE_SIZE
+
+#define USER_SHARABLE	0xbffff000
+#define USER_SHARABLE_E 0xc0000000
+
+// AS Local Range from 0xd0000000 to max
+#define IOBMP_SADDR     0xd0000000
+#define IOBMP_EADDR     (IOBMP_SADDR + PAGE_SIZE * 2)
+
+//The reserved memory space for partial reconfig bit files
+// NOTE: for DMA Tranfer, scu is not functioning; so virt addr is useless here
+#define PRECO_PHYS_ADDR 0x2000000
+#define PRECO_SADDR		0x2000000
+#define PRECO_E			0x2100000
+
+#define REMAP_SADDR     0xdf000000
+#define USER_SPACE_REMAP 0xdf100000
+
+/* 0xe0000000 - 0xe1ffffff (Memory mapped devices)
+ * UART/USB/IIC/SPI/CAN/GEM/GPIO/QSPI/SD/NAND      */
+#define	DEV_ADDR		0xe0000000
+#define DEV_E			0xe2000000
+
+/* 0xf8000000 - 0xf8ffffff (AMBA APB Peripherals) */
+#define	AMBA_ADDR		0xf8000000
+#define AMBA_E			0xf9000000
+
+/* 0x40000000 - 0x7fffffff (General Purpose Port #0 to the PL, M_AXI_GP0) */
+#define	AXI_GP0_ADDR	0x40000000
+#define AXI_GP0_E		0x80000000
+
+//Vectors for exceptions, ARMV7 use high address vector table as default
+#define VEC_BASE	0xFFFF0000
+
+
+//Temp physical addresses which will be replaced by ld file
+//#define LOAD_E			0x202000
+//#define LINK_P			0x400000
+//#define LINK_E			0x1800000
+
+//#define OFFSET			LINK_ADDR - LINK_P
+#define PDIR_SIZE		0x4000
+
+//#define _mempool_f		0xC0008000
+//#define _mempool_e		0xC1400000
+//#define CTORS_G			0xC00013DC
+//#define CTORS_L			0xC00013DC
+//#define CTORS_E			0xC00013E4
+
+
+
+#endif /* MEMORY_ */

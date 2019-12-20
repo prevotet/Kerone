@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;user/src/pl_ctrl.cc&apos; to &apos;HW_Task_Manager.cc&apos;" description="Rename resource &apos;pl_ctrl.cc&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/pl_ctrl.cc" name="HW_Task_Manager.cc" stamp="1410254706625" updateReferences="true"/>
+</session>

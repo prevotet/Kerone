@@ -1,0 +1,6 @@
+14:24:27 **** Build of project ucos-ii_demo_0_bsp ****
+make -k all 
+Finished building libraries
+
+14:24:27 Build Finished (took 131ms)
+

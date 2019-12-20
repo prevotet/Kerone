@@ -1,0 +1,47 @@
+\section{Kalloc Class Reference}
+\label{class_kalloc}\index{Kalloc@{Kalloc}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_kalloc_a3407fd5f2e0bb951ea01556dd7ccd730}} 
+enum {\bfseries Fill} \{ {\bfseries N\+O\+F\+I\+LL} = 0, 
+{\bfseries F\+I\+L\+L\+\_\+0}, 
+{\bfseries F\+I\+L\+L\+\_\+1}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_kalloc_aec9482a5da7dd1f98ed4aef99dd05738}} 
+{\bfseries Kalloc} (mword virt\+\_\+begin, mword virt\+\_\+end)
+\item 
+\mbox{\label{class_kalloc_ae180df8a72200e00a4e4fc865cfa55bd}} 
+void $\ast$ {\bfseries alloc} (unsigned size)
+\item 
+\mbox{\label{class_kalloc_a25e664b28fdb07ed12fd9430f8de0674}} 
+void $\ast$ {\bfseries alloc\+\_\+page} (unsigned size, Fill fill=N\+O\+F\+I\+LL)
+\item 
+\mbox{\label{class_kalloc_ad0693e08ccf0795f065a40077ef7a3fe}} 
+mword {\bfseries alloc\+\_\+shadow\+\_\+pdir} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_kalloc_a5b87551f09b0a89cd1a0a33d1fe3a605}} 
+static void $\ast$ {\bfseries phys2virt} (mword)
+\item 
+\mbox{\label{class_kalloc_a5e83ee9ce1f2ce752cb1844567c013d7}} 
+static mword {\bfseries virt2phys} (void $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_kalloc_a4ac09a9ffc7e5720c753014fd785e5aa}} 
+static \textbf{ Kalloc} {\bfseries allocator}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/users/work/\+Kerone/kernel/include/kalloc.\+h\item 
+D\+:/users/work/\+Kerone/kernel/src/kalloc.\+cc\end{DoxyCompactItemize}

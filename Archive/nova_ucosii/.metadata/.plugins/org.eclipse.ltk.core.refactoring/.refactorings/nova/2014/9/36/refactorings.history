@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;nova/src/include/user_alloc.h&apos; to &apos;Ualloc.h&apos;" description="Rename resource &apos;user_alloc.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/include/user_alloc.h" name="Ualloc.h" stamp="1409758288015" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;nova/src/include/Ualloc.h&apos; to &apos;ualloc.h&apos;" description="Rename resource &apos;Ualloc.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/include/Ualloc.h" name="ualloc.h" stamp="1409758874499" updateReferences="true"/>
+</session>

@@ -1,0 +1,7 @@
+For Vivado 2015.4 and 2017.1
+
+modify Xcugic_intr.c to take into consideration the IRQ_ID global variable that is required in vgic.cc
+
+
+In VIVADO 2017.1
+In the BSP settings Extra_compiler_flags should include "-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=softfp -nostartfiles -Wall -Wextra"

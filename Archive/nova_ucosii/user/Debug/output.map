@@ -1,0 +1,678 @@
+Archive member included because of file (symbol)
+
+d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3\libgcc.a(_udivsi3.o)
+                              ./src/bsp/xil_printf.o (__aeabi_uidiv)
+d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3\libgcc.a(_dvmd_tls.o)
+                              d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3\libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-strlen.o)
+                              ./src/bsp/xil_printf.o (strlen)
+d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-tolower.o)
+                              ./src/bsp/xil_printf.o (tolower)
+d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-ctype_.o)
+                              d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-tolower.o) (__ctype_ptr__)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ps7_ddr_0_S_AXI_BASEADDR 0x00100000         0x3ff00000
+ps7_ram_0_S_AXI_BASEADDR 0x00000000         0x00030000
+ps7_ram_1_S_AXI_BASEADDR 0xffff0000         0x0000fe00
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crti.o
+LOAD d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtbegin.o
+                0x00000074                . = SIZEOF_HEADERS
+
+.data           0x00000074       0x14
+                0x00000074                __data_start = .
+ *(.data)
+ .data          0x00000074        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crti.o
+ .data          0x00000074        0x4 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtbegin.o
+                0x00000074                __dso_handle
+ .data          0x00000078        0x0 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+ .data          0x00000078        0x8 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_g.o
+                0x00000078                XDcfg_ConfigTable
+ .data          0x00000080        0x0 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_intr.o
+ .data          0x00000080        0x0 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_selftest.o
+ .data          0x00000080        0x0 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_sinit.o
+ .data          0x00000080        0x0 ./src/bsp/devcfg.o
+ .data          0x00000080        0x0 ./src/bsp/novalib.o
+ .data          0x00000080        0x0 ./src/bsp/outbyte.o
+ .data          0x00000080        0x0 ./src/bsp/performance.o
+ .data          0x00000080        0x0 ./src/bsp/xil_io.o
+ .data          0x00000080        0x0 ./src/bsp/xil_printf.o
+ .data          0x00000080        0x0 ./src/bsp/xuartps_hw.o
+ .data          0x00000080        0x0 ./src/IVC_Channel.o
+ .data          0x00000080        0x0 ./src/IntEentry.o
+ .data          0x00000080        0x0 ./src/_exit.o
+ .data          0x00000080        0x0 ./src/abort.o
+ .data          0x00000080        0x0 ./src/irq.o
+ .data          0x00000080        0x0 ./src/print.o
+ .data          0x00000080        0x0 ./src/start.o
+ .data          0x00000080        0x0 ./src/syscall.o
+ .data          0x00000080        0x0 ./src/syscall_list.o
+ .data          0x00000080        0x0 ./src/user.o
+ .data          0x00000080        0x0 ./src/vpsr.o
+ .data          0x00000080        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3\libgcc.a(_udivsi3.o)
+ .data          0x00000080        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3\libgcc.a(_dvmd_tls.o)
+ .data          0x00000080        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-strlen.o)
+ .data          0x00000080        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-tolower.o)
+ .data          0x00000080        0x4 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-ctype_.o)
+                0x00000080                __ctype_ptr__
+ .data          0x00000084        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtend.o
+ .data          0x00000084        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtn.o
+ *(.data.*)
+ *(.gnu.linkonce.d.*)
+ *(.jcr)
+ .jcr           0x00000084        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtbegin.o
+ .jcr           0x00000084        0x4 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtend.o
+ *(.got)
+ *(.got.plt)
+                0x00000088                __data_end = .
+
+.tm_clone_table
+                0x00000088        0x0
+ .tm_clone_table
+                0x00000088        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtbegin.o
+ .tm_clone_table
+                0x00000088        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtend.o
+
+.igot.plt       0x00000088        0x0
+ .igot.plt      0x00000000        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtbegin.o
+
+.rodata         0x00000088      0x29c
+                0x00000088                __rodata_start = .
+ *(.rodata)
+ .rodata        0x00000088       0x3c ./src/bsp/performance.o
+ .rodata        0x000000c4       0x14 ./src/bsp/xil_printf.o
+ .rodata        0x000000d8       0x48 ./src/irq.o
+ .rodata        0x00000120       0x1c ./src/syscall_list.o
+ .rodata        0x0000013c       0xe4 ./src/user.o
+ .rodata        0x00000220      0x104 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-ctype_.o)
+                0x00000220                _ctype_
+ *(.rodata.*)
+ *(.gnu.linkonce.r.*)
+                0x00000324                __rodata_end = .
+
+.eh_frame       0x00000324        0x4
+ *(.eh_frame)
+ .eh_frame      0x00000324        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtbegin.o
+ .eh_frame      0x00000324        0x4 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtend.o
+
+.eh_framehdr    0x00000328        0x0
+                0x00000328                __eh_framehdr_start = .
+ *(.eh_framehdr)
+                0x00000328                __eh_framehdr_end = .
+
+.ARM.exidx      0x00000328        0x0
+                0x00000328                __exidx_start = .
+ *(.ARM.exidx*)
+ *(.gnu.linkonce.armexidix.*.*)
+                0x00000328                __exidx_end = .
+
+.ARM.extab      0x00000328        0x0
+                0x00000328                __extab_start = .
+ *(.ARM.extab*)
+                0x00000328                __extab_end = .
+
+.init_array     0x00000328        0x4
+                0x00000328                __init_array_start = .
+ *(SORT(.init_array.*))
+ *(.init_array)
+ .init_array    0x00000328        0x4 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtbegin.o
+                0x0000032c                __init_array_end = .
+
+.fini_array     0x0000032c        0x4
+                0x0000032c                __fini_array_start = .
+ *(SORT(.fini_array.*))
+ *(.fini_array)
+ .fini_array    0x0000032c        0x4 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtbegin.o
+                0x00000330                __fini_array_end = .
+
+.ARM.attributes
+                0x00000330       0x33
+                0x00000330                __ARM.attributes_start = .
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000330       0x25 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crti.o
+ .ARM.attributes
+                0x00000355       0x37 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtbegin.o
+ .ARM.attributes
+                0x0000038c       0x37 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+ .ARM.attributes
+                0x000003c3       0x37 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_g.o
+ .ARM.attributes
+                0x000003fa       0x37 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_intr.o
+ .ARM.attributes
+                0x00000431       0x37 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_selftest.o
+ .ARM.attributes
+                0x00000468       0x37 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_sinit.o
+ .ARM.attributes
+                0x0000049f       0x37 ./src/bsp/devcfg.o
+ .ARM.attributes
+                0x000004d6       0x37 ./src/bsp/novalib.o
+ .ARM.attributes
+                0x0000050d       0x37 ./src/bsp/outbyte.o
+ .ARM.attributes
+                0x00000544       0x37 ./src/bsp/performance.o
+ .ARM.attributes
+                0x0000057b       0x37 ./src/bsp/xil_io.o
+ .ARM.attributes
+                0x000005b2       0x37 ./src/bsp/xil_printf.o
+ .ARM.attributes
+                0x000005e9       0x37 ./src/bsp/xuartps_hw.o
+ .ARM.attributes
+                0x00000620       0x37 ./src/IVC_Channel.o
+ .ARM.attributes
+                0x00000657       0x23 ./src/IntEentry.o
+ .ARM.attributes
+                0x0000067a       0x37 ./src/_exit.o
+ .ARM.attributes
+                0x000006b1       0x37 ./src/abort.o
+ .ARM.attributes
+                0x000006e8       0x37 ./src/irq.o
+ .ARM.attributes
+                0x0000071f       0x37 ./src/print.o
+ .ARM.attributes
+                0x00000756       0x23 ./src/start.o
+ .ARM.attributes
+                0x00000779       0x23 ./src/syscall.o
+ .ARM.attributes
+                0x0000079c       0x37 ./src/syscall_list.o
+ .ARM.attributes
+                0x000007d3       0x37 ./src/user.o
+ .ARM.attributes
+                0x0000080a       0x23 ./src/vpsr.o
+ .ARM.attributes
+                0x0000082d       0x25 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3\libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x00000852       0x25 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3\libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x00000877       0x37 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-strlen.o)
+ .ARM.attributes
+                0x000008ae       0x37 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-tolower.o)
+ .ARM.attributes
+                0x000008e5       0x37 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-ctype_.o)
+ .ARM.attributes
+                0x0000091c       0x37 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtend.o
+ .ARM.attributes
+                0x00000953       0x25 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtn.o
+                0x00000978                __ARM.attributes_end = .
+
+.bss            0x00000978      0x688
+                0x00000978                __bss_start = .
+ *(.bss)
+ .bss           0x00000978        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crti.o
+ .bss           0x00000978       0x1c d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtbegin.o
+ .bss           0x00000994        0x0 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+ .bss           0x00000994        0x0 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_g.o
+ .bss           0x00000994        0x0 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_intr.o
+ .bss           0x00000994        0x0 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_selftest.o
+ .bss           0x00000994        0x0 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_sinit.o
+ .bss           0x00000994        0x0 ./src/bsp/devcfg.o
+ .bss           0x00000994        0x0 ./src/bsp/novalib.o
+ .bss           0x00000994        0x0 ./src/bsp/outbyte.o
+ .bss           0x00000994       0x10 ./src/bsp/performance.o
+                0x00000994                high_val
+                0x00000998                low_val
+                0x0000099c                average_val
+                0x000009a0                pmdata_count
+ .bss           0x000009a4        0x0 ./src/bsp/xil_io.o
+ .bss           0x000009a4        0x0 ./src/bsp/xil_printf.o
+ .bss           0x000009a4        0x0 ./src/bsp/xuartps_hw.o
+ .bss           0x000009a4        0x0 ./src/IVC_Channel.o
+ .bss           0x000009a4        0x0 ./src/IntEentry.o
+ .bss           0x000009a4        0x0 ./src/_exit.o
+ .bss           0x000009a4        0x0 ./src/abort.o
+ .bss           0x000009a4      0x17c ./src/irq.o
+                0x000009a4                HandlerTable
+ .bss           0x00000b20        0x0 ./src/print.o
+ .bss           0x00000b20        0x0 ./src/start.o
+ .bss           0x00000b20        0x0 ./src/syscall.o
+ .bss           0x00000b20        0x0 ./src/syscall_list.o
+ .bss           0x00000b20       0x94 ./src/user.o
+                0x00000b20                vpsr
+ .bss           0x00000bb4        0x0 ./src/vpsr.o
+ .bss           0x00000bb4        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3\libgcc.a(_udivsi3.o)
+ .bss           0x00000bb4        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3\libgcc.a(_dvmd_tls.o)
+ .bss           0x00000bb4        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-strlen.o)
+ .bss           0x00000bb4        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-tolower.o)
+ .bss           0x00000bb4        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-ctype_.o)
+ .bss           0x00000bb4        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtend.o
+ .bss           0x00000bb4        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtn.o
+ *(.bss.*)
+ *(.gnu.linkonce.b.*)
+ *(COMMON)
+                0x00000bb4                __bss_end = .
+                0x00001000                . = ALIGN (0x1000)
+ *fill*         0x00000bb4      0x44c 
+
+.stack          0x00001000     0x1000
+                0x00001000        0x1 BYTE 0x2a
+                0x00002000                . = ALIGN (0x1000)
+ *fill*         0x00001001      0xfff 
+                0x00002000                PROVIDE (stack_top, .)
+
+.text           0x00002000     0x2944
+ *(.vectors)
+ *(.boot)
+ *(.text)
+ .text          0x00002000        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crti.o
+ .text          0x00002000      0x114 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtbegin.o
+ .text          0x00002114        0x0 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+ .text          0x00002114        0x0 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_g.o
+ .text          0x00002114        0x0 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_intr.o
+ .text          0x00002114        0x0 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_selftest.o
+ .text          0x00002114        0x0 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_sinit.o
+ .text          0x00002114        0x0 ./src/bsp/devcfg.o
+ .text          0x00002114        0x0 ./src/bsp/novalib.o
+ .text          0x00002114        0x0 ./src/bsp/outbyte.o
+ .text          0x00002114        0x0 ./src/bsp/performance.o
+ .text          0x00002114        0x0 ./src/bsp/xil_io.o
+ .text          0x00002114        0x0 ./src/bsp/xil_printf.o
+ .text          0x00002114        0x0 ./src/bsp/xuartps_hw.o
+ .text          0x00002114        0x0 ./src/IVC_Channel.o
+ .text          0x00002114       0x48 ./src/IntEentry.o
+                0x00002114                IRQ_entry
+ .text          0x0000215c        0x0 ./src/_exit.o
+ .text          0x0000215c        0x0 ./src/abort.o
+ .text          0x0000215c        0x0 ./src/irq.o
+ .text          0x0000215c        0x0 ./src/print.o
+ .text          0x0000215c        0xc ./src/start.o
+                0x0000215c                _start
+ .text          0x00002168        0xc ./src/syscall.o
+                0x00002168                syscall
+ .text          0x00002174        0x0 ./src/syscall_list.o
+ .text          0x00002174        0x0 ./src/user.o
+ .text          0x00002174       0x48 ./src/vpsr.o
+                0x00002174                VM_IRQ_En
+                0x00002194                VM_IRQ_Dis
+ .text          0x000021bc      0x20c d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3\libgcc.a(_udivsi3.o)
+                0x000021bc                __aeabi_uidiv
+                0x000021bc                __udivsi3
+                0x000023a8                __aeabi_uidivmod
+ .text          0x000023c8        0x4 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3\libgcc.a(_dvmd_tls.o)
+                0x000023c8                __aeabi_idiv0
+                0x000023c8                __aeabi_ldiv0
+ .text          0x000023cc       0x6c d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-strlen.o)
+                0x000023cc                strlen
+ .text          0x00002438       0x24 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-tolower.o)
+                0x00002438                tolower
+ .text          0x0000245c        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-ctype_.o)
+ .text          0x0000245c        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtend.o
+ .text          0x0000245c        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtn.o
+ *(.text.*)
+ .text.XDcfg_CfgInitialize
+                0x0000245c       0x98 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                0x0000245c                XDcfg_CfgInitialize
+ .text.XDcfg_EnablePCAP
+                0x000024f4       0x44 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                0x000024f4                XDcfg_EnablePCAP
+ .text.XDcfg_DisablePCAP
+                0x00002538       0x44 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                0x00002538                XDcfg_DisablePCAP
+ .text.XDcfg_SetControlRegister
+                0x0000257c       0x4c ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                0x0000257c                XDcfg_SetControlRegister
+ .text.XDcfg_GetControlRegister
+                0x000025c8       0x2c ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                0x000025c8                XDcfg_GetControlRegister
+ .text.XDcfg_SetLockRegister
+                0x000025f4       0x30 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                0x000025f4                XDcfg_SetLockRegister
+ .text.XDcfg_GetLockRegister
+                0x00002624       0x30 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                0x00002624                XDcfg_GetLockRegister
+ .text.XDcfg_SetConfigRegister
+                0x00002654       0x30 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                0x00002654                XDcfg_SetConfigRegister
+ .text.XDcfg_GetConfigRegister
+                0x00002684       0x30 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                0x00002684                XDcfg_GetConfigRegister
+ .text.XDcfg_SetStatusRegister
+                0x000026b4       0x30 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                0x000026b4                XDcfg_SetStatusRegister
+ .text.XDcfg_GetStatusRegister
+                0x000026e4       0x30 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                0x000026e4                XDcfg_GetStatusRegister
+ .text.XDcfg_SetRomShadowRegister
+                0x00002714       0x30 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                0x00002714                XDcfg_SetRomShadowRegister
+ .text.XDcfg_GetSoftwareIdRegister
+                0x00002744       0x30 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                0x00002744                XDcfg_GetSoftwareIdRegister
+ .text.XDcfg_SetMiscControlRegister
+                0x00002774       0x54 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                0x00002774                XDcfg_SetMiscControlRegister
+ .text.XDcfg_GetMiscControlRegister
+                0x000027c8       0x30 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                0x000027c8                XDcfg_GetMiscControlRegister
+ .text.XDcfg_IsDmaBusy
+                0x000027f8       0x48 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                0x000027f8                XDcfg_IsDmaBusy
+ .text.XDcfg_InitiateDma
+                0x00002840       0x80 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                0x00002840                XDcfg_InitiateDma
+ .text._ZL18XDcfg_PcapReadbackP5XDcfgmmmm
+                0x000028c0       0xc0 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+ .text.XDcfg_Transfer
+                0x00002980      0x348 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                0x00002980                XDcfg_Transfer
+ .text.XDcfg_IntrEnable
+                0x00002cc8       0x68 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_intr.o
+                0x00002cc8                XDcfg_IntrEnable
+ .text.XDcfg_IntrDisable
+                0x00002d30       0x64 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_intr.o
+                0x00002d30                XDcfg_IntrDisable
+ .text.XDcfg_IntrGetEnabled
+                0x00002d94       0x34 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_intr.o
+                0x00002d94                XDcfg_IntrGetEnabled
+ .text.XDcfg_IntrGetStatus
+                0x00002dc8       0x30 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_intr.o
+                0x00002dc8                XDcfg_IntrGetStatus
+ .text.XDcfg_IntrClear
+                0x00002df8       0x30 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_intr.o
+                0x00002df8                XDcfg_IntrClear
+ .text.XDcfg_InterruptHandler
+                0x00002e28       0x60 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_intr.o
+                0x00002e28                XDcfg_InterruptHandler
+ .text.XDcfg_SetHandler
+                0x00002e88       0x30 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_intr.o
+                0x00002e88                XDcfg_SetHandler
+ .text.XDcfg_SelfTest
+                0x00002eb8       0x6c ./src/bsp/devcfg_v2_03_a/src/xdevcfg_selftest.o
+                0x00002eb8                XDcfg_SelfTest
+ .text.XDcfg_LookupConfig
+                0x00002f24       0x98 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_sinit.o
+                0x00002f24                XDcfg_LookupConfig
+ .text._Z16XDcfg_InitializeP5XDcfgt
+                0x00002fbc       0x60 ./src/bsp/devcfg.o
+                0x00002fbc                XDcfg_Initialize(XDcfg*, unsigned short)
+ .text._Z21XDcfg_TransferBitfileP5XDcfgmm
+                0x0000301c       0x7c ./src/bsp/devcfg.o
+                0x0000301c                XDcfg_TransferBitfile(XDcfg*, unsigned long, unsigned long)
+ .text._getpid  0x00003098        0xc ./src/bsp/novalib.o
+                0x00003098                _getpid
+ .text._kill    0x000030a4       0x1c ./src/bsp/novalib.o
+                0x000030a4                _kill
+ .text._sbrk    0x000030c0       0x10 ./src/bsp/novalib.o
+                0x000030c0                _sbrk
+ .text._fstat   0x000030d0       0x1c ./src/bsp/novalib.o
+                0x000030d0                _fstat
+ .text._write   0x000030ec       0x20 ./src/bsp/novalib.o
+                0x000030ec                _write
+ .text._read    0x0000310c       0x20 ./src/bsp/novalib.o
+                0x0000310c                _read
+ .text._lseek   0x0000312c       0x1c ./src/bsp/novalib.o
+                0x0000312c                _lseek
+ .text._close   0x00003148       0x18 ./src/bsp/novalib.o
+                0x00003148                _close
+ .text._isatty  0x00003160       0x18 ./src/bsp/novalib.o
+                0x00003160                _isatty
+ .text.outbyte  0x00003178       0x2c ./src/bsp/outbyte.o
+                0x00003178                outbyte
+ .text._Z13XTime_SetTimey
+                0x000031a4       0x68 ./src/bsp/performance.o
+                0x000031a4                XTime_SetTime(unsigned long long)
+ .text._Z13timeprint_lowv
+                0x0000320c       0x30 ./src/bsp/performance.o
+                0x0000320c                timeprint_low()
+ .text._Z9PM_recordj
+                0x0000323c      0x138 ./src/bsp/performance.o
+                0x0000323c                PM_record(unsigned int)
+ .text._Z7Xil_In8m
+                0x00003374       0x20 ./src/bsp/xil_io.o
+                0x00003374                Xil_In8(unsigned long)
+ .text._Z8Xil_In16m
+                0x00003394       0x20 ./src/bsp/xil_io.o
+                0x00003394                Xil_In16(unsigned long)
+ .text._Z8Xil_In32m
+                0x000033b4       0x1c ./src/bsp/xil_io.o
+                0x000033b4                Xil_In32(unsigned long)
+ .text._Z8Xil_Out8mh
+                0x000033d0       0x24 ./src/bsp/xil_io.o
+                0x000033d0                Xil_Out8(unsigned long, unsigned char)
+ .text._Z9Xil_Out16mt
+                0x000033f4       0x24 ./src/bsp/xil_io.o
+                0x000033f4                Xil_Out16(unsigned long, unsigned short)
+ .text._Z9Xil_Out32mm
+                0x00003418       0x20 ./src/bsp/xil_io.o
+                0x00003418                Xil_Out32(unsigned long, unsigned long)
+ .text._Z10Xil_In16BEm
+                0x00003438       0x40 ./src/bsp/xil_io.o
+                0x00003438                Xil_In16BE(unsigned long)
+ .text._Z10Xil_In32BEm
+                0x00003478       0x34 ./src/bsp/xil_io.o
+                0x00003478                Xil_In32BE(unsigned long)
+ .text._Z11Xil_Out16BEmt
+                0x000034ac       0x40 ./src/bsp/xil_io.o
+                0x000034ac                Xil_Out16BE(unsigned long, unsigned short)
+ .text._Z11Xil_Out32BEmm
+                0x000034ec       0x30 ./src/bsp/xil_io.o
+                0x000034ec                Xil_Out32BE(unsigned long, unsigned long)
+ .text._Z16Xil_EndianSwap16t
+                0x0000351c       0x40 ./src/bsp/xil_io.o
+                0x0000351c                Xil_EndianSwap16(unsigned short)
+ .text._Z16Xil_EndianSwap32m
+                0x0000355c       0x88 ./src/bsp/xil_io.o
+                0x0000355c                Xil_EndianSwap32(unsigned long)
+ .text.padding  0x000035e4       0x9c ./src/bsp/xil_printf.o
+                0x000035e4                padding
+ .text.outs     0x00003680       0xd8 ./src/bsp/xil_printf.o
+                0x00003680                outs
+ .text.outnum   0x00003758      0x1cc ./src/bsp/xil_printf.o
+                0x00003758                outnum
+ .text.getnum   0x00003924       0x98 ./src/bsp/xil_printf.o
+                0x00003924                getnum
+ .text.xil_printf
+                0x000039bc      0x474 ./src/bsp/xil_printf.o
+                0x000039bc                xil_printf
+ .text._Z16XUartPs_SendBytemh
+                0x00003e30       0x68 ./src/bsp/xuartps_hw.o
+                0x00003e30                XUartPs_SendByte(unsigned long, unsigned char)
+ .text._Z16XUartPs_RecvBytem
+                0x00003e98       0x64 ./src/bsp/xuartps_hw.o
+                0x00003e98                XUartPs_RecvByte(unsigned long)
+ .text._Z15XUartPs_ResetHwm
+                0x00003efc       0xd8 ./src/bsp/xuartps_hw.o
+                0x00003efc                XUartPs_ResetHw(unsigned long)
+ .text._exit    0x00003fd4        0xc ./src/_exit.o
+                0x00003fd4                _exit
+ .text.abort    0x00003fe0        0xc ./src/abort.o
+                0x00003fe0                abort
+ .text._Z18guest_IRQ_RegisterPFvvEj
+                0x00003fec       0x2c ./src/irq.o
+                0x00003fec                guest_IRQ_Register(void (*)(), unsigned int)
+ .text._Z21guest_IRQ_Acknowledgev
+                0x00004018       0x14 ./src/irq.o
+                0x00004018                guest_IRQ_Acknowledge()
+ .text._Z15guest_IRQ_Cleart
+                0x0000402c       0x34 ./src/irq.o
+                0x0000402c                guest_IRQ_Clear(unsigned short)
+ .text._Z12guest_Irq_Eni
+                0x00004060       0x28 ./src/irq.o
+                0x00004060                guest_Irq_En(int)
+ .text._Z15guest_Irq_DisEni
+                0x00004088       0x28 ./src/irq.o
+                0x00004088                guest_Irq_DisEn(int)
+ .text._Z20guest_ENTER_CRITICALv
+                0x000040b0        0xc ./src/irq.o
+                0x000040b0                guest_ENTER_CRITICAL()
+ .text._Z19guest_EXIT_CRITICALv
+                0x000040bc        0xc ./src/irq.o
+                0x000040bc                guest_EXIT_CRITICAL()
+ .text._Z14DefaultHandlerv
+                0x000040c8       0x14 ./src/irq.o
+                0x000040c8                DefaultHandler()
+ .text._Z15irq_handler_regiPFvvE
+                0x000040dc       0x28 ./src/irq.o
+                0x000040dc                irq_handler_reg(int, void (*)())
+ .text._Z8irq_initv
+                0x00004104       0x80 ./src/irq.o
+                0x00004104                irq_init()
+ .text.irq_handler
+                0x00004184       0x50 ./src/irq.o
+                0x00004184                irq_handler
+ .text._Z12sgi_generatem
+                0x000041d4       0x30 ./src/irq.o
+                0x000041d4                sgi_generate(unsigned long)
+ .text.print    0x00004204       0x54 ./src/print.o
+                0x00004204                print
+ .text._Z13sys_create_ecPFvvEPvi
+                0x00004258       0x30 ./src/syscall_list.o
+                0x00004258                sys_create_ec(void (*)(), void*, int)
+ .text._Z9sys_yieldv
+                0x00004288       0x1c ./src/syscall_list.o
+                0x00004288                sys_yield()
+ .text._Z18sys_dcache_disablev
+                0x000042a4       0x1c ./src/syscall_list.o
+                0x000042a4                sys_dcache_disable()
+ .text._Z13sys_virq_ctrlijj
+                0x000042c0       0x3c ./src/syscall_list.o
+                0x000042c0                sys_virq_ctrl(int, unsigned int, unsigned int)
+ .text._Z9sys_remapm
+                0x000042fc       0x28 ./src/syscall_list.o
+                0x000042fc                sys_remap(unsigned long)
+ .text._Z18sys_insert_mappingmmm
+                0x00004324       0x30 ./src/syscall_list.o
+                0x00004324                sys_insert_mapping(unsigned long, unsigned long, unsigned long)
+ .text._Z21sys_create_messageboxi
+                0x00004354       0x2c ./src/syscall_list.o
+                0x00004354                sys_create_messagebox(int)
+ .text._Z15sys_create_pdirmmm
+                0x00004380       0x38 ./src/syscall_list.o
+                0x00004380                sys_create_pdir(unsigned long, unsigned long, unsigned long)
+ .text._Z13sys_create_osmimi
+                0x000043b8       0x68 ./src/syscall_list.o
+                0x000043b8                sys_create_os(unsigned long, int, unsigned long, int)
+ .text._Z14sys_reschedulev
+                0x00004420       0x1c ./src/syscall_list.o
+                0x00004420                sys_reschedule()
+ .text._Z11sys_suspendm
+                0x0000443c       0x28 ./src/syscall_list.o
+                0x0000443c                sys_suspend(unsigned long)
+ .text._Z18sys_hwmgr_registerv
+                0x00004464       0x1c ./src/syscall_list.o
+                0x00004464                sys_hwmgr_register()
+ .text._Z23sys_insert_fpga_mappingimm
+                0x00004480       0x3c ./src/syscall_list.o
+                0x00004480                sys_insert_fpga_mapping(int, unsigned long, unsigned long)
+ .text._Z23sys_delete_fpga_mappingim
+                0x000044bc       0x30 ./src/syscall_list.o
+                0x000044bc                sys_delete_fpga_mapping(int, unsigned long)
+ .text._Z16sys_fpga_page_roim
+                0x000044ec       0x30 ./src/syscall_list.o
+                0x000044ec                sys_fpga_page_ro(int, unsigned long)
+ .text._Z16sys_fpga_page_rwim
+                0x0000451c       0x30 ./src/syscall_list.o
+                0x0000451c                sys_fpga_page_rw(int, unsigned long)
+ .text._Z12sys_IVC_Sendiii
+                0x0000454c       0x18 ./src/syscall_list.o
+                0x0000454c                sys_IVC_Send(int, int, int)
+ .text._Z8sys_voidv
+                0x00004564       0x38 ./src/syscall_list.o
+                0x00004564                sys_void()
+ .text._Z13boot_guest_osmii
+                0x0000459c      0x304 ./src/user.o
+                0x0000459c                boot_guest_os(unsigned long, int, int)
+ .text._Z16InterruptHandlerv
+                0x000048a0       0x24 ./src/user.o
+                0x000048a0                InterruptHandler()
+ .text.main_func
+                0x000048c4       0x80 ./src/user.o
+                0x000048c4                main_func
+ *(.gnu.linkonce.t.*)
+ *(.plt)
+ *(.gnu_warning)
+ *(.gcc_execpt_table)
+ *(.glue_7)
+ .glue_7        0x00000000        0x0 linker stubs
+ *(.glue_7t)
+ .glue_7t       0x00000000        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+ *(.ARM.extab)
+ *(.gnu.linkonce.armextab.*)
+
+.v4_bx          0x00004944        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x00004944        0x0
+ .iplt          0x00000000        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtbegin.o
+
+.init           0x00004944       0x18
+ *(.init)
+ .init          0x00004944        0xc d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crti.o
+                0x00004944                _init
+ .init          0x00004950        0xc d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtn.o
+
+.fini           0x0000495c       0x18
+ *(.fini)
+ .fini          0x0000495c        0xc d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crti.o
+                0x0000495c                _fini
+ .fini          0x00004968        0xc d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtn.o
+                0x00004974                _end = .
+LOAD ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+LOAD ./src/bsp/devcfg_v2_03_a/src/xdevcfg_g.o
+LOAD ./src/bsp/devcfg_v2_03_a/src/xdevcfg_intr.o
+LOAD ./src/bsp/devcfg_v2_03_a/src/xdevcfg_selftest.o
+LOAD ./src/bsp/devcfg_v2_03_a/src/xdevcfg_sinit.o
+LOAD ./src/bsp/devcfg.o
+LOAD ./src/bsp/novalib.o
+LOAD ./src/bsp/outbyte.o
+LOAD ./src/bsp/performance.o
+LOAD ./src/bsp/xil_io.o
+LOAD ./src/bsp/xil_printf.o
+LOAD ./src/bsp/xuartps_hw.o
+LOAD ./src/IVC_Channel.o
+LOAD ./src/IntEentry.o
+LOAD ./src/_exit.o
+LOAD ./src/abort.o
+LOAD ./src/irq.o
+LOAD ./src/print.o
+LOAD ./src/start.o
+LOAD ./src/syscall.o
+LOAD ./src/syscall_list.o
+LOAD ./src/user.o
+LOAD ./src/vpsr.o
+LOAD d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libstdc++.a
+LOAD d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libm.a
+START GROUP
+LOAD d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3\libgcc.a
+LOAD d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a
+END GROUP
+LOAD d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtend.o
+LOAD d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtn.o
+OUTPUT(user.elf elf32-littlearm)
+
+.rel.dyn        0x00004974        0x0
+ .rel.iplt      0x00000000        0x0 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/crtbegin.o
+
+.comment        0x00000000       0x30
+ .comment       0x00000000       0x30 ./src/bsp/devcfg_v2_03_a/src/xdevcfg.o
+                                 0x31 (size before relaxing)
+ .comment       0x00000000       0x31 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_g.o
+ .comment       0x00000000       0x31 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_intr.o
+ .comment       0x00000000       0x31 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_selftest.o
+ .comment       0x00000000       0x31 ./src/bsp/devcfg_v2_03_a/src/xdevcfg_sinit.o
+ .comment       0x00000000       0x31 ./src/bsp/devcfg.o
+ .comment       0x00000000       0x31 ./src/bsp/novalib.o
+ .comment       0x00000000       0x31 ./src/bsp/outbyte.o
+ .comment       0x00000000       0x31 ./src/bsp/performance.o
+ .comment       0x00000000       0x31 ./src/bsp/xil_io.o
+ .comment       0x00000000       0x31 ./src/bsp/xil_printf.o
+ .comment       0x00000000       0x31 ./src/bsp/xuartps_hw.o
+ .comment       0x00000000       0x31 ./src/IVC_Channel.o
+ .comment       0x00000000       0x31 ./src/_exit.o
+ .comment       0x00000000       0x31 ./src/abort.o
+ .comment       0x00000000       0x31 ./src/irq.o
+ .comment       0x00000000       0x31 ./src/print.o
+ .comment       0x00000000       0x31 ./src/syscall_list.o
+ .comment       0x00000000       0x31 ./src/user.o
+
+.debug_frame    0x00000000       0x60
+ .debug_frame   0x00000000       0x20 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3\libgcc.a(_udivsi3.o)
+ .debug_frame   0x00000020       0x20 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-strlen.o)
+ .debug_frame   0x00000040       0x20 d:/xilinx/14.7/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.3/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-tolower.o)

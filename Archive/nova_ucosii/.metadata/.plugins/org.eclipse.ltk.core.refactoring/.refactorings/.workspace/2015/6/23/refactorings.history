@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 9 resources" deleteContents="false" description="Delete 9 resources" element1="/nova/src/bsp/LocMetrics.css" element2="/nova/src/bsp/LocMetrics.html" element3="/nova/src/bsp/LocMetricsCommentWords.csv" element4="/nova/src/bsp/LocMetricsFiles.csv" element5="/nova/src/bsp/LocMetricsFolders.csv" element6="/nova/src/bsp/LocMetricsFunctions.csv" element7="/nova/src/bsp/LocMetricsFunctions.html" element8="/nova/src/bsp/LocMetricsPie.jpg" element9="/nova/src/bsp/LocMetricsPie.png" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="9" stamp="1433175109609"/>
+</session>

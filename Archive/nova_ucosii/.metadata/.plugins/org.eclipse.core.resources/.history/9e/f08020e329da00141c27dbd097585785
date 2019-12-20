@@ -1,0 +1,1018 @@
+/*
+ * ec.cc
+ *
+ *  Created on: 27 févr. 2014
+ *      Author: XIATAN
+ */
+
+#include <stdio.h>
+
+#include "cpu/cpu.h"
+#include "cpu/ptrace.h"
+
+#include "bsp/include/private_timer.h"
+#include "bsp/include/performance.h"
+#include "bsp/include/xil_printf.h"
+#include "bsp/ttcps_v1_01_a/src/xttcps.h"
+#include "bsp/scugic_v1_05_a/src/xscugic.h"
+#include "bsp/include/xstatus.h"
+#include "bsp/include/xil_exception.h"
+#include "bsp/include/xil_cache.h"
+
+#include "include/ec.h"
+#include "include/ptab.h"
+#include "include/elf.h"
+#include "include/bit.h"
+#include "include/memory.h"
+#include "include/print.h"
+#include "include/vgic.h"
+
+#include "include/msg.h"
+#include "include/ualloc.h"
+#include "include/decode.h"
+
+
+
+extern "C" XScuGic gicInst;
+extern mword KERN_PDIR;
+extern int IRQ_ID;
+
+/*
+ * Initialize all static EC class members
+ */
+Ec * Ec::current = 0; // Static data member current is default as 0
+Ec * Ec::list[Ec::priorities];
+Ec * Ec::vm_list[Ec::max_vm_number];
+Ec * Ec::suspend_list;
+
+unsigned Ec::prio_top;
+int Ec::id_counter;
+int Ec::hw_mgr_id;
+
+/*
+ * Constructor of Ec class, only used by bootstrap().
+ *
+ * f  : pointer of Ec::revoke();
+ * mbi: information of user module;
+ *
+ * The first Ec object is to launch user module.
+ *
+ */
+Ec::Ec (void (*f)(), mword mbi) : cont (f)
+{
+	regs.r0 = mbi;
+	regs.cpsr = PSR_F_BIT | PSR_I_BIT | USR_MODE;
+	prio	= 0;
+	ttbr0	= (mword)&KERN_PDIR;
+	id		= 1;
+	asid	= 0;
+	id_counter = 1;
+
+	vm_list[id] = this;
+
+	enqueue();
+}
+
+/*
+ * Another constructor of Ec class, used by syscall_ec_create().
+ * By using this constructor, the entry and stack of user code is determined.
+ * Kernel use ec_pc and ec_sp to enter the user thread.
+ */
+Ec::Ec (mword ec_pc, mword ec_sp, int ec_prio)
+{
+	id_counter++;
+
+	cont = ret_user_sysexit;
+    regs.cpsr = PSR_F_BIT | PSR_I_BIT | USR_MODE;
+    regs.pc = ec_pc;
+    regs.sp = ec_sp;
+    prio	= ec_prio;
+    ttbr0	= (mword)&KERN_PDIR;
+    id		= id_counter;
+    asid	= 0;
+
+    vm_list[id] = this;
+
+    //created externaly need to enqueue itself
+    //enqueue();
+}
+
+
+/*
+ *  Ec constructor for guest OS. In this scenario sp is always initially
+ *  0 for guest OS. ec_ttbr0 is the BASE ADDRESS of OS shadow pdir table
+ */
+Ec::Ec(mword ec_pc, int ec_prio, mword ec_ttbr0, int constructor_type)
+{
+	id_counter++;
+
+	cont = ret_user_sysexit;
+	regs.cpsr = PSR_F_BIT | PSR_I_BIT | USR_MODE;
+	regs.pc = ec_pc;
+	regs.sp = 0;
+	prio	= ec_prio;
+	ttbr0	= ec_ttbr0;
+	id		= id_counter;
+	asid	= (id<<8) | id;
+
+	vm_list[id] = this;
+}
+
+
+/*
+ * ret_user_sysexit() is to return to user space to the point where previous
+ * system call is made. We have saved the interrupt scene in ec->regs, to return
+ * we should pop ec->regs.
+ *
+ * Note that when we enter ret_user_sysexit(), ec is:
+ * 		-------------------------
+ * 		cont
+ * 		-------------------------
+ * 		regs.r0-r12		user
+ * 		regs.sp			sp_usr
+ * 		regs.lr			lr_sur
+ * 		regs.pc			pc_usr-4
+ * 		regs.cpsr		cpsr_usr
+ * 		-------------------------
+ * 		prev
+ * 		-------------------------
+ * 		next
+ * 		-------------------------
+ * For regs.pc and regs.cpsr, we use RFE instruction so that then can be popped together.
+ */
+void Ec::ret_user_sysexit()
+{
+	mword regs_addr = reinterpret_cast<mword>( & current->regs );
+	asm volatile (	"ldr 	sp, %0;"
+					"ldmia 	sp, {r0-r12,sp,lr}^;"
+					"add	sp, sp, #0xf<<2;"
+					"rfe	sp!"
+					:
+					:"m"(regs_addr)
+					:
+			);
+}
+
+/*
+ * 1) To simplify situation, we assume the registers are:
+ * 			regs.r0 = elf_pointer;  --multiboot info
+ * 			regs.cpsr = PSR_USER
+ * 2) We also assume that mbi holds physical address of user code elf header
+ * 3) We ignore the ph->conut(number of program headers), for now we only use
+ * 	  one user application
+ */
+void Ec::root_invoke()
+{
+		print("============================================= \n\r");
+		print("Ec::root_invoke: Start  \n\r");
+		// remap elf header
+		mword elf_pointer = current->regs.r0;
+	    Eh * e = static_cast<Eh *>(Ptab::remap (elf_pointer));
+	    if (e->ei_magic != 0x464c457f || e->ei_data != 1 || e->type != 2)
+	        panic ("Ec::root_invoke: No ELF\n");
+
+	    unsigned count = e->ph_count;
+
+	    current->regs.pc = e->entry;
+
+	    // remap program headers
+	    Ph * p = static_cast<Ph *>(Ptab::remap (elf_pointer + e->ph_offset));
+
+	    //2 program hearders in user.elf: data and text
+	    for (; count--; p++) {
+	    	if (p->type == Ph::PT_LOAD) {
+
+	    		print("Ec::root_invoke: begin to load program  \n\r");
+
+	    		// To set the authority of program
+	    		//unsigned attr = p->flags & Ph::PF_W ? 7 : 5;
+
+	    		if (p->f_size != p->m_size || p->v_addr % PAGE_SIZE != p->f_offs % PAGE_SIZE)
+	    			panic ("Ec::root_invoke: Bad ELF\n");
+
+
+	    		mword user_phys = align_dn (p->f_offs + elf_pointer, PAGE_SIZE);
+	    		mword user_virt = align_dn (p->v_addr, PAGE_SIZE);
+	    		mword user_size = align_up (p->f_size, PAGE_SIZE);
+
+	    		while (user_size) {
+		    		Ptab::insert_mapping (user_virt, user_phys, 0);
+	    			user_virt += PAGE_SIZE;
+	    			user_phys += PAGE_SIZE;
+	    			user_size -= PAGE_SIZE;
+	    		}
+
+	    		print("Ec::root_invoke: success to load user program  \n\r");
+
+	    	}
+	    }
+
+	    /******************************************************************************/
+	    // Add pages for Guest OS UCosII.
+	    // This is just an example. It should be implemented in other way later.
+	    /*
+	    mword ucos_phys = 0x180f000;
+	    mword ucos_virt = 0x4000;
+	    mword ucos_size = 0xf000;
+	    while (ucos_size) {
+	    	Ptab::insert_mapping (ucos_virt, ucos_phys, 0);
+	    	ucos_virt += PAGE_SIZE;
+	    	ucos_phys += PAGE_SIZE;
+	    	ucos_size -= PAGE_SIZE;
+	    }
+	    print("Ec::root_invoke: success to page ucosii  \n\r");
+	    */
+	    /*******************************************************************************/
+
+	    current->cont = ret_user_sysexit;
+
+	    ret_user_sysexit();
+
+	    FAIL;
+
+}
+
+void Ec::syscall_handler (uint8 number)
+{
+	//xil_printf ("syscall %d - sys_create_ec\n\r", number);
+	mword value;
+	mword low;
+	int i;
+
+	switch (number) {
+
+
+    case 0: //sys_create_ec
+    	print ("	SYSCALL - sys_create_ec\n\r");
+		sys_create_ec ();
+    	break;
+
+    case 1: //sys_yield
+    	//print ("syscall - sys_yield\n\r");
+		sys_yield();
+  	   	break;
+
+    case 2: //IRQ enable
+    	print ("	SYSCALL - IRQ enable\n\r");
+    	ec_irq_enable();
+    	break;
+
+    case 3: //DCache disable
+        //print ("	SYSCALL - DCache disable\n\r");
+        ec_dcache_disable();
+        break;
+
+    case 4: //ICache disable
+    	print ("	SYSCALL - ICache disable\n\r");
+    	ec_icache_disable();
+    	break;
+
+    case 5: //DCache enable
+    	print ("	SYSCALL - DCache enable\n\r");
+    	ec_dcache_enable();
+    	break;
+
+    case 6: //ICache enable
+    	print ("	SYSCALL - ICache enable\n\r");
+    	ec_icache_enable();
+    	break;
+
+    case 7: //IRQ disable
+    	print ("	SYSCALL - IRQ disable\n\r");
+    	ec_irq_disable();
+    	break;
+
+    case 8: // manage and control virtual IRQs
+    	ec_virq_ctrl();
+    	break;
+
+    case 9: // Remap user space to USER_SPACE_REMAP position
+    	print ("	SYSCALL - Remap user space\n\r");
+    	sys_remap();
+    	break;
+
+    case 10:// Insert mapping for user space
+    	print ("	SYSCALL - Insert mapping\n\r");
+    	sys_insert_mapping();
+    	break;
+
+    case 11:// Control the virtual timer of guest OS
+    	//print ("	SYSCALL - Register Timer of EC\n\r");
+    	ec_vtimer_ctrl();
+    	break;
+
+    case 12: // Generate message box for user
+    	print ("	SYSCALL - Create message boxes \n\r");
+    	sys_create_messagebox();
+    	break;
+
+    case 13: // Post a message
+    	print ("	SYSCALL - Post a message \n\r");
+    	ec_mbox_post();
+    	break;
+
+    case 14: // Read a message
+    	print ("	SYSCALL - Read a message \n\r");
+    	ec_mbox_read();
+    	break;
+
+    case 15: //Create a shadow mapping for OS \n\r
+    	print ("	SYSCALL - Create a shadow mapping \n\r");
+    	sys_create_pdir();
+    	break;
+
+    case 16: //Create a guest OS EC
+    	print ("	SYSCALL - Create a guest OS EC \n\r");
+    	sys_create_guest_os();
+    	break;
+
+    case 17: //Reschedule all ECs
+    	print ("	SYSCALL - Reschedule all ECs \n\r");
+    	schedule();
+    	break;
+
+    case 18: /* Suspend EC(return value is enable)
+    		  *---------------
+    		  *	Return		R1
+    		  * --------------
+    		  * success		0
+    		  * reconfig	1
+    		  * busy		2
+    		  * error		3
+    		  * nothing		4
+    		  * --------------
+    		  */
+    	print ("	SYSCALL - Suspend EC \n\r");
+    	value = current->regs.r1;
+    	current->dequeue();
+    	schedule();
+    	if(value != 4)
+    		current->regs.r0 = value;
+    	break;
+
+    case 19: // Register hw task manager
+    	print ("	SYSCALL - Register hw task manager \n\r");
+    	hw_mgr_id = current->id;
+    	break;
+
+    case 20: // Guest OS' Request for hw task manager
+    	print ("	SYSCALL - Request hw task manager \n\r");
+    	hwmgr_request();
+    	break;
+
+    case 21: // DCache flush range
+    	//xil_printf ("	SYSCALL - Flush DCache range: %x, %x \n\r", current->regs.r1, current->regs.r2);
+    	Xil_DCacheFlushRange(current->regs.r1, current->regs.r2);
+    	break;
+
+    case 22: // Level 1 DCache operation : Disable (r1 = 0); Enable (r1 = 1);
+    	if(!current->regs.r1)
+    		Xil_L1DCacheDisable();
+    	else
+    		Xil_L1DCacheEnable();
+    	break;
+
+    case 23: // insert fpga mapping for user:(r1 = VM ID, r2 = virt addr, r3 = phys addr)
+    	Ptab::insert_shadow_mapping(vm_list[current->regs.r1]->ttbr0,
+    								current->regs.r2,
+    								current->regs.r3);
+    	break;
+
+    case 24: // delete fpga mapping for user: (r1 = VM ID, r2 = virt addr)
+    	Ptab::delete_shadow_mapping(vm_list[current->regs.r1]->ttbr0,
+    								current->regs.r2);
+    	break;
+
+
+   case 99: // Void syscall to measure performance
+    	timeprint_low();
+    	print(" -- (Hyper call entry) \n\r");
+    	XTime_SetTime(0);
+    	break;
+
+    default:
+    	xil_printf ("syscall %d - unknown\n", number);
+    	panic ("	SYSCALL  - unknown\n\r");
+  /*  	low = Xil_In32(GLOBAL_TMR_BASEADDR + GTIMER_COUNTER_LOWER_OFFSET);
+    	xil_printf ("Entry: %x\n\r", low);
+    	XTime_SetTime(0);
+    	break;	*/
+    };
+
+    ret_user_sysexit();
+
+    UNREACHED;
+}
+
+void Ec::ec_dcache_disable(){
+	Xil_DCacheDisable();
+}
+
+void Ec::ec_dcache_enable(){
+	Xil_DCacheEnable();
+}
+
+void Ec::ec_icache_disable(){
+	Xil_ICacheDisable();
+}
+
+void Ec::ec_icache_enable(){
+	Xil_ICacheEnable();
+}
+
+void Ec::ec_irq_enable(){
+
+	mword reg_value;
+	reg_value = current->regs.cpsr;
+	reg_value = reg_value & (~PSR_I_BIT);
+	current->regs.cpsr = reg_value;
+}
+
+void Ec::ec_irq_disable(){
+	mword reg_value;
+	reg_value = current->regs.cpsr;
+	reg_value = reg_value | (PSR_I_BIT);
+	current->regs.cpsr = reg_value;
+}
+
+int irq_counter = 0;
+
+void Ec::irq_handler() {
+
+//	XTime_SetTime(0);
+
+	XScuGic_InterruptHandler(&gicInst);
+
+//	xil_printf (" %d ", IRQ_ID);
+/*
+	if(IRQ_ID == 29){
+		if(irq_counter == 650
+		){
+			timeprint_low();
+			xil_printf(" -- (IRQ entry of %x) \n\r", current->id);
+			irq_counter = 0;
+		}
+		irq_counter++;
+	}
+*/
+/*
+	if(IRQ_ID == 42){
+		if(irq_counter == 49){
+				timeprint_low();
+				xil_printf(" -- (World switch of %x) \n\r", current->id);
+				irq_counter = 0;
+		}
+		irq_counter++;
+	}
+*/
+
+	ret_user_sysexit();
+}
+
+
+void Ec::enqueue() {
+	if (prio > prio_top)
+	    prio_top = prio;
+
+	if (!list[prio])
+		list[prio] = prev = next = this;
+	else {
+		next = list[prio];
+		prev = list[prio]->prev;
+		next->prev = prev->next = this;
+	}
+
+	xil_printf ("	---EC:Enqueue: %x\n\r", this);
+	xil_printf ("	---Prev : %x , Next : %x\n\r", prev, next);
+}
+
+
+void Ec::dequeue(){
+	/* Remove from queue list	*/
+	if (list[prio] == this)
+		list[prio] = next == this ? 0 : next;
+	next->prev = prev;
+	prev->next = next;
+		//prev = next = 0;
+	if(prio == prio_top){				/* prio == prio_top: prio_top declines */
+		while (!list[prio_top] && prio_top)
+			prio_top--;
+	}
+
+	/* Add to suspend list */
+	if(!suspend_list)
+		suspend_list = prev = next = this;
+	else{
+		next = suspend_list;
+		prev = suspend_list->prev;
+		next->prev = prev->next = this;
+	}
+
+	xil_printf ("	---EC:Dequeue: %x\n\r", this);
+}
+
+void Ec::requeue(){
+	/* Remove from suspend list */
+	if(suspend_list == this)
+		suspend_list = next == this ? 0 : next;
+	next->prev = prev;
+	prev->next = next;
+
+	/* Add to queue list */
+	enqueue();
+	xil_printf ("	---EC:Requeue: %x\n\r", this);
+
+	/*
+	 * Since current EC may be INTERRUPTED by requeue(),
+	 * change list[priority] to current EC, so that when
+	 * returning to current priority level by schedule(),
+	 * the INTERRUPTED EC would continue.
+	 */
+	list[current->prio] = current;
+}
+
+void Ec::schedule(){
+	/* Select the highest priority EC	*/
+	if(!list[prio_top])
+		panic("	  ---Ec::Schedule: ERROR: No valid EC.\n\r");
+
+	/* Get highest priority EC 	*/
+	Ec *ec = list[prio_top];
+
+	/* Load new EC	*/
+	ec_vgic_update(ec);
+	ec->ttbr0_load();
+	current = ec;
+	Fpc::vfp_disable();
+
+	xil_printf ("	---Ec:Schedule: Activate EC=%x\n\r", ec);
+
+	return;
+}
+
+/*--------------------------------------------------------------------------------
+ * Arguments for system call are transmitted with r0-r3,
+ * 		r0: system call number
+ * 		r1: argument 1
+ * 		r2: argument 2
+ * 		r3: argument 3
+ * When entering SVC mode with SWI, we have saved all registers in current->regs
+ * -------------------------------------------------------------------------------
+ */
+void Ec::sys_create_ec ()
+{
+	Ec * ec = new Ec (current->regs.r1, current->regs.r2, current->regs.r3);
+	xil_printf ("	---EC:%x : Sys_create_ec EC:%x (PC=%x SP=%x)\n\r", current, ec, current->regs.r1, current->regs.r2);
+
+	ec->enqueue();
+
+//	ret_user_sysexit();
+}
+
+void Ec::sys_yield()
+{
+	//print ("EC:: SYS_YIELD : Yield to EC \n\r");
+	//xil_printf ("EC:%x : Sys_yield to EC:%x\n\r", current, current->next);
+	Fpc::vfp_disable();
+	ec_vgic_update(current->next);
+	current->next->ttbr0_load();
+	current->cont = ret_user_sysexit;
+	current->next->make_current();
+
+	//ret_user_sysexit();
+}
+
+void Ec::sys_change_ec()
+{
+	//xil_printf ("		---EC:%x : Change to next EC:%x\n\r", current, current->next);
+	Fpc::vfp_disable();
+	ec_vgic_update(current->next);
+	current->next->ttbr0_load();
+	current->next->set_current();
+}
+
+void Ec::ec_vgic_update(Ec *ec){
+	mword irq_B;
+	int i = 0, zero_L = 0, update_id = 0;
+
+	/*--------------------------------------------------------------------------------
+	 * Change the virtual timer frequency for next EC.
+     *	 (1) Note that virtual timer is fixed by using private timer (ID=29)
+	 *	 (2) If frequency need to be updated:
+	 *	  	 next EC uses virtual timer AND freq is different
+	 *	 (3) If next EC doesn't use virtual timer OR if the new frequency is the same:
+	 * 		 get over directly
+	 *--------------------------------------------------------------------------------
+	 */
+	if( (ec->vGicState.VirtualTimerFreq != 0) &
+		(current->vGicState.VirtualTimerFreq != ec->vGicState.VirtualTimerFreq) )
+		vtimer_config(vtimer_id, ec->vGicState.VirtualTimerFreq);
+
+	/* Save current priority mask */
+	current->vGicState.InterruptPriorityMask = Gic_GetPriorityMask();
+	/* Set the successor's priority mask */
+	Gic_SetPriorityMask(ec->vGicState.InterruptPriorityMask);
+
+	/* Save current interrupt state*/
+	current->vGicState.InterruptEnableState[0] = Gic_GetEnableReg0();
+	current->vGicState.InterruptEnableState[1] = Gic_GetEnableReg1();
+	current->vGicState.InterruptEnableState[2] = Gic_GetEnableReg2();
+
+	/* ------------------------------------------------------------------------------
+	 * Calculate the interrupts whose state should be updated:
+	 * 		each time one ICDISER word (32-bits) are XOR compared
+	 *
+	 *	For example:
+	 *	current ICDISER = 0x80000400;
+	 *	   next ICDISER = 0x00001000;
+	 *
+	 *	(1)	get binary flag: irq_B = 0x80001400;
+	 *		Three irqs to be updated:
+	 *		  31					 12 10
+	 *		  |*---|----|----|----|---*|-*--|----|----|
+	 *
+	 *	(2) get first need-to-be-changed IRQ: id = 31;
+	 *	(3) check the need-to-be state: 0x00001000 & (1<<31) = 0x00000000 (disable)
+	 *	(4) disable IRQ;
+	 *	(5) clear the flag in irq_B: 0x80001400 xor (1<<31) = 0x00001400
+	 *	(6) repeat from (2) until all irq_B bits are cleared
+	 *	-----------------------------------------------------------------------------
+	 */
+	for(i=0; i<3; i++){
+		irq_B = current->vGicState.InterruptEnableState[i] ^ ec->vGicState.InterruptEnableState[i];
+		while(irq_B){
+			asm volatile (	"clz	%0, %1"
+							:"=r"(zero_L)
+						    :"r"(irq_B)
+						    :"cc"
+					); /* Calculate the first one bit from the left */
+			update_id = 32*(i + 1) - 1 - zero_L;
+			if(ec->vGicState.InterruptEnableState[i] & ( 0x1 << (31 - zero_L) ) )
+				XScuGic_Enable(&gicInst, update_id);
+			else
+				XScuGic_Disable(&gicInst, update_id);
+
+			irq_B = irq_B ^ ( 0x1 << (31 - zero_L) ) ;
+		}
+	}
+
+}
+
+/*
+ * The virtual timer is using private timer (ID=29) by default
+ * ---------------------------------------------
+ *  r1: 0 (virtual timer register)
+ * 	r2: the virtual timer frequency
+ * ---------------------------------------------
+ *  r1: 1 (disable virtual timer)
+ * ---------------------------------------------
+ *  r1: 2 (enable virtual timer)
+ * ---------------------------------------------
+ *  r1: 3 (mask/unmask all IRQs except nova timer)
+ *  r2: 0 mask
+ *  	1 unmask;
+ * ---------------------------------------------
+ */
+void Ec::ec_vtimer_ctrl()
+{
+	switch(current->regs.r1){
+		/*
+		 * 	When registering virtual timer:
+		 * 	1. timer frequency is set
+		 * 	2. timer ticking is started
+		 */
+		case 0:
+			current->vGicState.VirtualTimerFreq 	 = current->regs.r2;
+			vtimer_config(vtimer_id, current->vGicState.VirtualTimerFreq);
+			print ("	SYSCALL - Register virtual timer\n\r");
+			xil_printf ("		--Parameters : %d, %d \n\r",
+					vtimer_id, current->vGicState.VirtualTimerFreq);
+			break;
+
+		case 1:
+			XScuGic_Disable(&gicInst, vtimer_id);
+			break;
+
+		case 2:
+			XScuGic_Enable(&gicInst, vtimer_id);
+			break;
+
+		default:
+			print("Invalid virtual timer operation! \n\r");
+			break;
+	}
+}
+
+/*
+ *  This function is used to control VM's virtual interrupts.
+ *  -----------------------------------------------------------------
+ *  	r1=0: register IRQ service routine entry address
+ *  	r2  : interrupt ID number
+ *  -----------------------------------------------------------------
+ *  	r1=1: disable IRQ
+ *  	r2  : interrupt ID number
+ *  -----------------------------------------------------------------
+ *  	r1=2: enable IRQ
+ *		r2  : interrupt ID number
+ *  -----------------------------------------------------------------
+ *  	r1=3: mask IRQs (all VIRTUAL interrupts, the nova kernel timer is not affected)
+ *  -----------------------------------------------------------------
+ *  	r1=4: unmask IRQs
+ *  -----------------------------------------------------------------
+ */
+void Ec::ec_virq_ctrl()
+{
+	switch(current->regs.r1){
+		case 0:
+			current->vGicState.InterruptRoutineEntry = current->regs.r2;
+			xil_printf(" Virtual IRQ entry is set to: 0x%x \n\r",
+					current->vGicState.InterruptRoutineEntry);
+		case 1:
+			XScuGic_Disable(&gicInst, current->regs.r2);
+			break;
+		case 2:
+			XScuGic_Enable(&gicInst, current->regs.r2);
+			break;
+		case 3:
+			Gic_SetPriorityMask(16); // Mask priority 16 and lower, permitting only PRIORITY 8 & HIGHER
+			//current->vGicState.InterruptPriorityMask = 16;
+			//xil_printf(" mask %d \n\r", Gic_GetPriorityMask());
+			break;
+		case 4:
+			Gic_SetPriorityMask(248);
+			//current->vGicState.InterruptPriorityMask = 248; // permitting all interrupts
+			//xil_printf(" mask %d \n\r", Gic_GetPriorityMask());
+			break;
+		default:
+			print("Virtual IRQ operation error! \n\r");
+	}
+}
+
+/*--------------------------------------------------------------------------------
+ * This function is used for injecting virtual IRQ to VM by forcing VM to jump to
+ * the IRS entry of corresponding IRQ ID.
+ *
+ * Note that, when inserting to the guest OS' interrupt handler, the involved IRQ
+ * should be set disabled, so that, while the OS is handling the current IRQ, the
+ * same IRQ won't be released to the CPU.
+ *--------------------------------------------------------------------------------
+ */
+void Ec::ec_virq_handler(int id)
+{
+	mword *ec_stack_pointer;
+
+	ec_stack_pointer = (mword *)current->regs.sp;  	// Save pc to ec stack
+
+	ec_stack_pointer--;						// Update ec stack pointer sp
+	*ec_stack_pointer = current->regs.pc;
+
+	current->regs.sp = (mword)ec_stack_pointer;
+
+	current->regs.pc = current->vGicState.InterruptRoutineEntry;
+											// Change pc to IRS to jump to irs while returning
+
+	XScuGic_Disable(&gicInst, id);			// Disable the IRQ being handled by guest OS
+
+	Gic_SetPriorityMask(16);	// Mask all virtual interrupts
+}
+
+void Ec::sys_remap()
+{
+	mword phys_addr = current->regs.r1;
+	Ptab::user_remap(phys_addr);
+}
+
+void Ec::sys_insert_mapping()
+{
+	mword user_phys = current->regs.r1;
+	mword user_virt = current->regs.r2;
+	mword user_size = current->regs.r3;
+
+	xil_printf ("At : %x , %x , %x \n\r", user_phys, user_virt, user_size);
+
+	while (user_size) {
+		Ptab::insert_mapping (user_virt, user_phys, 0);
+		user_virt += PAGE_SIZE;
+		user_phys += PAGE_SIZE;
+		user_size -= PAGE_SIZE;
+	}
+}
+
+
+/*	r1: num of message box */
+void Ec::sys_create_messagebox(){
+	int num = current->regs.r1;
+	int i = 0;
+
+	for(i=0;i<num;i++){
+		msgbox::msg_create(i);
+	}
+}
+
+/*	r1: mbox ID
+ * 	r2: data
+ * 	r0: return value
+ */
+void Ec::ec_mbox_post(){
+	int id = current->regs.r1;
+	mword data = current->regs.r2;
+	int status;
+
+	status = msgbox::mbox[id]->msg_post(data);
+	if(status == msgbox::success){
+		current->regs.r0 = 0;
+		return;
+	}
+	current->regs.r0 = 1;
+	return;
+}
+
+/*	r1: mbox ID
+ * 	r2: pointer to data
+ * 	r0: return value
+ */
+void Ec::ec_mbox_read(){
+	int id = current->regs.r1;
+	mword* data = (mword*)current->regs.r2;
+	int status;
+
+	status = msgbox::mbox[id]->msg_read(data);
+	if(status == msgbox::success){
+		current->regs.r0 = 0;
+		return;
+	}
+	current->regs.r0 = 1;
+	return;
+}
+
+/*	r1: guest_os_phys
+ * 	r2: guest_os_virt
+ * 	r3: guest_os_size
+ */
+void Ec::sys_create_pdir(){
+	mword shadow_pdir;
+
+	mword user_phys = current->regs.r1;
+	mword user_virt = current->regs.r2;
+	mword user_size = current->regs.r3;
+
+	xil_printf ("New OS info: %x , %x , %x \n\r", user_phys, user_virt, user_size);
+
+	/* Allocate 16 KB for shadow pdir table */
+	shadow_pdir = Kalloc::allocator.alloc_shadow_pdir();
+
+	xil_printf ("Shadow pdir is created at : %x  \n\r", shadow_pdir);
+
+	/* Copy some system mapping to the pdir table (0xc0000000 - 0xffffffff) */
+	memcpy((void *)Kalloc::phys2virt(shadow_pdir + 0x3000), static_cast<mword*>(Kalloc::phys2virt(reinterpret_cast<mword>(&KERN_PDIR))+0x3000), 0x1000);
+
+	/* Mapping for guest OS	*/
+	while (user_size) {
+		Ptab::insert_shadow_mapping (shadow_pdir, user_virt, user_phys);
+		user_virt += PAGE_SIZE;
+		user_phys += PAGE_SIZE;
+		user_size -= PAGE_SIZE;
+	}
+
+	current->regs.r0 = shadow_pdir;
+
+	return;
+}
+
+/*	r1: guest_os_entry
+ * 	r2: guest_os_priority
+ * 	r3: guest_os_pdir
+ */
+void Ec::sys_create_guest_os(){
+	Ec * ec = new Ec (current->regs.r1, current->regs.r2, current->regs.r3, 0);
+	xil_printf ("	---EC:%x : Sys_create_ec EC:%x (PC=%x SP=0 PDIR=%x)\n\r", current, ec, ec->regs.pc, ec->ttbr0);
+
+	ec->enqueue();
+
+	//ret_user_sysexit();
+}
+
+void Ec::ttbr0_load()
+	    {
+	    	mword ttbr0_value;
+	    	//mword contextidr;
+
+	    	//contextidr = (id<<8) | asid;
+
+	    	if(ttbr0 != current->ttbr0){
+	    		/* get current ttbr0 value 	*/
+	    		asm volatile (	"mrc	p15, 0, %0, c2, c0, 0"
+	    						:"=r"(ttbr0_value)
+	    						:
+	    						:"cc"
+	    				);
+
+	    		//xil_printf("		---Current TTBR0 : %x \n\r", ttbr0_value);
+
+	    		/* change ttbr0 base addr 	*/
+	    		if(ttbr0 & 0x3ff){
+	    			print("ec_change error: invalid shadow pdir \n\r");
+	    			return;
+	    		}
+	    		ttbr0_value = (ttbr0_value & 0x3ff) + ttbr0;
+
+	    		/* load ttbr0 value */
+	    		asm volatile (	"mcr	p15, 0, %0, c2, c0, 0"
+	    			    		:
+	    			    		:"r"(ttbr0_value)
+	    			    		:"cc"
+	    			    );
+	    		//xil_printf("		---TTBR0 is changed to: %x \n\r", ttbr0_value);
+
+	    		if(asid != current->asid){
+	    			asm volatile (	"mcr	p15, 0, %0, c13, c0, 1"
+	    							:
+	    							:"r"(asid)
+	    							:"cc"
+	    				);
+	    		//	xil_printf("ASID is %x \n\r", asid);
+	    		}
+	    	}
+	    }
+
+/*	r1: argument 01: HW task ID
+ * 	r2: argument 02: Virtual address to access to HW task
+ * 	r3: argument 03: Virtual address for data exchange (AXI-HP ports)
+ */
+void Ec::hwmgr_request()
+{
+	mword value;
+
+	Ec* ec = vm_list[hw_mgr_id]; // ec points to HW Task Manager
+
+	/* Translate argument 03 to physical address */
+	value = Ualloc::virt2phys(current->id, current->regs.r3);
+	if(!value){
+		print("		---HW mgr request: address error! \n\r");
+		current->regs.r0 = 3; /*  error		3 */
+		return;
+	}
+
+	/* Pass arguments */
+	ec->regs.r0 = current->regs.r1; /* hardware task ID */
+	ec->regs.r1 = current->regs.r2; /* VM's virtual space address to access hw task */
+	ec->regs.r2 = value; /* VM's physical space address for AXI-HP ports*/
+
+	ec->regs.r3 = current->id; /* add the caller VM id as the 4th argument */
+
+	/* resume hwmgr */
+	ec->requeue();
+	schedule();
+
+	xil_printf("	---Arguments are: %x, %x, %x, %x \n\r", current->regs.r0,current->regs.r1,current->regs.r2,current->regs.r3);
+}
+
+void Ec::und_handler_vfp()
+{
+	int low;
+	int sw_flag ;
+	mword bounce_inst;
+
+	/*
+	sw_flag = 0;
+	XTime_SetTime(0);
+*/
+	//print("		---UND trapped.\n\r");
+
+	bounce_inst = *((mword*)current->regs.pc);
+	if(inst_decode(bounce_inst))
+		panic("Instruction trap error. \n\r");
+
+	Fpc::vfp_enable();
+
+	/* If current EC have no fp context, create one 	*/
+	if(!current->fpc){
+		Fpc *f = new Fpc(current->id);
+		current->fpc = f;
+	//	print("		---NEW FPC created.\n\r");
+	}
+
+	/* If no fpc is running, restore new vfp	*/
+	if(!Fpc::fpc_current){
+		current->fpc->fpc_restore();
+	//	print("		---NEW FPC restored.\n\r");
+	}
+	else if(Fpc::fpc_current->ec_id != current->id){
+		/* Save vfp context if vfp is occupied by other fpc*/
+		Fpc::fpc_current->fpc_save();
+		current->fpc->fpc_restore();
+		sw_flag = 1;
+	//	print("		---Old FPC saved and NEW FPC restored.\n\r");
+	}
+
+	/* Update current vfp	*/
+	Fpc::fpc_current = current->fpc;
+/*
+	if(sw_flag){
+		timeprint_low();
+		print(" -- (VFP Switch) \n\r");
+	}
+*/
+	ret_user_sysexit();
+}
+

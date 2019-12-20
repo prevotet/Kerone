@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;ucos-ii_demo_0/Debug/ucos-ii.asm&apos;" deleteContents="false" description="Delete resource &apos;ucos-ii_demo_0/Debug/ucos-ii.asm&apos;" element1="/ucos-ii_demo_0/Debug/ucos-ii.asm" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1409924026187"/>
+</session>

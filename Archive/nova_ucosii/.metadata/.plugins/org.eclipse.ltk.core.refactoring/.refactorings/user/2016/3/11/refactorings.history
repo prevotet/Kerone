@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;user/src/bsp/performance.c&apos; to &apos;performance.cc&apos;" description="Rename resource &apos;performance.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/bsp/performance.c" name="performance.cc" stamp="1458315568770" updateReferences="true"/>
+</session>

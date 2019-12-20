@@ -1,0 +1,284 @@
+/*
+ * head.s
+ *	This is the startup code of nova.
+ *  Created on: 28 nov. 2013
+ *      Author: XIATAN
+ */
+
+#include "../include/memory.h"
+#include "../include/mmu.h"
+#include "assembler.h"
+#include "ptrace.h"
+
+.extern LINK_P
+.extern KERN_PDIR
+.extern LINK_E
+
+.section .init
+
+.global _start
+
+.code 32
+
+/*
+ * Kernel startup entry point.
+ * ---------------------------
+ *
+ * This is normally called from the decompressor code. The requirements
+ * are: MMU = off, D-cache = off, I-cache = dont care,
+ * r0 = 0,
+ * r1 = ,
+ * r2 =
+ */
+
+_start:
+		//Ensure svc mode and IRQS disabled
+		setmode        PSR_F_BIT | PSR_I_BIT | SVC_MODE
+
+		/* Write to ACTLR */
+		mrc	p15, 0, r0, c1, c0, 1		/* Read ACTLR*/
+		orr	r0, r0, #(0x01 << 6)		/* set SMP bit */
+		orr	r0, r0, #(0x01 )			/* */
+		mcr	p15, 0, r0, c1, c0, 1		/* Write ACTLR*/
+
+		/*
+		 * Create page table
+		 *
+		 * This step sets the initial map of kernal, including the first
+		 * 1MB and 0x400000-0x1800000 physical mempry space
+		 */
+		ldr			r4,	=KERN_PDIR
+		// Clear the page table 0x404000-0x408000
+        mov			r0, r4
+        mov			r3, #0
+        add			r6, r0, #PDIR_SIZE
+1:      str			r3, [r0], #4
+        str			r3, [r0], #4
+        str			r3, [r0], #4
+        str			r3, [r0], #4
+        teq			r0, r6
+        bne			1b
+		// Setup boot page table
+		// mapping (phys)0x0-0x2FFFFF(3M) to (virt)0x0-0x2FFFFF(3M)
+		ldr			r5, =SECT_FLAG_SVC		//0x114E0
+		mov			r3, #0					//r3 = 0x0
+		mov			r7, r4
+		ldr			r6, =LOAD_E				//r6 = 0x202000
+1:		str			r5, [r7], #4
+		add			r5, r5, #0x100000
+		add			r3, r3, #0x100000
+		cmp			r3, r6
+		ble			1b
+
+		// Setup kernel page table
+		// 	mapping (phys)0x400000 - 0x17FFFFF to (virt)0xC0000000 - 0xC13FFFFF
+		ldr			r3, =LINK_P				//r3 = 0x400000
+		ldr			r5, =SECT_FLAG_SVC		//r5 = 0x1140E
+		add			r5, r5, r3				//r5 = 0x41140E
+		mov			r7, #LINK_ADDR >> 20	//0xC00
+		mov			r7, r7, lsl #2
+		add			r7, r4, r7				//r7 = 0x407000
+		ldr			r3, =LINK_E				//r3 = 0x1800000
+		mov			r6, #0x400000
+1:		str			r5, [r7], #4
+		add			r5, r5, #0x100000
+		add			r6, r6, #0x100000
+		cmp			r6, r3
+		blt			1b
+
+		// Setup device mapped memory
+		// 	mapping (phys)0xE0000000 - 0xE1FFFFFF to (virt)0xE0000000 - 0xE1FFFFFF
+		mov			r3, #DEV_ADDR			//r3 = 0xE0000000
+		mov			r6, r3					//r6 = 0xE0000000
+		ldr			r5, =SECT_FLAG_DEV		//r5 = 0x00C06
+		add			r5, r5, r3				//r5 = 0xE0000C06
+		mov			r7, #DEV_ADDR >> 20		//r7 = 0xE00
+		mov			r7, r7, lsl #2			//r7 = 0x3800
+		add			r7, r4, r7				//r7 = 0x407800
+		mov			r3, #DEV_E				//r3 = 0xE2000000
+1:		str			r5, [r7], #4
+		add			r5, r5, #0x100000
+		add			r6, r6, #0x100000
+		cmp			r6, r3
+		blt			1b
+
+		// Setup AMBA APB Peripherals Memory
+		// 	mapping (phys)0xf8000000 - 0xf8ffffff to (virt)0xf8000000 - 0xf8ffffff
+		mov			r3, #AMBA_ADDR			//r3 = 0xF8000000
+		mov			r6, r3					//r6 = 0xF8000000
+		ldr			r5, =SECT_FLAG_AMBA		//r5 = 0x00C06
+		add			r5, r5, r3				//r5 = 0xF8000C06
+		mov			r7, #AMBA_ADDR >> 20	//r7 = 0xF80
+		mov			r7, r7, lsl #2			//r7 = 0x3e00
+		add			r7, r4, r7				//r7 = 0x
+		mov			r3, #AMBA_E				//r3 = 0xF9000000
+1:		str			r5, [r7], #4
+		add			r5, r5, #0x100000
+		add			r6, r6, #0x100000
+		cmp			r6, r3
+		blt			1b
+
+		// Setup AXI-4Lite GPIO 0  Memory
+		// 	mapping (phys)0x40000000 - 0x7fffffff to (virt)0x40000000 - 0x7fffffff
+		mov			r3, #AXI_GP0_ADDR		//r3 = 0x40000000
+		mov			r6, r3					//r6 = 0x40000000
+		ldr			r5, =SECT_FLAG_AXI_GP0	//r5 = 0x00C06
+		add			r5, r5, r3				//r5 = 0x40000C06
+		mov			r7, #AXI_GP0_ADDR >> 20	//r7 = 0x400
+		mov			r7, r7, lsl #2			//r7 = 0x1000
+		add			r7, r4, r7				//r7 = 0x
+		mov			r3, #AXI_GP0_E			//r3 = 0x80000000
+1:		str			r5, [r7], #4
+		add			r5, r5, #0x100000
+		add			r6, r6, #0x100000
+		cmp			r6, r3
+		//blt			1b
+		bne			1b
+
+		// Setup Partial Reconficuration bitfile Memory
+		// 	mapping (phys)0x2000000 - 0x200fffff to (virt)0x2000000 - 0x21fffff (1M)
+		// This section is mapped directly to its physical area
+		// cause DMA donn't support virtual address
+		mov			r3, #PRECO_PHYS_ADDR	//r3 = 0x2000000
+		ldr			r6, =PRECO_SADDR		//r6 = 0xD0100000
+		ldr			r5, =SECT_FLAG_PRECO	//r5 = 0x00C06
+		add			r5, r5, r3				//r5 = 0x2000C06
+		ldr			r7, =PRECO_SADDR >> 20	//r7 = 0x20
+		mov			r7, r7, lsl #2			//r7 = 0x80
+		add			r7, r4, r7				//r7 = KERN_PDIR + 0x80
+		ldr			r3, =PRECO_E			//r3 = 0xD0200000
+1:		str			r5, [r7], #4
+		add			r5, r5, #0x100000
+		add			r6, r6, #0x100000
+		cmp			r6, r3
+		//blt			1b
+		bne			1b
+
+		// Setup Performance Measurement Memory
+		// 	mapping (phys)0x10000000 - 0x113fffff to (virt)0xc1800000 - 0xc2bfffff (20M)
+		// This section is to hold performance measurement data
+		mov			r3, #PM_DATA_PHYS		//r3 = 0x10000000
+		ldr			r6, =PM_DATA_PHYS		//r6 = 0x10000000
+		ldr			r5, =SECT_FLAG_PMDATA	//r5 = 0x00C06
+		add			r5, r5, r3				//r5 = 0x10000C06
+		ldr			r7, =PM_DATA_ADDR >> 20	//r7 = 0xc18
+		mov			r7, r7, lsl #2			//r7 = 0x3060
+		add			r7, r4, r7				//r7 = KERN_PDIR + 0x3060
+		ldr			r3, =PM_DATA_E			//r3 = 0x11400000
+1:		str			r5, [r7], #4
+		add			r5, r5, #0x100000
+		add			r6, r6, #0x100000
+		cmp			r6, r3
+		//blt			1b
+		bne			1b
+
+		/*
+		 * Enable mmu
+		 *
+		 * This setup sets the cp15 registers and turns on mmu.
+		 * Including: c2.ttbr0; c3.DACR; c1.sctlr(turn on mmu)
+		 * r4 = KERN_PDIR (phys)
+		 */
+		add			r5, r4, #TTBR_FLAG
+		mcr			p15, 0, r5, c2, c0, 0	// Load ttbr0
+		mov			r6, #DACR
+		mcr 		p15, 0, r6, c3, c0, 0	// Load domain access register
+		ldr			r0, =SCTLR
+		instr_sync
+        mcr        	p15, 0, r0, c1, c0, 0	// write sctlr to turn on the mmu
+        									// This completely changes the structure of
+        									// the visible memory space.
+        instr_sync
+
+        /* enable access to cp10, cp11 to enable NEON instructions */
+        mov	r0, r0
+		mrc	p15, 0, r1, c1, c0, 2		/* read cp access control register (CACR) into r1 */
+		orr	r1, r1, #(0xf << 20)		/* enable full access for p10 & p11 */
+		mcr	p15, 0, r1, c1, c0, 2		/* write back into CACR */
+
+		/* enable vfp */
+		fmrx	r1, FPEXC			/* read the exception register */
+		orr	r1,r1, #FPEXC_EN		/* set VFP enable bit, leave the others in orig state */
+		fmxr	FPEXC, r1			/* write back the exception register */
+
+		mrc	p15,0,r0,c1,c0,0		/* flow prediction enable */
+		orr	r0, r0, #(0x01 << 11)		/* #0x8000 */
+		mcr	p15,0,r0,c1,c0,0
+
+		mrc	p15,0,r0,c1,c0,1		/* read Auxiliary Control Register */
+		orr	r0, r0, #(0x1 << 2)		/* enable Dside prefetch */
+		orr	r0, r0, #(0x1 << 1)		/* enable L2 Prefetch hint */
+		mcr	p15,0,r0,c1,c0,1		/* write Auxiliary Control Register */
+
+		/* set up stack pointer of irq mode.
+		 * However this stck is only availiable after init() initiliztion
+		 */
+		mrs	r7, cpsr			/* get the current PSR */
+		mov r3, r7
+		mvn	r5, #0x1f			/* set up the irq stack pointer */
+		and	r6, r5, r3
+		orr	r6, r6, #0x12		/* IRQ mode */
+		msr	cpsr, r6			/* Switch to IRQ mode */
+		ldr	sp,=IRQ_STCK_E		/* set IRQ stack pointer */
+		msr	cpsr, r7			/* switch back to SVC mode */
+
+		/* set up stack pointer of und mode.
+		 * However this stck is only availiable after init() initiliztion
+		 */
+		mrs	r7, cpsr			/* get the current PSR */
+		mov r3, r7
+		mvn	r5, #0x1f			/* set up the und stack pointer */
+		and	r6, r5, r3
+		orr	r6, r6, #0x1b		/* UND mode */
+		msr	cpsr, r6			/* Switch to UND mode */
+		ldr	sp,=UND_STCK_E		/* set UND stack pointer */
+		msr	cpsr, r7			/* switch back to SVC mode */
+
+		/* set up stack pointer of Abort mode.
+		 * However this stck is only availiable after init() initiliztion
+		 */
+		mrs	r7, cpsr			/* get the current PSR */
+		mov r3, r7
+		mvn	r5, #0x1f			/* set up the Abort stack pointer */
+		and	r6, r5, r3
+		orr	r6, r6, #0x17		/* Abort mode */
+		msr	cpsr, r6			/* Switch to Abort mode */
+		ldr	sp,=ABT_STCK_E		/* set Abort stack pointer */
+		msr	cpsr, r7			/* switch back to SVC mode */
+
+		/* set up stack pointer of Prefetch mode.
+		 * However this stck is only availiable after init() initiliztion
+		 */
+		mrs	r7, cpsr			/* get the current PSR */
+		mov r3, r7
+		mvn	r5, #0x1f			/* set up the Prefetch stack pointer */
+		and	r6, r5, r3
+		orr	r6, r6, #0x17		/* Prefetch mode */
+		msr	cpsr, r6			/* Switch to Prefetch mode */
+		ldr	sp,=PRE_STCK_E		/* set Prefetch stack pointer */
+		msr	cpsr, r7			/* switch back to SVC mode */
+
+        /*
+         * Set SVC_PC = INIT_STCK(0x202000)
+         * The sp of SVC mode will be modified to KERN_STCK after the init() is finished
+         */
+		ldr			sp, =INIT_STCK
+		/*
+		 * Jump to the initial c code
+		 */
+		ldr			pc, =jmp_init
+
+.text
+
+jmp_init:
+		.set		mbi,	0x180b000
+
+		bl			init
+		mov			sp, #KSTCK_E
+
+// Attention: mbi is pointer to the user module elf header. It should be given by uboot
+// We set it to 0x180b000 for temporary, just for debugging.
+		ldr			r0, =mbi
+
+		b			bootstrap
+

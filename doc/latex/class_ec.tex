@@ -1,0 +1,152 @@
+\section{Ec Class Reference}
+\label{class_ec}\index{Ec@{Ec}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_ec_aca4cf3d4d39d8dd718f1dc2481981765}} 
+{\bfseries Ec} (void($\ast$)(), mword=0)
+\item 
+\mbox{\label{class_ec_a5f97a31b4d3e1902e2b143f7ba22f0f8}} 
+{\bfseries Ec} (mword, mword, int)
+\item 
+\mbox{\label{class_ec_a9bcab666ed2cf4e3f9bf5816f740abec}} 
+{\bfseries Ec} (mword, int, mword, int)
+\item 
+\mbox{\label{class_ec_ab2a7f6eba7adf6a5cee930f1e927549e}} 
+void {\bfseries enqueue} ()
+\item 
+\mbox{\label{class_ec_a2c3d93ceec2ba9900ae06f6645455367}} 
+void {\bfseries dequeue} ()
+\item 
+\mbox{\label{class_ec_ae8d95032b1ef65b65952334262021611}} 
+void {\bfseries requeue} ()
+\item 
+\mbox{\label{class_ec_a76f6ffa24e94a737fe707654347befe9}} 
+A\+L\+W\+A\+Y\+S\+\_\+\+I\+N\+L\+I\+NE N\+O\+R\+E\+T\+U\+RN void {\bfseries make\+\_\+current} ()
+\item 
+\mbox{\label{class_ec_a48429f8d3ee01ab5dcdff8e119ce8c1b}} 
+void {\bfseries ttbr0\+\_\+load} ()
+\item 
+\mbox{\label{class_ec_a101b15d87f76ea4a8f5098a02e976511}} 
+void {\bfseries I\+V\+C\+\_\+load} ()
+\item 
+\mbox{\label{class_ec_a02ce459e0544f0a00c74b36ecce7d3b9}} 
+mword {\bfseries virt2phys} (mword virt)
+\item 
+\mbox{\label{class_ec_ac10f4f3787e1a4d24c7f36ddbabb87cc}} 
+A\+L\+W\+A\+Y\+S\+\_\+\+I\+N\+L\+I\+NE N\+O\+R\+E\+T\+U\+RN void {\bfseries set\+\_\+current} ()
+\item 
+\mbox{\label{class_ec_a5bd0daf272651cedabfa35e7a53edfc9}} 
+H\+OT N\+O\+R\+E\+T\+U\+RN {\bfseries R\+E\+G\+P\+A\+RM} (1) static void syscall\+\_\+handler(uint8) asm(\char`\"{}syscall\+\_\+handler\char`\"{})
+\item 
+\mbox{\label{class_ec_a61deb71d9640755feaf7728d407470c3}} 
+H\+OT N\+O\+R\+E\+T\+U\+RN {\bfseries R\+E\+G\+P\+A\+RM} (1) static void irq\+\_\+handler() asm(\char`\"{}irq\+\_\+handler\char`\"{})
+\item 
+\mbox{\label{class_ec_aad06e555674442d935cd6e236bff857f}} 
+void {\bfseries ec\+\_\+vgic\+\_\+\+Set\+Interrupt\+State} (int id, int state)
+\item 
+\mbox{\label{class_ec_a8ddc57668d7e5b472c361d8fb013aa4c}} 
+void {\bfseries I\+V\+C\+\_\+\+Channel\+\_\+\+Send} (int I\+V\+C\+\_\+id, int msg)
+\item 
+\mbox{\label{class_ec_aa2eec436dd02d01950770fdc4e789cb0}} 
+void {\bfseries ec\+\_\+psr\+\_\+op} (mword)
+\item 
+\mbox{\label{class_ec_a6b865ea31a22203d976a2dce37e8ea37}} 
+void {\bfseries ec\+\_\+ldm\+\_\+op} (mword)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_ec_a63ce2ecf7f02885bb61ba6adf552e30a}} 
+static void {\bfseries schedule} ()
+\item 
+\mbox{\label{class_ec_ae84e5c4b41d590442cda695f5e2d236f}} 
+static void {\bfseries R\+T\+O\+S\+\_\+enqueue} ()
+\item 
+\mbox{\label{class_ec_a4b76425b9e0f12c748d0dacab80ef0c2}} 
+static void {\bfseries R\+T\+O\+S\+\_\+dequeue} ()
+\item 
+\mbox{\label{class_ec_ab0ffaa3b03e0308a8f55f501c1721eae}} 
+static void {\bfseries Service\+\_\+enqueue} (int service\+\_\+id)
+\item 
+\mbox{\label{class_ec_a8a9ebcb5fdbf4a5328a045063cdb419c}} 
+H\+OT static N\+O\+R\+E\+T\+U\+RN void {\bfseries ret\+\_\+user\+\_\+sysexit} ()
+\item 
+\mbox{\label{class_ec_abd356433658c5cc7fd88d998381c140c}} 
+static N\+O\+R\+E\+T\+U\+RN void {\bfseries root\+\_\+invoke} ()
+\item 
+\mbox{\label{class_ec_a04d96215bda7499ee35553eb9d0e81e4}} 
+static void {\bfseries sys\+\_\+create\+\_\+ec} ()
+\item 
+\mbox{\label{class_ec_ac988898d6639a25a3afd134e557d490b}} 
+static void {\bfseries sys\+\_\+create\+\_\+guest\+\_\+os} (int)
+\item 
+\mbox{\label{class_ec_ac0c3698f6b9d69783a78bb867160641e}} 
+static void {\bfseries sys\+\_\+change\+\_\+to\+\_\+ec} (\textbf{ Ec} $\ast$)
+\item 
+\mbox{\label{class_ec_aaf5cc8f2ed992f3053b8f27fc6d1ffee}} 
+static void {\bfseries sys\+\_\+yield} ()
+\item 
+\mbox{\label{class_ec_a3c7a54b5fee4015dddc522d6e9c236ab}} 
+static void {\bfseries ec\+\_\+irq\+\_\+disable} ()
+\item 
+\mbox{\label{class_ec_a32ea3162594ebf83549e0803c23f80eb}} 
+static void {\bfseries ec\+\_\+irq\+\_\+enable} ()
+\item 
+\mbox{\label{class_ec_aa8bc4d1b7706c1ae4dfa71699fbf5103}} 
+static void {\bfseries sys\+\_\+remap} ()
+\item 
+\mbox{\label{class_ec_a0fd01d6764fa4b7cc087a0062b6a33b0}} 
+static void {\bfseries sys\+\_\+insert\+\_\+mapping} ()
+\item 
+\mbox{\label{class_ec_aadeb689e70e240d0d16e67b867f21d14}} 
+static void {\bfseries sys\+\_\+create\+\_\+pdir} ()
+\item 
+\mbox{\label{class_ec_aaff77ae9bf5ee5a1ce0c5e1830d72f38}} 
+static void {\bfseries ec\+\_\+vtimer\+\_\+ctrl} ()
+\item 
+\mbox{\label{class_ec_a89b9a88b0b1c3e4e38711f1ae0b7479d}} 
+static void {\bfseries ec\+\_\+vtimer\+\_\+update} (\textbf{ Ec} $\ast$)
+\item 
+\mbox{\label{class_ec_a7bede45f90a7065ca192cce782bb23e5}} 
+static void {\bfseries ec\+\_\+virq\+\_\+ctrl} ()
+\item 
+\mbox{\label{class_ec_a768933aae897dab87da365c04897087f}} 
+static void {\bfseries ec\+\_\+virq\+\_\+handler} (int)
+\item 
+\mbox{\label{class_ec_aabaec9affa979236fc98d2994199847a}} 
+static void {\bfseries sys\+\_\+create\+\_\+messagebox} ()
+\item 
+\mbox{\label{class_ec_af6ac7bcf718cf188e00b158cd6f33f1a}} 
+static void {\bfseries ec\+\_\+mbox\+\_\+post} ()
+\item 
+\mbox{\label{class_ec_ae4c8a1bccc4b715d616347f5b428c71b}} 
+static void {\bfseries ec\+\_\+mbox\+\_\+read} ()
+\item 
+\mbox{\label{class_ec_ac22bcb0ab5c69d5ef490e811e933bde7}} 
+static N\+O\+R\+E\+T\+U\+RN void {\bfseries und\+\_\+handler\+\_\+vfp} () asm(\char`\"{}und\+\_\+handler\+\_\+vfp\char`\"{})
+\item 
+\mbox{\label{class_ec_a975573d340a190eeeefd0cb19ceda995}} 
+static N\+O\+R\+E\+T\+U\+RN void {\bfseries abort\+\_\+handler} () asm(\char`\"{}abort\+\_\+handler\char`\"{})
+\item 
+\mbox{\label{class_ec_aa04b647bb64ef769ba0cdc56ba3c96e4}} 
+static A\+L\+W\+A\+Y\+S\+\_\+\+I\+N\+L\+I\+NE void $\ast$ {\bfseries operator new} (size\+\_\+t)
+\item 
+\mbox{\label{class_ec_a63735ba58492ca396c89582d9889d178}} 
+static A\+L\+W\+A\+Y\+S\+\_\+\+I\+N\+L\+I\+NE void {\bfseries operator delete} (void $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_ec_a47e7dc3ee3e8819589c4bc7050db6cf3}} 
+static \textbf{ Ec} $\ast$ {\bfseries current} = 0
+\item 
+\mbox{\label{class_ec_a0c2c968b59f59a562799a46fef233d2b}} 
+static \textbf{ Ec} $\ast$ {\bfseries suspend\+\_\+list}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/users/work/\+Kerone/kernel/include/ec.\+h\item 
+D\+:/users/work/\+Kerone/kernel/src/ec.\+cc\end{DoxyCompactItemize}

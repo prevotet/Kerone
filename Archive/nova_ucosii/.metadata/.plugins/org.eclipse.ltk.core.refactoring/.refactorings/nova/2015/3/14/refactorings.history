@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;nova/src/bsp/private_timer&apos; to &apos;private_timer.c&apos;" description="Rename resource &apos;private_timer&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/bsp/private_timer" name="private_timer.c" stamp="1427734274156" updateReferences="true"/>
+</session>

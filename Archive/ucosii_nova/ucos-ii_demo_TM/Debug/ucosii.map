@@ -1,0 +1,1516 @@
+Archive member included because of file (symbol)
+
+../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(print.o)
+                              ./src/App/port/ThreadMetric/tm_interrupt_preemption_processing_test.o (print)
+../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_cache.o)
+                              ./src/Init/platform.o (Xil_ICacheDisable)
+../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_io.o)
+                              ./src/App/port/performance.o (Xil_In32)
+../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_printf.o)
+                              ./src/App/port/ThreadMetric/tm_interrupt_preemption_processing_test.o (xil_printf)
+../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps.o)
+                              ./src/Init/platform.o (XUartPs_SetBaudRate)
+../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_sinit.o)
+                              ./src/Init/platform.o (XUartPs_LookupConfig)
+../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(outbyte.o)
+                              ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(print.o) (outbyte)
+../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_assert.o)
+                              ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps.o) (Xil_Assert)
+../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_g.o)
+                              ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_sinit.o) (XUartPs_ConfigTable)
+../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_hw.o)
+                              ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(outbyte.o) (XUartPs_SendByte)
+c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2\libgcc.a(_udivsi3.o)
+                              ./src/uC-LIB/lib_str.o (__aeabi_uidiv)
+c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2\libgcc.a(_dvmd_tls.o)
+                              c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2\libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-ctype_.o)
+                              ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_printf.o) (__ctype_ptr__)
+c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-exit.o)
+                              ./src/App/port/guest_os_start_pre.o (exit)
+c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-fini.o)
+                              ./src/App/port/guest_os_start_pre.o (__libc_fini_array)
+c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-impure.o)
+                              c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-exit.o) (_global_impure_ptr)
+c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-init.o)
+                              ./src/App/port/guest_os_start_pre.o (__libc_init_array)
+c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-malloc.o)
+                              ./src/App/port/ThreadMetric/tm_porting_layer.o (malloc)
+c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-mallocr.o)
+                              c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-malloc.o) (_malloc_r)
+c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-mlock.o)
+                              c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-mallocr.o) (__malloc_lock)
+c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-sbrkr.o)
+                              c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-mallocr.o) (_sbrk_r)
+c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-strlen.o)
+                              ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_printf.o) (strlen)
+c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-__call_atexit.o)
+                              c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-exit.o) (__call_exitprocs)
+c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-atexit.o)
+                              c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-__call_atexit.o) (atexit)
+c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-freer.o)
+                              c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-malloc.o) (_free_r)
+c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-reent.o)
+                              c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-sbrkr.o) (errno)
+c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-__atexit.o)
+                              c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-atexit.o) (__register_exitproc)
+../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_exit.o)
+                              c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-exit.o) (_exit)
+../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_sbrk.o)
+                              c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-sbrkr.o) (_sbrk)
+
+Allocating common symbols
+Common symbol       size              file
+
+CommMsg             0x40              ./src/App/port/ThreadMetric/tm_porting_layer.o
+AppMutexPrint       0x4               ./src/App/app.o
+OSLockNesting       0x1               ./src/uCOS-II/Source/os_core.o
+SEMList             0x28              ./src/App/port/ThreadMetric/tm_porting_layer.o
+OSTaskRegNextAvailID
+                    0x1               ./src/uCOS-II/Source/os_core.o
+OSRunning           0x1               ./src/uCOS-II/Source/os_core.o
+OSIdleCtr           0x4               ./src/uCOS-II/Source/os_core.o
+OSPrioHighRdy       0x1               ./src/uCOS-II/Source/os_core.o
+errno               0x4               c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-reent.o)
+tm_interrupt_preemption_handler_counter
+                    0x4               ./src/App/port/ThreadMetric/tm_interrupt_preemption_processing_test.o
+OSPrioCur           0x1               ./src/uCOS-II/Source/os_core.o
+Math_RandSeedCur    0x4               ./src/uC-LIB/lib_math.o
+OSTCBList           0x4               ./src/uCOS-II/Source/os_core.o
+OSMemTbl            0x78              ./src/uCOS-II/Source/os_core.o
+OSTickStepState     0x1               ./src/uCOS-II/Source/os_core.o
+OSCtxSwCtr          0x4               ./src/uCOS-II/Source/os_core.o
+OSTCBFreeList       0x4               ./src/uCOS-II/Source/os_core.o
+OS_CPU_ExceptStkBase
+                    0x4               ./src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU/os_cpu_c.o
+MemPartition        0x10              ./src/App/port/ThreadMetric/tm_porting_layer.o
+OSTaskCtr           0x1               ./src/uCOS-II/Source/os_core.o
+thread_list         0x200             ./src/App/port/ThreadMetric/tm_porting_layer.o
+OSMemFreeList       0x4               ./src/uCOS-II/Source/os_core.o
+vpsr                0x94              ./src/App/app.o
+tm_interrupt_preemption_thread_0_counter
+                    0x4               ./src/App/port/ThreadMetric/tm_interrupt_preemption_processing_test.o
+OSQTbl              0x60              ./src/uCOS-II/Source/os_core.o
+QueueList           0x10              ./src/App/port/ThreadMetric/tm_porting_layer.o
+OSTCBHighRdy        0x4               ./src/uCOS-II/Source/os_core.o
+OSQFreeList         0x4               ./src/uCOS-II/Source/os_core.o
+OSRdyGrp            0x1               ./src/uCOS-II/Source/os_core.o
+OS_CPU_ExceptStkPtr
+                    0x4               ./src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU/os_cpu_c.o
+Xil_AssertStatus    0x4               ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_assert.o)
+OSRdyTbl            0x8               ./src/uCOS-II/Source/os_core.o
+OSEventFreeList     0x4               ./src/uCOS-II/Source/os_core.o
+OS_CPU_ExceptStk    0x200             ./src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU/os_cpu_c.o
+OSIntNesting        0x1               ./src/uCOS-II/Source/os_core.o
+OSTCBCur            0x4               ./src/uCOS-II/Source/os_core.o
+BSP_CPU_ClkFreq_MHz
+                    0x4               ./src/BSP/bsp.o
+OSTime              0x4               ./src/uCOS-II/Source/os_core.o
+OSTaskIdleStk       0x200             ./src/uCOS-II/Source/os_core.o
+OSEventTbl          0xf0              ./src/uCOS-II/Source/os_core.o
+OSTCBTbl            0x690             ./src/uCOS-II/Source/os_core.o
+OSTCBPrioTbl        0x100             ./src/uCOS-II/Source/os_core.o
+tm_interrupt_preemption_thread_1_counter
+                    0x4               ./src/App/port/ThreadMetric/tm_interrupt_preemption_processing_test.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ps7_ddr_0_S_AXI_BASEADDR 0x00008058         0x3ff00000
+ps7_ram_0_S_AXI_BASEADDR 0x00000000         0x00030000
+ps7_ram_1_S_AXI_BASEADDR 0xffff0000         0x0000fe00
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crti.o
+LOAD c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtbegin.o
+                [0x00002000]                _STACK_SIZE = DEFINED (_STACK_SIZE)?_STACK_SIZE:0x2000
+                [0x00020000]                _HEAP_SIZE = DEFINED (_HEAP_SIZE)?_HEAP_SIZE:0x20000
+                0x00000058                ELF_HEADER_SIZE = 0x58
+                [0x00000400]                _ABORT_STACK_SIZE = DEFINED (_ABORT_STACK_SIZE)?_ABORT_STACK_SIZE:0x400
+                [0x00000800]                _SUPERVISOR_STACK_SIZE = DEFINED (_SUPERVISOR_STACK_SIZE)?_SUPERVISOR_STACK_SIZE:0x800
+                [0x00000400]                _FIQ_STACK_SIZE = DEFINED (_FIQ_STACK_SIZE)?_FIQ_STACK_SIZE:0x400
+                [0x00000400]                _UNDEF_STACK_SIZE = DEFINED (_UNDEF_STACK_SIZE)?_UNDEF_STACK_SIZE:0x400
+                0x00000058                . = ELF_HEADER_SIZE
+
+.text           0x00008058     0xf5a0
+                0x00008100                . = ALIGN (0x100)
+ *fill*         0x00008058       0xa8 
+ *(.vectors)
+ *(.boot)
+ *(.text)
+ .text          0x00008100        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crti.o
+ .text          0x00008100      0x114 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtbegin.o
+ .text          0x00008214     0x1f18 ./src/uCOS-II/Source/os_core.o
+                0x00008214                OSEventNameGet
+                0x000082dc                OSEventNameSet
+                0x0000837c                OSEventPendMulti
+                0x000089e0                OSInit
+                0x00008a10                OSIntEnter
+                0x00008a6c                OSIntExit
+                0x00008b8c                OSSchedLock
+                0x00008c14                OSSchedUnlock
+                0x00008cd8                OSStart
+                0x00008d58                OSTimeTick
+                0x00008f78                OSVersion
+                0x00008f94                OS_Dummy
+                0x00008fa8                OS_EventTaskRdy
+                0x00009138                OS_EventTaskWait
+                0x0000929c                OS_EventTaskWaitMulti
+                0x00009450                OS_EventTaskRemove
+                0x0000950c                OS_EventTaskRemoveMulti
+                0x00009614                OS_EventWaitListInit
+                0x00009a74                OS_MemClr
+                0x00009acc                OS_MemCopy
+                0x00009b38                OS_Sched
+                0x00009c88                OS_StrLen
+                0x00009ce0                OS_TaskIdle
+                0x00009d2c                OS_TaskStatStkChk
+                0x00009de4                OS_TCBInit
+ .text          0x0000a12c        0x0 ./src/uCOS-II/Source/os_dbg_r.o
+ .text          0x0000a12c        0x0 ./src/uCOS-II/Source/os_flag.o
+ .text          0x0000a12c      0x974 ./src/uCOS-II/Source/os_mbox.o
+                0x0000a12c                OSMboxAccept
+                0x0000a194                OSMboxCreate
+                0x0000a270                OSMboxDel
+                0x0000a494                OSMboxPend
+                0x0000a6e8                OSMboxPendAbort
+                0x0000a804                OSMboxPost
+                0x0000a8bc                OSMboxPostOpt
+                0x0000a9c8                OSMboxQuery
+ .text          0x0000aaa0      0x54c ./src/uCOS-II/Source/os_mem.o
+                0x0000aaa0                OSMemCreate
+                0x0000ac00                OSMemGet
+                0x0000aca4                OSMemNameGet
+                0x0000ad40                OSMemNameSet
+                0x0000adb4                OSMemPut
+                0x0000ae48                OSMemQuery
+                0x0000aef0                OS_MemInit
+ .text          0x0000afec     0x10c4 ./src/uCOS-II/Source/os_mutex.o
+                0x0000afec                OSMutexAccept
+                0x0000b158                OSMutexCreate
+                0x0000b2e4                OSMutexDel
+                0x0000b5dc                OSMutexPend
+                0x0000bbd0                OSMutexPost
+                0x0000bdc4                OSMutexQuery
+ .text          0x0000c0b0      0xf90 ./src/uCOS-II/Source/os_q.o
+                0x0000c0b0                OSQAccept
+                0x0000c1ac                OSQCreate
+                0x0000c364                OSQDel
+                0x0000c5e8                OSQFlush
+                0x0000c658                OSQPend
+                0x0000c900                OSQPendAbort
+                0x0000ca1c                OSQPost
+                0x0000cb38                OSQPostFront
+                0x0000cc5c                OSQPostOpt
+                0x0000ce2c                OSQQuery
+                0x0000cf54                OS_QInit
+ .text          0x0000d040      0x8f8 ./src/uCOS-II/Source/os_sem.o
+                0x0000d040                OSSemAccept
+                0x0000d0c0                OSSemCreate
+                0x0000d1a0                OSSemDel
+                0x0000d3c4                OSSemPend
+                0x0000d5cc                OSSemPendAbort
+                0x0000d6e8                OSSemPost
+                0x0000d7ac                OSSemQuery
+                0x0000d884                OSSemSet
+ .text          0x0000d938     0x1560 ./src/uCOS-II/Source/os_task.o
+                0x0000d938                OSTaskChangePrio
+                0x0000ddfc                OSTaskCreate
+                0x0000df3c                OSTaskCreateExt
+                0x0000e090                OSTaskDel
+                0x0000e3d0                OSTaskDelReq
+                0x0000e4b0                OSTaskNameGet
+                0x0000e5d4                OSTaskNameSet
+                0x0000e6c8                OSTaskResume
+                0x0000e844                OSTaskStkChk
+                0x0000e9a8                OSTaskSuspend
+                0x0000eb40                OSTaskQuery
+                0x0000ebfc                OSTaskRegGet
+                0x0000eca8                OSTaskRegGetID
+                0x0000ed4c                OSTaskRegSet
+                0x0000edf4                OS_TaskReturn
+                0x0000ee1c                OS_TaskStkClr
+ .text          0x0000ee98      0x418 ./src/uCOS-II/Source/os_time.o
+                0x0000ee98                OSTimeDly
+                0x0000efc8                OSTimeDlyHMSM
+                0x0000f090                OSTimeDlyResume
+                0x0000f22c                OSTimeGet
+                0x0000f270                OSTimeSet
+ .text          0x0000f2b0        0x0 ./src/uCOS-II/Source/os_tmr.o
+ .text          0x0000f2b0      0x4b8 ./src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU/os_cpu_a.o
+                0x0000f2b0                OS_CPU_SR_Save
+                0x0000f2fc                OS_CPU_SR_Restore
+                0x0000f338                OSStartHighRdy
+                0x0000f394                OSCtxSw
+                0x0000f448                OSIntCtxSw
+                0x0000f4b4                OS_CPU_ARM_ExceptPrefetchAbortHndlr
+                0x0000f4b4                OS_CPU_ARM_ExceptFiqHndlr
+                0x0000f4b4                OS_CPU_ARM_ExceptDataAbortHndlr
+                0x0000f4b4                OS_CPU_ARM_ExceptIrqHndlr
+                0x0000f4b4                OS_CPU_ARM_ExceptUndefInstrHndlr
+                0x0000f4b4                OS_CPU_ARM_ExceptSwiHndlr
+                0x0000f608                OS_CPU_SR_INT_En
+                0x0000f640                OS_CPU_SR_INT_Dis
+                0x0000f668                OS_CPU_SR_IRQ_En
+                0x0000f6a0                OS_CPU_SR_IRQ_Dis
+                0x0000f6c8                OS_CPU_SR_FIQ_En
+                0x0000f6f0                OS_CPU_SR_FIQ_Dis
+                0x0000f718                OS_CPU_ARM_CtxID_Set
+ .text          0x0000f768      0x500 ./src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU/os_cpu_c.o
+                0x0000f768                OSInitHookBegin
+                0x0000f7fc                OSInitHookEnd
+                0x0000f810                OSTaskCreateHook
+                0x0000f830                OSTaskDelHook
+                0x0000f850                OSTaskIdleHook
+                0x0000f860                OSTaskReturnHook
+                0x0000f880                OSTaskStatHook
+                0x0000f890                OSTaskStkInit
+                0x0000fac4                OSTaskSwHook
+                0x0000fad4                OSTCBInitHook
+                0x0000faf4                OSTimeTickHook
+                0x0000fb04                OS_CPU_InitExceptVect
+                0x0000fbd8                OS_CPU_ExceptStkChk
+ .text          0x0000fc68       0xcc ./src/uCOS-II/Ports/ARM-Cortex-A9/CSP/Xilinx/Cortex-A9_MPCore/os_csp.o
+                0x0000fc68                guest_OS_CSP_TickInit
+                0x0000fcd8                OS_CPU_IntHandler
+ .text          0x0000fd34      0x67c ./src/uC-LIB/lib_ascii.o
+                0x0000fd34                ASCII_IsAlpha
+                0x0000fd9c                ASCII_IsAlphaNum
+                0x0000fe1c                ASCII_IsLower
+                0x0000fe6c                ASCII_IsUpper
+                0x0000febc                ASCII_IsDig
+                0x0000ff0c                ASCII_IsDigOct
+                0x0000ff5c                ASCII_IsDigHex
+                0x0000ffdc                ASCII_IsBlank
+                0x0001002c                ASCII_IsSpace
+                0x000100ac                ASCII_IsPrint
+                0x000100fc                ASCII_IsGraph
+                0x0001014c                ASCII_IsPunct
+                0x0001022c                ASCII_IsCtrl
+                0x0001028c                ASCII_ToLower
+                0x000102e4                ASCII_ToUpper
+                0x0001033c                ASCII_Cmp
+ .text          0x000103b0       0xf8 ./src/uC-LIB/lib_math.o
+                0x000103b0                Math_Init
+                0x000103c4                Math_RandSetSeed
+                0x00010404                Math_Rand
+                0x00010464                Math_RandSeed
+ .text          0x000104a8      0x42c ./src/uC-LIB/lib_mem.o
+                0x000104a8                Mem_Init
+                0x000104bc                Mem_Clr
+                0x000104e8                Mem_Set
+                0x00010678                Mem_Cmp
+ .text          0x000108d4     0x1998 ./src/uC-LIB/lib_str.o
+                0x000108d4                Str_Len
+                0x00010904                Str_Len_N
+                0x00010984                Str_Copy
+                0x000109bc                Str_Copy_N
+                0x00010ad4                Str_Cat
+                0x00010b0c                Str_Cat_N
+                0x00010c68                Str_Cmp
+                0x00010ca8                Str_Cmp_N
+                0x00010ed0                Str_CmpIgnoreCase
+                0x00010f10                Str_CmpIgnoreCase_N
+                0x000111d4                Str_Char
+                0x00011214                Str_Char_N
+                0x00011320                Str_Char_Last
+                0x00011360                Str_Char_Last_N
+                0x00011448                Str_Char_Replace
+                0x00011498                Str_Char_Replace_N
+                0x0001156c                Str_Str
+                0x000115a4                Str_Str_N
+                0x0001175c                Str_FmtNbr_Int32U
+                0x000117c8                Str_FmtNbr_Int32S
+                0x00011860                Str_ParseNbr_Int32U
+                0x000118b0                Str_ParseNbr_Int32S
+ .text          0x0001226c      0x14c ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_gpio.o
+                0x0001226c                CSP_GPIO_Init
+                0x00012280                CSP_GPIO_Cfg
+                0x000122b0                CSP_GPIO_BitClr
+                0x000122d4                CSP_GPIO_BitSet
+                0x000122f8                CSP_GPIO_BitToggle
+                0x0001231c                CSP_GPIO_Rd
+                0x00012344                CSP_GPIO_Wr
+                0x00012368                CSP_GPIO_IntClr
+                0x00012390                CSP_GPIO_IntStatGet
+ .text          0x000123b8      0x514 ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_int.o
+                0x000123b8                CSP_IntClr
+                0x000123f0                CSP_IntDis
+                0x00012458                CSP_IntDisAll
+                0x00012494                CSP_IntEn
+                0x000124fc                CSP_IntInit
+                0x0001256c                CSP_IntSrcCfg
+                0x000126e0                CSP_IntVectReg
+                0x00012774                CSP_IntVectUnreg
+                0x00012800                CSP_IntHandlerSrc
+                0x00012864                Guest_OS_CSP_IntHandlerSrc
+                0x000128b8                CSP_IntHandler
+ .text          0x000128cc      0x4cc ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_pm.o
+                0x000128cc                CSP_PM_Init
+                0x000128e0                CSP_PM_CPU_ClkFreqGet
+                0x00012908                CSP_PM_PerClkCfg
+                0x00012934                CSP_PM_PerClkEn
+                0x00012988                CSP_PM_PerClkDis
+                0x000129e0                CSP_PM_PerClkFreqGet
+                0x00012bd8                CSP_PM_SysClkEn
+                0x00012c88                CSP_PM_SysClkDis
+                0x00012d38                CSP_PM_SysClkFreqGet
+                0x00012d6c                CSP_PM_SysClkDivCfg
+ .text          0x00012d98      0x2a0 ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_tmr.o
+                0x00012d98                CSP_TmrCfg
+                0x00012e88                CSP_TmrOutCmpCfg
+                0x00012eb8                CSP_TmrIntClr
+                0x00012f10                CSP_TmrRst
+                0x00012f3c                CSP_TmrRd
+                0x00012f78                CSP_TmrStart
+                0x00012fdc                CSP_TmrStop
+                0x00013008                CSP_TmrWr
+ .text          0x00013038       0xb8 ./src/uC-CSP/MCU/csp.o
+                0x00013038                CSP_IntVectClr
+                0x0001306c                CSP_IntVectSet
+                0x000130a8                CSP_IntVectDeref
+ .text          0x000130f0      0x390 ./src/uC-CPU/ARM-Cortex-A9/GNU/cpu_a.o
+                0x000130f0                CPU_SR_Save
+                0x0001313c                CPU_SR_Restore
+                0x00013178                CPU_IntDis
+                0x000131a0                CPU_IntEn
+                0x000131d8                CPU_IRQ_Dis
+                0x00013200                CPU_IRQ_En
+                0x00013238                CPU_FIQ_Dis
+                0x00013260                CPU_FIQ_En
+                0x00013298                CPU_CntLeadZeros
+                0x000132a0                CPU_PMU_Dis
+                0x000132b0                CPU_PMU_En
+                0x000132c0                CPU_PMU_Rst
+                0x000132d0                CPU_PMU_CtrDis
+                0x000132e8                CPU_PMU_CtrEn
+                0x00013300                CPU_PMU_CtrEventSet
+                0x0001332c                CPU_PMU_CtrGet
+                0x0001334c                CPU_PMU_CtrRst
+                0x00013370                CPU_PMU_CtrCycleDis
+                0x0001337c                CPU_PMU_CtrCycleEn
+                0x00013388                CPU_PMU_CtrCycleGet
+                0x00013390                CPU_PMU_CtrCycleRst
+                0x000133a0                CPU_MMU_En
+                0x000133b8                CPU_MMU_Dis
+                0x000133cc                CPU_MMU_RegionEn
+                0x00013440                CPU_MMU_RegionDis
+                0x00013460                CPU_CtxID_Set
+                0x00013468                CPU_CtxID_Get
+ .text          0x00013480      0x574 ./src/uC-CPU/cpu_core.o
+                0x00013480                CPU_Init
+                0x00013494                CPU_SW_Exception
+                0x000134a0                CPU_CntLeadZeros08
+                0x000134e0                CPU_CntLeadZeros16
+                0x00013520                CPU_CntLeadZeros32
+                0x0001354c                CPU_CntLeadZeros64
+                0x000137f4                CPU_CntTrailZeros
+                0x00013854                CPU_CntTrailZeros08
+                0x000138c0                CPU_CntTrailZeros16
+                0x0001392c                CPU_CntTrailZeros32
+                0x0001398c                CPU_CntTrailZeros64
+ .text          0x000139f4       0x9c ./src/Init/platform.o
+                0x000139f4                enable_caches
+                0x00013a08                disable_caches
+                0x00013a1c                init_uart
+                0x00013a6c                init_platform
+                0x00013a80                cleanup_platform
+ .text          0x00013a90       0x70 ./src/BSP/bsp.o
+                0x00013a90                BSP_Init
+                0x00013aac                BSP_CPU_ClkFreq
+                0x00013acc                OS_CSP_BSP_ExceptHandler
+ .text          0x00013b00      0x1b0 ./src/BSP/bsp_os.o
+                0x00013b00                BSP_OS_SemCreate
+                0x00013b70                BSP_OS_SemWait
+                0x00013be4                BSP_OS_SemPost
+                0x00013c30                BSP_OS_TimeDlyMs
+ .text          0x00013cb0        0x0 ./src/App/port/ThreadMetric/tm_basic_processing_test.o
+ .text          0x00013cb0      0x2a0 ./src/App/port/ThreadMetric/tm_interrupt_preemption_processing_test.o
+                0x00013cb0                tm_main
+                0x00013ce0                tm_interrupt_preemption_processing_initialize
+                0x00013d38                tm_interrupt_preemption_thread_0_entry
+                0x00013d68                tm_interrupt_preemption_thread_1_entry
+                0x00013dac                tm_interrupt_preemption_handler
+                0x00013ddc                tm_interrupt_preemption_thread_report
+ .text          0x00013f50        0x0 ./src/App/port/ThreadMetric/tm_interrupt_processing_test.o
+ .text          0x00013f50        0x0 ./src/App/port/ThreadMetric/tm_memory_allocation_test.o
+ .text          0x00013f50        0x0 ./src/App/port/ThreadMetric/tm_message_processing_test.o
+ .text          0x00013f50      0x664 ./src/App/port/ThreadMetric/tm_porting_layer.o
+                0x00013f50                tm_SGI
+                0x00013f78                tm_initialize
+                0x00013fb0                tm_thread_create
+                0x000140b0                tm_thread_resume
+                0x00014130                tm_thread_suspend
+                0x0001419c                tm_thread_relinquish
+                0x000141b0                tm_thread_sleep
+                0x000141e4                tm_queue_create
+                0x00014248                tm_queue_send
+                0x000142e0                tm_queue_receive
+                0x00014384                tm_semaphore_create
+                0x000143e0                tm_semaphore_get
+                0x00014444                tm_semaphore_put
+                0x0001449c                tm_memory_pool_create
+                0x000144fc                tm_memory_pool_allocate
+                0x00014560                tm_memory_pool_deallocate
+ .text          0x000145b4        0x0 ./src/App/port/ThreadMetric/tm_preemptive_scheduling_test.o
+ .text          0x000145b4        0x0 ./src/App/port/ThreadMetric/tm_synchronization_processing_test.o
+ .text          0x000145b4      0x1fc ./src/App/port/guest_os_fctns.o
+                0x000145b4                guest_CPU_IntDis
+                0x000145c4                guest_CPU_IntEn
+                0x000145d4                guest_ICacheEnable
+                0x000145e4                guest_DCacheEnable
+                0x000145f4                guest_ICacheDisable
+                0x00014604                guest_DCacheDisable
+                0x00014614                guest_IRQ_Register
+                0x00014644                guest_IRQ_Acknowledge
+                0x00014668                guest_CSP_IntClr
+                0x000146b0                guest_OS_Timer_Register
+                0x000146d8                guest_OS_Timer_Disable
+                0x000146f4                guest_OS_Timer_Enable
+                0x00014710                guest_OS_Mbox_Post
+                0x00014740                guest_OS_Mbox_Read
+                0x00014770                guest_OS_GetPhysAddr
+                0x00014798                guest_idle
+ .text          0x000147b0        0xc ./src/App/port/guest_os_start.o
+                0x000147b0                _guest_os_start
+ .text          0x000147bc       0x68 ./src/App/port/guest_os_start_pre.o
+                0x000147d0                _guest_os_start_pre
+ .text          0x00014824       0xa4 ./src/App/port/performance.o
+                0x00014824                Xil_Time_SetTime
+                0x00014890                timeprint_low
+ .text          0x000148c8        0xc ./src/App/port/syscall.o
+                0x000148c8                syscall
+ .text          0x000148d4      0x1c4 ./src/App/port/syscall_list.o
+                0x000148d4                sys_yield
+                0x000148f4                sys_dcache_disable
+                0x00014914                sys_icache_disable
+                0x00014934                sys_dcache_enable
+                0x00014954                sys_icache_enable
+                0x00014974                sys_virq_ctrl
+                0x000149b4                sys_vtimer_ctrl
+                0x000149e8                sys_mbox_post
+                0x00014a24                sys_mbox_read
+                0x00014a64                sys_address_v2p
+ .text          0x00014a98      0x31c ./src/App/app.o
+                0x00014a98                main
+                0x00014b40                TMTaskStart
+ .text          0x00014db4       0xbc ./src/App/app_hooks.o
+                0x00014db4                App_TaskCreateHook
+                0x00014dd0                App_TaskDelHook
+                0x00014dec                App_TaskIdleHook
+                0x00014dfc                App_TaskReturnHook
+                0x00014e18                App_TaskStatHook
+                0x00014e2c                App_TaskSwHook
+                0x00014e40                App_TCBInitHook
+                0x00014e5c                App_TimeTickHook
+ .text          0x00014e70        0x0 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+ .text          0x00014e70       0x28 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(print.o)
+                0x00014e70                print
+ .text          0x00014e98      0x708 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_cache.o)
+                0x00014e98                Xil_DCacheInvalidateRange
+                0x00014ef4                Xil_DCacheFlushRange
+                0x00014f50                Xil_ICacheInvalidateRange
+                0x00014fac                Xil_L1DCacheInvalidate
+                0x00015044                Xil_L1DCacheEnable
+                0x00015064                Xil_L1DCacheInvalidateLine
+                0x0001507c                Xil_L1DCacheInvalidateRange
+                0x000150b4                Xil_L1DCacheFlush
+                0x0001514c                Xil_L1DCacheDisable
+                0x00015164                Xil_L1DCacheFlushLine
+                0x0001517c                Xil_L1DCacheFlushRange
+                0x000151b4                Xil_L1DCacheStoreLine
+                0x000151cc                Xil_L1ICacheEnable
+                0x000151e8                Xil_L1ICacheDisable
+                0x00015204                Xil_L1ICacheInvalidate
+                0x0001521c                Xil_L1ICacheInvalidateLine
+                0x00015234                Xil_L1ICacheInvalidateRange
+                0x0001526c                Xil_L2CacheEnable
+                0x00015308                Xil_ICacheEnable
+                0x00015324                Xil_DCacheEnable
+                0x00015334                Xil_L2CacheDisable
+                0x00015380                Xil_ICacheDisable
+                0x000153a4                Xil_DCacheDisable
+                0x000153b4                Xil_L2CacheInvalidate
+                0x000153e4                Xil_ICacheInvalidate
+                0x000153fc                Xil_DCacheInvalidate
+                0x0001540c                Xil_L2CacheInvalidateLine
+                0x00015428                Xil_ICacheInvalidateLine
+                0x00015440                Xil_DCacheInvalidateLine
+                0x00015458                Xil_L2CacheInvalidateRange
+                0x000154a8                Xil_L2CacheFlush
+                0x000154d8                Xil_DCacheFlush
+                0x000154e8                Xil_L2CacheFlushLine
+                0x00015504                Xil_DCacheFlushLine
+                0x0001551c                Xil_L2CacheFlushRange
+                0x0001556c                Xil_L2CacheStoreLine
+                0x00015588                Xil_DCacheStoreLine
+ .text          0x000155a0      0x100 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_io.o)
+                0x000155a0                Xil_In8
+                0x000155ac                Xil_In16
+                0x000155b8                Xil_In32
+                0x000155c4                Xil_Out8
+                0x000155d0                Xil_Out16
+                0x000155dc                Xil_Out32
+                0x000155e8                Xil_In16BE
+                0x00015600                Xil_In32BE
+                0x0001562c                Xil_Out16BE
+                0x00015640                Xil_Out32BE
+                0x0001566c                Xil_EndianSwap16
+                0x0001567c                Xil_EndianSwap32
+ .text          0x000156a0      0x5f4 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_printf.o)
+                0x000157e0                xil_printf
+ .text          0x00015c94      0x5fc ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps.o)
+                0x00015cbc                XUartPs_SendBuffer
+                0x00015d44                XUartPs_Send
+                0x00015e1c                XUartPs_ReceiveBuffer
+                0x00015eac                XUartPs_Recv
+                0x00015fac                XUartPs_SetBaudRate
+                0x0001616c                XUartPs_CfgInitialize
+ .text          0x00016290       0x1c ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_sinit.o)
+                0x00016290                XUartPs_LookupConfig
+ .text          0x000162ac       0x10 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(outbyte.o)
+                0x000162ac                outbyte
+ .text          0x000162bc       0x44 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_assert.o)
+                0x000162bc                Xil_Assert
+                0x000162f0                Xil_AssertSetCallback
+ .text          0x00016300        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_g.o)
+ .text          0x00016300       0x5c ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_hw.o)
+                0x00016300                XUartPs_SendByte
+                0x00016330                XUartPs_RecvByte
+ .text          0x0001635c      0x20c c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2\libgcc.a(_udivsi3.o)
+                0x0001635c                __aeabi_uidiv
+                0x0001635c                __udivsi3
+                0x00016548                __aeabi_uidivmod
+ .text          0x00016568        0x4 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2\libgcc.a(_dvmd_tls.o)
+                0x00016568                __aeabi_idiv0
+                0x00016568                __aeabi_ldiv0
+ .text          0x0001656c        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-ctype_.o)
+ .text          0x0001656c       0x34 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-exit.o)
+                0x0001656c                exit
+ .text          0x000165a0       0x3c c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-fini.o)
+                0x000165a0                __libc_fini_array
+ .text          0x000165dc        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-impure.o)
+ .text          0x000165dc       0x7c c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-init.o)
+                0x000165dc                __libc_init_array
+ .text          0x00016658       0x28 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-malloc.o)
+                0x00016658                malloc
+                0x0001666c                free
+ .text          0x00016680      0x71c c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-mallocr.o)
+                0x00016680                _malloc_r
+ .text          0x00016d9c        0x8 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-mlock.o)
+                0x00016d9c                __malloc_lock
+                0x00016da0                __malloc_unlock
+ .text          0x00016da4       0x38 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-sbrkr.o)
+                0x00016da4                _sbrk_r
+ .text          0x00016ddc       0x6c c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-strlen.o)
+                0x00016ddc                strlen
+ .text          0x00016e48      0x16c c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-__call_atexit.o)
+                0x00016e48                __call_exitprocs
+ .text          0x00016fb4       0x14 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-atexit.o)
+                0x00016fb4                atexit
+ .text          0x00016fc8      0x364 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-freer.o)
+                0x00016fc8                _malloc_trim_r
+                0x000170c4                _free_r
+ .text          0x0001732c      0x190 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-reent.o)
+                0x0001732c                cleanup_glue
+                0x00017358                _reclaim_reent
+                0x00017450                _wrapup_reent
+ .text          0x000174bc       0xf0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-__atexit.o)
+                0x000174bc                __register_exitproc
+ .text          0x000175ac        0x4 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_exit.o)
+                0x000175ac                _exit
+ .text          0x000175b0       0x2c ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_sbrk.o)
+                0x000175b0                _sbrk
+ .text          0x000175dc        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtend.o
+ .text          0x000175dc        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtn.o
+ *(.text.*)
+ .text.startup  0x000175dc       0x1c c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-__call_atexit.o)
+ *(.gnu.linkonce.t.*)
+ *(.plt)
+ *(.gnu_warning)
+ *(.gcc_execpt_table)
+ *(.glue_7)
+ .glue_7        0x00000000        0x0 linker stubs
+ *(.glue_7t)
+ .glue_7t       0x00000000        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+ *(.ARM.extab)
+ *(.gnu.linkonce.armextab.*)
+
+.v4_bx          0x000175f8        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x000175f8        0x0
+ .iplt          0x00000000        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtbegin.o
+
+.init           0x000175f8       0x18
+ *(.init)
+ .init          0x000175f8        0xc c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crti.o
+                0x000175f8                _init
+ .init          0x00017604        0xc c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtn.o
+
+.fini           0x00017610       0x18
+ *(.fini)
+ .fini          0x00017610        0xc c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crti.o
+                0x00017610                _fini
+ .fini          0x0001761c        0xc c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtn.o
+
+.rodata         0x00017628      0x794
+                0x00017628                __rodata_start = .
+ *(.rodata)
+ .rodata        0x00017628      0x114 ./src/uCOS-II/Source/os_core.o
+                0x00017628                OSUnMapTbl
+ .rodata        0x0001773c        0x2 ./src/uCOS-II/Source/os_dbg_r.o
+                0x0001773c                OSDebugEn
+ *fill*         0x0001773e        0x2 
+ .rodata        0x00017740        0x4 ./src/uCOS-II/Source/os_mbox.o
+ .rodata        0x00017744        0x4 ./src/uCOS-II/Source/os_mem.o
+ .rodata        0x00017748        0x4 ./src/uCOS-II/Source/os_mutex.o
+ .rodata        0x0001774c        0x4 ./src/uCOS-II/Source/os_q.o
+ .rodata        0x00017750        0x4 ./src/uCOS-II/Source/os_sem.o
+ .rodata        0x00017754        0x4 ./src/uCOS-II/Source/os_task.o
+ .rodata        0x00017758       0x94 ./src/uC-LIB/lib_str.o
+ .rodata        0x000177ec      0x100 ./src/uC-CPU/cpu_core.o
+ .rodata        0x000178ec       0xbc ./src/App/port/ThreadMetric/tm_interrupt_preemption_processing_test.o
+ .rodata        0x000179a8       0xd4 ./src/App/port/ThreadMetric/tm_porting_layer.o
+ .rodata        0x00017a7c        0x4 ./src/App/port/performance.o
+ .rodata        0x00017a80      0x210 ./src/App/app.o
+ .rodata        0x00017c90      0x104 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-ctype_.o)
+                0x00017c90                _ctype_
+ .rodata        0x00017d94        0x4 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-impure.o)
+                0x00017d94                _global_impure_ptr
+ *(.rodata.*)
+ .rodata.str1.4
+                0x00017d98       0x11 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_printf.o)
+                                 0x14 (size before relaxing)
+ *fill*         0x00017da9        0x3 
+ .rodata.str1.4
+                0x00017dac        0xa ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps.o)
+                                  0xc (size before relaxing)
+ *fill*         0x00017db6        0x2 
+ .rodata.str1.4
+                0x00017db8        0x4 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-impure.o)
+ *(.gnu.linkonce.r.*)
+                0x00017dbc                __rodata_end = .
+
+.rodata1        0x00017dbc        0x0
+                0x00017dbc                __rodata1_start = .
+ *(.rodata1)
+ *(.rodata1.*)
+                0x00017dbc                __rodata1_end = .
+
+.sdata2         0x00017dbc        0x0
+                0x00017dbc                __sdata2_start = .
+ *(.sdata2)
+ *(.sdata2.*)
+ *(.gnu.linkonce.s2.*)
+                0x00017dbc                __sdata2_end = .
+
+.sbss2          0x00017dbc        0x0
+                0x00017dbc                __sbss2_start = .
+ *(.sbss2)
+ *(.sbss2.*)
+ *(.gnu.linkonce.sb2.*)
+                0x00017dbc                __sbss2_end = .
+
+.data           0x00017dc0      0x864
+                0x00017dc0                __data_start = .
+ *(.data)
+ .data          0x00017dc0        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crti.o
+ .data          0x00017dc0        0x4 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtbegin.o
+                0x00017dc0                __dso_handle
+ .data          0x00017dc4        0x0 ./src/uCOS-II/Source/os_core.o
+ .data          0x00017dc4        0x0 ./src/uCOS-II/Source/os_dbg_r.o
+ .data          0x00017dc4        0x0 ./src/uCOS-II/Source/os_flag.o
+ .data          0x00017dc4        0x0 ./src/uCOS-II/Source/os_mbox.o
+ .data          0x00017dc4        0x0 ./src/uCOS-II/Source/os_mem.o
+ .data          0x00017dc4        0x0 ./src/uCOS-II/Source/os_mutex.o
+ .data          0x00017dc4        0x0 ./src/uCOS-II/Source/os_q.o
+ .data          0x00017dc4        0x0 ./src/uCOS-II/Source/os_sem.o
+ .data          0x00017dc4        0x0 ./src/uCOS-II/Source/os_task.o
+ .data          0x00017dc4        0x0 ./src/uCOS-II/Source/os_time.o
+ .data          0x00017dc4        0x0 ./src/uCOS-II/Source/os_tmr.o
+ .data          0x00017dc4        0x0 ./src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU/os_cpu_a.o
+ .data          0x00017dc4        0x0 ./src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU/os_cpu_c.o
+ .data          0x00017dc4        0x0 ./src/uCOS-II/Ports/ARM-Cortex-A9/CSP/Xilinx/Cortex-A9_MPCore/os_csp.o
+ .data          0x00017dc4        0x0 ./src/uC-LIB/lib_ascii.o
+ .data          0x00017dc4        0x0 ./src/uC-LIB/lib_math.o
+ .data          0x00017dc4        0x0 ./src/uC-LIB/lib_mem.o
+ .data          0x00017dc4        0x0 ./src/uC-LIB/lib_str.o
+ .data          0x00017dc4        0x0 ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_gpio.o
+ .data          0x00017dc4        0x0 ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_int.o
+ .data          0x00017dc4        0x0 ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_pm.o
+ .data          0x00017dc4        0x0 ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_tmr.o
+ .data          0x00017dc4        0x0 ./src/uC-CSP/MCU/csp.o
+ .data          0x00017dc4        0x0 ./src/uC-CPU/ARM-Cortex-A9/GNU/cpu_a.o
+ .data          0x00017dc4        0x0 ./src/uC-CPU/cpu_core.o
+ .data          0x00017dc4        0x0 ./src/Init/platform.o
+ .data          0x00017dc4        0x0 ./src/BSP/bsp.o
+ .data          0x00017dc4        0x0 ./src/BSP/bsp_os.o
+ .data          0x00017dc4        0x0 ./src/App/port/ThreadMetric/tm_basic_processing_test.o
+ .data          0x00017dc4        0x0 ./src/App/port/ThreadMetric/tm_interrupt_preemption_processing_test.o
+ .data          0x00017dc4        0x0 ./src/App/port/ThreadMetric/tm_interrupt_processing_test.o
+ .data          0x00017dc4        0x0 ./src/App/port/ThreadMetric/tm_memory_allocation_test.o
+ .data          0x00017dc4        0x0 ./src/App/port/ThreadMetric/tm_message_processing_test.o
+ .data          0x00017dc4        0x0 ./src/App/port/ThreadMetric/tm_porting_layer.o
+ .data          0x00017dc4        0x0 ./src/App/port/ThreadMetric/tm_preemptive_scheduling_test.o
+ .data          0x00017dc4        0x0 ./src/App/port/ThreadMetric/tm_synchronization_processing_test.o
+ .data          0x00017dc4        0x0 ./src/App/port/guest_os_fctns.o
+ .data          0x00017dc4        0x0 ./src/App/port/guest_os_start.o
+ .data          0x00017dc4        0x0 ./src/App/port/guest_os_start_pre.o
+ .data          0x00017dc4        0x0 ./src/App/port/performance.o
+ .data          0x00017dc4        0x0 ./src/App/port/syscall.o
+ .data          0x00017dc4        0x0 ./src/App/port/syscall_list.o
+ .data          0x00017dc4        0x0 ./src/App/app.o
+ .data          0x00017dc4        0x0 ./src/App/app_hooks.o
+ .data          0x00017dc4        0x0 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+ .data          0x00017dc4        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(print.o)
+ .data          0x00017dc4        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_cache.o)
+ .data          0x00017dc4        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_io.o)
+ .data          0x00017dc4        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_printf.o)
+ .data          0x00017dc4        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps.o)
+ .data          0x00017dc4        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_sinit.o)
+ .data          0x00017dc4        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(outbyte.o)
+ .data          0x00017dc4        0x4 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_assert.o)
+                0x00017dc4                Xil_AssertWait
+ .data          0x00017dc8       0x10 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_g.o)
+                0x00017dc8                XUartPs_ConfigTable
+ .data          0x00017dd8        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_hw.o)
+ .data          0x00017dd8        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2\libgcc.a(_udivsi3.o)
+ .data          0x00017dd8        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2\libgcc.a(_dvmd_tls.o)
+ .data          0x00017dd8        0x4 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-ctype_.o)
+                0x00017dd8                __ctype_ptr__
+ .data          0x00017ddc        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-exit.o)
+ .data          0x00017ddc        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-fini.o)
+ *fill*         0x00017ddc        0x4 
+ .data          0x00017de0      0x430 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-impure.o)
+                0x00017de0                _impure_ptr
+ .data          0x00018210        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-init.o)
+ .data          0x00018210        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-malloc.o)
+ .data          0x00018210      0x410 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-mallocr.o)
+                0x00018210                __malloc_av_
+                0x00018618                __malloc_sbrk_base
+                0x0001861c                __malloc_trim_threshold
+ .data          0x00018620        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-mlock.o)
+ .data          0x00018620        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-sbrkr.o)
+ .data          0x00018620        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-strlen.o)
+ .data          0x00018620        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-__call_atexit.o)
+ .data          0x00018620        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-atexit.o)
+ .data          0x00018620        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-freer.o)
+ .data          0x00018620        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-reent.o)
+ .data          0x00018620        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-__atexit.o)
+ .data          0x00018620        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_exit.o)
+ .data          0x00018620        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_sbrk.o)
+ .data          0x00018620        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtend.o
+ .data          0x00018620        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtn.o
+ *(.data.*)
+ *(.gnu.linkonce.d.*)
+ *(.jcr)
+ .jcr           0x00018620        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtbegin.o
+ .jcr           0x00018620        0x4 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtend.o
+ *(.got)
+ *(.got.plt)
+                0x00018624                __data_end = .
+
+.tm_clone_table
+                0x00018624        0x0
+ .tm_clone_table
+                0x00018624        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtbegin.o
+ .tm_clone_table
+                0x00018624        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtend.o
+
+.igot.plt       0x00018624        0x0
+ .igot.plt      0x00000000        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtbegin.o
+
+.got2           0x00018624        0x0
+ .got2          0x00018624        0x0 ./src/App/port/guest_os_start_pre.o
+
+.data1          0x00018624        0x0
+                0x00018624                __data1_start = .
+ *(.data1)
+ *(.data1.*)
+                0x00018624                __data1_end = .
+
+.got
+ *(.got)
+
+.ctors          0x00018624        0x0
+                0x00018624                __CTOR_LIST__ = .
+                0x00018624                ___CTORS_LIST___ = .
+ *crtbegin.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+                0x00018624                __CTOR_END__ = .
+                0x00018624                ___CTORS_END___ = .
+
+.dtors          0x00018624        0x0
+                0x00018624                __DTOR_LIST__ = .
+                0x00018624                ___DTORS_LIST___ = .
+ *crtbegin.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+                0x00018624                __DTOR_END__ = .
+                0x00018624                ___DTORS_END___ = .
+
+.fixup          0x00018624        0x0
+                0x00018624                __fixup_start = .
+ *(.fixup)
+                0x00018624                __fixup_end = .
+
+.eh_frame       0x00018624        0x4
+ *(.eh_frame)
+ .eh_frame      0x00018624        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtbegin.o
+ .eh_frame      0x00018624        0x4 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtend.o
+
+.rel.dyn        0x00018628        0x0
+ .rel.iplt      0x00000000        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtbegin.o
+
+.eh_framehdr    0x00018628        0x0
+                0x00018628                __eh_framehdr_start = .
+ *(.eh_framehdr)
+                0x00018628                __eh_framehdr_end = .
+
+.gcc_except_table
+ *(.gcc_except_table)
+
+.mmu_tbl        0x0001c000        0x0
+                0x0001c000                __mmu_tbl_start = .
+ *(.mmu_tbl)
+                0x0001c000                __mmu_tbl_end = .
+
+.ARM.exidx      0x00018628        0x0
+                0x00018628                __exidx_start = .
+ *(.ARM.exidx*)
+ *(.gnu.linkonce.armexidix.*.*)
+                0x00018628                __exidx_end = .
+
+.preinit_array  0x00018628        0x0
+                0x00018628                __preinit_array_start = .
+ *(SORT(.preinit_array.*))
+ *(.preinit_array)
+                0x00018628                __preinit_array_end = .
+
+.init_array     0x00018628        0x8
+                0x00018628                __init_array_start = .
+ *(SORT(.init_array.*))
+ .init_array.00000
+                0x00018628        0x4 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-__call_atexit.o)
+ *(.init_array)
+ .init_array    0x0001862c        0x4 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtbegin.o
+                0x00018630                __init_array_end = .
+
+.fini_array     0x00018630        0x4
+                0x00018630                __fini_array_start = .
+ *(SORT(.fini_array.*))
+ *(.fini_array)
+ .fini_array    0x00018630        0x4 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtbegin.o
+                0x00018634                __fini_array_end = .
+
+.ARM.attributes
+                0x00018634       0x33
+                0x00018634                __ARM.attributes_start = .
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00018634       0x25 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crti.o
+ .ARM.attributes
+                0x00018659       0x37 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtbegin.o
+ .ARM.attributes
+                0x00018690       0x37 ./src/uCOS-II/Source/os_core.o
+ .ARM.attributes
+                0x000186c7       0x37 ./src/uCOS-II/Source/os_dbg_r.o
+ .ARM.attributes
+                0x000186fe       0x37 ./src/uCOS-II/Source/os_flag.o
+ .ARM.attributes
+                0x00018735       0x37 ./src/uCOS-II/Source/os_mbox.o
+ .ARM.attributes
+                0x0001876c       0x37 ./src/uCOS-II/Source/os_mem.o
+ .ARM.attributes
+                0x000187a3       0x37 ./src/uCOS-II/Source/os_mutex.o
+ .ARM.attributes
+                0x000187da       0x37 ./src/uCOS-II/Source/os_q.o
+ .ARM.attributes
+                0x00018811       0x37 ./src/uCOS-II/Source/os_sem.o
+ .ARM.attributes
+                0x00018848       0x37 ./src/uCOS-II/Source/os_task.o
+ .ARM.attributes
+                0x0001887f       0x37 ./src/uCOS-II/Source/os_time.o
+ .ARM.attributes
+                0x000188b6       0x37 ./src/uCOS-II/Source/os_tmr.o
+ .ARM.attributes
+                0x000188ed       0x23 ./src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU/os_cpu_a.o
+ .ARM.attributes
+                0x00018910       0x37 ./src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU/os_cpu_c.o
+ .ARM.attributes
+                0x00018947       0x37 ./src/uCOS-II/Ports/ARM-Cortex-A9/CSP/Xilinx/Cortex-A9_MPCore/os_csp.o
+ .ARM.attributes
+                0x0001897e       0x37 ./src/uC-LIB/lib_ascii.o
+ .ARM.attributes
+                0x000189b5       0x37 ./src/uC-LIB/lib_math.o
+ .ARM.attributes
+                0x000189ec       0x37 ./src/uC-LIB/lib_mem.o
+ .ARM.attributes
+                0x00018a23       0x37 ./src/uC-LIB/lib_str.o
+ .ARM.attributes
+                0x00018a5a       0x37 ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_gpio.o
+ .ARM.attributes
+                0x00018a91       0x37 ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_int.o
+ .ARM.attributes
+                0x00018ac8       0x37 ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_pm.o
+ .ARM.attributes
+                0x00018aff       0x37 ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_tmr.o
+ .ARM.attributes
+                0x00018b36       0x37 ./src/uC-CSP/MCU/csp.o
+ .ARM.attributes
+                0x00018b6d       0x23 ./src/uC-CPU/ARM-Cortex-A9/GNU/cpu_a.o
+ .ARM.attributes
+                0x00018b90       0x37 ./src/uC-CPU/cpu_core.o
+ .ARM.attributes
+                0x00018bc7       0x37 ./src/Init/platform.o
+ .ARM.attributes
+                0x00018bfe       0x37 ./src/BSP/bsp.o
+ .ARM.attributes
+                0x00018c35       0x37 ./src/BSP/bsp_os.o
+ .ARM.attributes
+                0x00018c6c       0x37 ./src/App/port/ThreadMetric/tm_basic_processing_test.o
+ .ARM.attributes
+                0x00018ca3       0x37 ./src/App/port/ThreadMetric/tm_interrupt_preemption_processing_test.o
+ .ARM.attributes
+                0x00018cda       0x37 ./src/App/port/ThreadMetric/tm_interrupt_processing_test.o
+ .ARM.attributes
+                0x00018d11       0x37 ./src/App/port/ThreadMetric/tm_memory_allocation_test.o
+ .ARM.attributes
+                0x00018d48       0x37 ./src/App/port/ThreadMetric/tm_message_processing_test.o
+ .ARM.attributes
+                0x00018d7f       0x37 ./src/App/port/ThreadMetric/tm_porting_layer.o
+ .ARM.attributes
+                0x00018db6       0x37 ./src/App/port/ThreadMetric/tm_preemptive_scheduling_test.o
+ .ARM.attributes
+                0x00018ded       0x37 ./src/App/port/ThreadMetric/tm_synchronization_processing_test.o
+ .ARM.attributes
+                0x00018e24       0x37 ./src/App/port/guest_os_fctns.o
+ .ARM.attributes
+                0x00018e5b       0x23 ./src/App/port/guest_os_start.o
+ .ARM.attributes
+                0x00018e7e       0x23 ./src/App/port/guest_os_start_pre.o
+ .ARM.attributes
+                0x00018ea1       0x37 ./src/App/port/performance.o
+ .ARM.attributes
+                0x00018ed8       0x23 ./src/App/port/syscall.o
+ .ARM.attributes
+                0x00018efb       0x37 ./src/App/port/syscall_list.o
+ .ARM.attributes
+                0x00018f32       0x37 ./src/App/app.o
+ .ARM.attributes
+                0x00018f69       0x37 ./src/App/app_hooks.o
+ .ARM.attributes
+                0x00018fa0       0x37 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+ .ARM.attributes
+                0x00018fd7       0x2f ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(print.o)
+ .ARM.attributes
+                0x00019006       0x2f ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_cache.o)
+ .ARM.attributes
+                0x00019035       0x2f ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_io.o)
+ .ARM.attributes
+                0x00019064       0x2f ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_printf.o)
+ .ARM.attributes
+                0x00019093       0x37 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps.o)
+ .ARM.attributes
+                0x000190ca       0x37 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_sinit.o)
+ .ARM.attributes
+                0x00019101       0x2f ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(outbyte.o)
+ .ARM.attributes
+                0x00019130       0x2f ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_assert.o)
+ .ARM.attributes
+                0x0001915f       0x37 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_g.o)
+ .ARM.attributes
+                0x00019196       0x37 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_hw.o)
+ .ARM.attributes
+                0x000191cd       0x25 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2\libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x000191f2       0x25 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2\libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x00019217       0x37 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-ctype_.o)
+ .ARM.attributes
+                0x0001924e       0x37 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-exit.o)
+ .ARM.attributes
+                0x00019285       0x37 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-fini.o)
+ .ARM.attributes
+                0x000192bc       0x37 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-impure.o)
+ .ARM.attributes
+                0x000192f3       0x37 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-init.o)
+ .ARM.attributes
+                0x0001932a       0x37 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-malloc.o)
+ .ARM.attributes
+                0x00019361       0x37 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-mallocr.o)
+ .ARM.attributes
+                0x00019398       0x37 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-mlock.o)
+ .ARM.attributes
+                0x000193cf       0x37 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-sbrkr.o)
+ .ARM.attributes
+                0x00019406       0x37 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-strlen.o)
+ .ARM.attributes
+                0x0001943d       0x37 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-__call_atexit.o)
+ .ARM.attributes
+                0x00019474       0x37 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-atexit.o)
+ .ARM.attributes
+                0x000194ab       0x37 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-freer.o)
+ .ARM.attributes
+                0x000194e2       0x37 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-reent.o)
+ .ARM.attributes
+                0x00019519       0x37 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-__atexit.o)
+ .ARM.attributes
+                0x00019550       0x2f ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_exit.o)
+ .ARM.attributes
+                0x0001957f       0x2f ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_sbrk.o)
+ .ARM.attributes
+                0x000195ae       0x37 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtend.o
+ .ARM.attributes
+                0x000195e5       0x25 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtn.o
+                0x0001960a                __ARM.attributes_end = .
+
+.sdata          0x00018634        0x0
+                0x00018634                __sdata_start = .
+ *(.sdata)
+ *(.sdata.*)
+ *(.gnu.linkonce.s.*)
+                0x00018634                __sdata_end = .
+
+.sbss           0x00018634        0x0
+                0x00018634                __sbss_start = .
+ *(.sbss)
+ *(.sbss.*)
+ *(.gnu.linkonce.sb.*)
+                0x00018634                __sbss_end = .
+
+.tdata          0x00018634        0x0
+                0x00018634                __tdata_start = .
+ *(.tdata)
+ *(.tdata.*)
+ *(.gnu.linkonce.td.*)
+                0x00018634                __tdata_end = .
+
+.tbss           0x00018634        0x0
+                0x00018634                __tbss_start = .
+ *(.tbss)
+ *(.tbss.*)
+ *(.gnu.linkonce.tb.*)
+                0x00018634                __tbss_end = .
+
+.bss            0x00018634   0x18393c
+                0x00018634                __bss_start = .
+ *(.bss)
+ .bss           0x00018634        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crti.o
+ .bss           0x00018634       0x1c c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtbegin.o
+ .bss           0x00018650        0x0 ./src/uCOS-II/Source/os_core.o
+ .bss           0x00018650        0x0 ./src/uCOS-II/Source/os_dbg_r.o
+ .bss           0x00018650        0x0 ./src/uCOS-II/Source/os_flag.o
+ .bss           0x00018650        0x0 ./src/uCOS-II/Source/os_mbox.o
+ .bss           0x00018650        0x0 ./src/uCOS-II/Source/os_mem.o
+ .bss           0x00018650        0x0 ./src/uCOS-II/Source/os_mutex.o
+ .bss           0x00018650        0x0 ./src/uCOS-II/Source/os_q.o
+ .bss           0x00018650        0x0 ./src/uCOS-II/Source/os_sem.o
+ .bss           0x00018650        0x0 ./src/uCOS-II/Source/os_task.o
+ .bss           0x00018650        0x0 ./src/uCOS-II/Source/os_time.o
+ .bss           0x00018650        0x0 ./src/uCOS-II/Source/os_tmr.o
+ .bss           0x00018650        0x0 ./src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU/os_cpu_a.o
+ .bss           0x00018650        0x0 ./src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU/os_cpu_c.o
+ .bss           0x00018650        0x0 ./src/uCOS-II/Ports/ARM-Cortex-A9/CSP/Xilinx/Cortex-A9_MPCore/os_csp.o
+ .bss           0x00018650        0x0 ./src/uC-LIB/lib_ascii.o
+ .bss           0x00018650        0x0 ./src/uC-LIB/lib_math.o
+ .bss           0x00018650        0x0 ./src/uC-LIB/lib_mem.o
+ .bss           0x00018650        0x0 ./src/uC-LIB/lib_str.o
+ .bss           0x00018650        0x0 ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_gpio.o
+ .bss           0x00018650      0x800 ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_int.o
+ .bss           0x00018e50        0x0 ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_pm.o
+ .bss           0x00018e50        0x0 ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_tmr.o
+ .bss           0x00018e50        0x0 ./src/uC-CSP/MCU/csp.o
+ .bss           0x00018e50        0x0 ./src/uC-CPU/ARM-Cortex-A9/GNU/cpu_a.o
+ .bss           0x00018e50        0x0 ./src/uC-CPU/cpu_core.o
+ .bss           0x00018e50        0x0 ./src/Init/platform.o
+ .bss           0x00018e50        0x0 ./src/BSP/bsp.o
+ .bss           0x00018e50        0x0 ./src/BSP/bsp_os.o
+ .bss           0x00018e50        0x0 ./src/App/port/ThreadMetric/tm_basic_processing_test.o
+ .bss           0x00018e50        0x0 ./src/App/port/ThreadMetric/tm_interrupt_preemption_processing_test.o
+ .bss           0x00018e50        0x0 ./src/App/port/ThreadMetric/tm_interrupt_processing_test.o
+ .bss           0x00018e50        0x0 ./src/App/port/ThreadMetric/tm_memory_allocation_test.o
+ .bss           0x00018e50        0x0 ./src/App/port/ThreadMetric/tm_message_processing_test.o
+ .bss           0x00018e50      0x800 ./src/App/port/ThreadMetric/tm_porting_layer.o
+ .bss           0x00019650        0x0 ./src/App/port/ThreadMetric/tm_preemptive_scheduling_test.o
+ .bss           0x00019650        0x0 ./src/App/port/ThreadMetric/tm_synchronization_processing_test.o
+ .bss           0x00019650        0x0 ./src/App/port/guest_os_fctns.o
+ .bss           0x00019650        0x0 ./src/App/port/guest_os_start.o
+ .bss           0x00019650        0x0 ./src/App/port/guest_os_start_pre.o
+ .bss           0x00019650        0x0 ./src/App/port/performance.o
+ .bss           0x00019650        0x0 ./src/App/port/syscall.o
+ .bss           0x00019650        0x0 ./src/App/port/syscall_list.o
+ .bss           0x00019650   0x181800 ./src/App/app.o
+ .bss           0x0019ae50        0x0 ./src/App/app_hooks.o
+ .bss           0x0019ae50        0x0 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+ .bss           0x0019ae50        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(print.o)
+ .bss           0x0019ae50        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_cache.o)
+ .bss           0x0019ae50        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_io.o)
+ .bss           0x0019ae50        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_printf.o)
+ .bss           0x0019ae50        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps.o)
+ .bss           0x0019ae50        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_sinit.o)
+ .bss           0x0019ae50        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(outbyte.o)
+ .bss           0x0019ae50        0x4 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_assert.o)
+ .bss           0x0019ae54        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_g.o)
+ .bss           0x0019ae54        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_hw.o)
+ .bss           0x0019ae54        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2\libgcc.a(_udivsi3.o)
+ .bss           0x0019ae54        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2\libgcc.a(_dvmd_tls.o)
+ .bss           0x0019ae54        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-ctype_.o)
+ .bss           0x0019ae54        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-exit.o)
+ .bss           0x0019ae54        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-fini.o)
+ .bss           0x0019ae54        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-impure.o)
+ .bss           0x0019ae54        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-init.o)
+ .bss           0x0019ae54        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-malloc.o)
+ .bss           0x0019ae54       0x34 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-mallocr.o)
+                0x0019ae54                __malloc_top_pad
+                0x0019ae58                __malloc_current_mallinfo
+                0x0019ae80                __malloc_max_sbrked_mem
+                0x0019ae84                __malloc_max_total_mem
+ .bss           0x0019ae88        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-mlock.o)
+ .bss           0x0019ae88        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-sbrkr.o)
+ .bss           0x0019ae88        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-strlen.o)
+ .bss           0x0019ae88        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-__call_atexit.o)
+ .bss           0x0019ae88        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-atexit.o)
+ .bss           0x0019ae88        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-freer.o)
+ .bss           0x0019ae88        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-reent.o)
+ .bss           0x0019ae88        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-__atexit.o)
+ .bss           0x0019ae88        0x0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_exit.o)
+ .bss           0x0019ae88        0x4 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_sbrk.o)
+ .bss           0x0019ae8c        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtend.o
+ .bss           0x0019ae8c        0x0 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtn.o
+ *(.bss.*)
+ *(.gnu.linkonce.b.*)
+ *(COMMON)
+ COMMON         0x0019ae8c      0xba0 ./src/uCOS-II/Source/os_core.o
+                0x0019ae8c                OSLockNesting
+                0x0019ae8d                OSTaskRegNextAvailID
+                0x0019ae8e                OSRunning
+                0x0019ae90                OSIdleCtr
+                0x0019ae94                OSPrioHighRdy
+                0x0019ae95                OSPrioCur
+                0x0019ae98                OSTCBList
+                0x0019ae9c                OSMemTbl
+                0x0019af14                OSTickStepState
+                0x0019af18                OSCtxSwCtr
+                0x0019af1c                OSTCBFreeList
+                0x0019af20                OSTaskCtr
+                0x0019af24                OSMemFreeList
+                0x0019af28                OSQTbl
+                0x0019af88                OSTCBHighRdy
+                0x0019af8c                OSQFreeList
+                0x0019af90                OSRdyGrp
+                0x0019af94                OSRdyTbl
+                0x0019af9c                OSEventFreeList
+                0x0019afa0                OSIntNesting
+                0x0019afa4                OSTCBCur
+                0x0019afa8                OSTime
+                0x0019afac                OSTaskIdleStk
+                0x0019b1ac                OSEventTbl
+                0x0019b29c                OSTCBTbl
+                0x0019b92c                OSTCBPrioTbl
+ COMMON         0x0019ba2c      0x208 ./src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU/os_cpu_c.o
+                0x0019ba2c                OS_CPU_ExceptStkBase
+                0x0019ba30                OS_CPU_ExceptStkPtr
+                0x0019ba34                OS_CPU_ExceptStk
+ COMMON         0x0019bc34        0x4 ./src/uC-LIB/lib_math.o
+                0x0019bc34                Math_RandSeedCur
+ COMMON         0x0019bc38        0x4 ./src/BSP/bsp.o
+                0x0019bc38                BSP_CPU_ClkFreq_MHz
+ COMMON         0x0019bc3c        0xc ./src/App/port/ThreadMetric/tm_interrupt_preemption_processing_test.o
+                0x0019bc3c                tm_interrupt_preemption_handler_counter
+                0x0019bc40                tm_interrupt_preemption_thread_0_counter
+                0x0019bc44                tm_interrupt_preemption_thread_1_counter
+ COMMON         0x0019bc48      0x288 ./src/App/port/ThreadMetric/tm_porting_layer.o
+                0x0019bc48                CommMsg
+                0x0019bc88                SEMList
+                0x0019bcb0                MemPartition
+                0x0019bcc0                thread_list
+                0x0019bec0                QueueList
+ COMMON         0x0019bed0       0x98 ./src/App/app.o
+                0x0019bed0                AppMutexPrint
+                0x0019bed4                vpsr
+ COMMON         0x0019bf68        0x4 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_assert.o)
+                0x0019bf68                Xil_AssertStatus
+ COMMON         0x0019bf6c        0x4 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-reent.o)
+                0x0019bf6c                errno
+                0x0019bf70                __bss_end = .
+                0x00018634                _SDA_BASE_ = (__sdata_start + ((__sbss_end - __sdata_start) / 0x2))
+                0x00017dbc                _SDA2_BASE_ = (__sdata2_start + ((__sbss2_end - __sdata2_start) / 0x2))
+
+.heap           0x0019bf70    0x20000
+                0x0019bf70                . = ALIGN (0x10)
+                0x0019bf70                _heap = .
+                0x0019bf70                HeapBase = .
+                0x0019bf70                _heap_start = .
+                0x001bbf70                . = (. + _HEAP_SIZE)
+ *fill*         0x0019bf70    0x20000 
+                0x001bbf70                _heap_end = .
+                0x001bbf70                HeapLimit = .
+
+.stack          0x001bbf70     0x2000
+                0x001bbf70                . = ALIGN (0x10)
+                0x001bbf70                _stack_end = .
+                0x001bdf70                . = (. + _STACK_SIZE)
+ *fill*         0x001bbf70     0x2000 
+                0x001bdf70                _stack = .
+                0x001bdf70                __stack = _stack
+                0x001bdf70                . = ALIGN (0x10)
+                0x001bdf70                _end = .
+LOAD ./src/uCOS-II/Source/os_core.o
+LOAD ./src/uCOS-II/Source/os_dbg_r.o
+LOAD ./src/uCOS-II/Source/os_flag.o
+LOAD ./src/uCOS-II/Source/os_mbox.o
+LOAD ./src/uCOS-II/Source/os_mem.o
+LOAD ./src/uCOS-II/Source/os_mutex.o
+LOAD ./src/uCOS-II/Source/os_q.o
+LOAD ./src/uCOS-II/Source/os_sem.o
+LOAD ./src/uCOS-II/Source/os_task.o
+LOAD ./src/uCOS-II/Source/os_time.o
+LOAD ./src/uCOS-II/Source/os_tmr.o
+LOAD ./src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU/os_cpu_a.o
+LOAD ./src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU/os_cpu_c.o
+LOAD ./src/uCOS-II/Ports/ARM-Cortex-A9/CSP/Xilinx/Cortex-A9_MPCore/os_csp.o
+LOAD ./src/uC-LIB/lib_ascii.o
+LOAD ./src/uC-LIB/lib_math.o
+LOAD ./src/uC-LIB/lib_mem.o
+LOAD ./src/uC-LIB/lib_str.o
+LOAD ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_gpio.o
+LOAD ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_int.o
+LOAD ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_pm.o
+LOAD ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_tmr.o
+LOAD ./src/uC-CSP/MCU/csp.o
+LOAD ./src/uC-CPU/ARM-Cortex-A9/GNU/cpu_a.o
+LOAD ./src/uC-CPU/cpu_core.o
+LOAD ./src/Init/platform.o
+LOAD ./src/BSP/bsp.o
+LOAD ./src/BSP/bsp_os.o
+LOAD ./src/App/port/ThreadMetric/tm_basic_processing_test.o
+LOAD ./src/App/port/ThreadMetric/tm_interrupt_preemption_processing_test.o
+LOAD ./src/App/port/ThreadMetric/tm_interrupt_processing_test.o
+LOAD ./src/App/port/ThreadMetric/tm_memory_allocation_test.o
+LOAD ./src/App/port/ThreadMetric/tm_message_processing_test.o
+LOAD ./src/App/port/ThreadMetric/tm_porting_layer.o
+LOAD ./src/App/port/ThreadMetric/tm_preemptive_scheduling_test.o
+LOAD ./src/App/port/ThreadMetric/tm_synchronization_processing_test.o
+LOAD ./src/App/port/guest_os_fctns.o
+LOAD ./src/App/port/guest_os_start.o
+LOAD ./src/App/port/guest_os_start_pre.o
+LOAD ./src/App/port/performance.o
+LOAD ./src/App/port/syscall.o
+LOAD ./src/App/port/syscall_list.o
+LOAD ./src/App/app.o
+LOAD ./src/App/app_hooks.o
+LOAD ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+LOAD c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libm.a
+START GROUP
+LOAD ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a
+LOAD c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2\libgcc.a
+LOAD c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a
+END GROUP
+START GROUP
+LOAD c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2\libgcc.a
+LOAD c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a
+END GROUP
+LOAD c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtend.o
+LOAD c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/crtn.o
+OUTPUT(ucos-ii_demo_TM.elf elf32-littlearm)
+
+.comment        0x00000000       0x31
+ .comment       0x00000000       0x31 ./src/uCOS-II/Source/os_core.o
+                                 0x32 (size before relaxing)
+ .comment       0x00000000       0x32 ./src/uCOS-II/Source/os_dbg_r.o
+ .comment       0x00000000       0x32 ./src/uCOS-II/Source/os_flag.o
+ .comment       0x00000000       0x32 ./src/uCOS-II/Source/os_mbox.o
+ .comment       0x00000000       0x32 ./src/uCOS-II/Source/os_mem.o
+ .comment       0x00000000       0x32 ./src/uCOS-II/Source/os_mutex.o
+ .comment       0x00000000       0x32 ./src/uCOS-II/Source/os_q.o
+ .comment       0x00000000       0x32 ./src/uCOS-II/Source/os_sem.o
+ .comment       0x00000000       0x32 ./src/uCOS-II/Source/os_task.o
+ .comment       0x00000000       0x32 ./src/uCOS-II/Source/os_time.o
+ .comment       0x00000000       0x32 ./src/uCOS-II/Source/os_tmr.o
+ .comment       0x00000000       0x32 ./src/uCOS-II/Ports/ARM-Cortex-A9/Generic/GNU/os_cpu_c.o
+ .comment       0x00000000       0x32 ./src/uCOS-II/Ports/ARM-Cortex-A9/CSP/Xilinx/Cortex-A9_MPCore/os_csp.o
+ .comment       0x00000000       0x32 ./src/uC-LIB/lib_ascii.o
+ .comment       0x00000000       0x32 ./src/uC-LIB/lib_math.o
+ .comment       0x00000000       0x32 ./src/uC-LIB/lib_mem.o
+ .comment       0x00000000       0x32 ./src/uC-LIB/lib_str.o
+ .comment       0x00000000       0x32 ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_gpio.o
+ .comment       0x00000000       0x32 ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_int.o
+ .comment       0x00000000       0x32 ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_pm.o
+ .comment       0x00000000       0x32 ./src/uC-CSP/MCU/Xilinx/Cortex-A9_MPCore/csp_tmr.o
+ .comment       0x00000000       0x32 ./src/uC-CSP/MCU/csp.o
+ .comment       0x00000000       0x32 ./src/uC-CPU/cpu_core.o
+ .comment       0x00000000       0x32 ./src/Init/platform.o
+ .comment       0x00000000       0x32 ./src/BSP/bsp.o
+ .comment       0x00000000       0x32 ./src/BSP/bsp_os.o
+ .comment       0x00000000       0x32 ./src/App/port/ThreadMetric/tm_basic_processing_test.o
+ .comment       0x00000000       0x32 ./src/App/port/ThreadMetric/tm_interrupt_preemption_processing_test.o
+ .comment       0x00000000       0x32 ./src/App/port/ThreadMetric/tm_interrupt_processing_test.o
+ .comment       0x00000000       0x32 ./src/App/port/ThreadMetric/tm_memory_allocation_test.o
+ .comment       0x00000000       0x32 ./src/App/port/ThreadMetric/tm_message_processing_test.o
+ .comment       0x00000000       0x32 ./src/App/port/ThreadMetric/tm_porting_layer.o
+ .comment       0x00000000       0x32 ./src/App/port/ThreadMetric/tm_preemptive_scheduling_test.o
+ .comment       0x00000000       0x32 ./src/App/port/ThreadMetric/tm_synchronization_processing_test.o
+ .comment       0x00000000       0x32 ./src/App/port/guest_os_fctns.o
+ .comment       0x00000000       0x32 ./src/App/port/performance.o
+ .comment       0x00000000       0x32 ./src/App/port/syscall_list.o
+ .comment       0x00000000       0x32 ./src/App/app.o
+ .comment       0x00000000       0x32 ./src/App/app_hooks.o
+ .comment       0x00000000       0x32 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+ .comment       0x00000000       0x32 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(print.o)
+ .comment       0x00000000       0x32 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_cache.o)
+ .comment       0x00000000       0x32 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_io.o)
+ .comment       0x00000000       0x32 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_printf.o)
+ .comment       0x00000000       0x32 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps.o)
+ .comment       0x00000000       0x32 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_sinit.o)
+ .comment       0x00000000       0x32 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(outbyte.o)
+ .comment       0x00000000       0x32 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_assert.o)
+ .comment       0x00000000       0x32 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_g.o)
+ .comment       0x00000000       0x32 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_hw.o)
+ .comment       0x00000000       0x32 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_exit.o)
+ .comment       0x00000000       0x32 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_sbrk.o)
+
+.debug_info     0x00000000     0x2709
+ .debug_info    0x00000000       0x76 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(print.o)
+ .debug_info    0x00000076      0xd3a ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_cache.o)
+ .debug_info    0x00000db0      0x4c6 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_io.o)
+ .debug_info    0x00001276      0x56b ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_printf.o)
+ .debug_info    0x000017e1      0x813 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps.o)
+ .debug_info    0x00001ff4      0x13a ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_sinit.o)
+ .debug_info    0x0000212e       0xc1 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(outbyte.o)
+ .debug_info    0x000021ef      0x142 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_assert.o)
+ .debug_info    0x00002331       0xf5 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_g.o)
+ .debug_info    0x00002426      0x15d ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_hw.o)
+ .debug_info    0x00002583       0x9d ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_exit.o)
+ .debug_info    0x00002620       0xe9 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_sbrk.o)
+
+.debug_abbrev   0x00000000      0xdb8
+ .debug_abbrev  0x00000000       0x74 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(print.o)
+ .debug_abbrev  0x00000074      0x2c0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_cache.o)
+ .debug_abbrev  0x00000334      0x1e3 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_io.o)
+ .debug_abbrev  0x00000517      0x284 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_printf.o)
+ .debug_abbrev  0x0000079b      0x1b2 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps.o)
+ .debug_abbrev  0x0000094d       0xd1 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_sinit.o)
+ .debug_abbrev  0x00000a1e       0x86 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(outbyte.o)
+ .debug_abbrev  0x00000aa4       0xde ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_assert.o)
+ .debug_abbrev  0x00000b82       0x7f ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_g.o)
+ .debug_abbrev  0x00000c01       0xdb ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_hw.o)
+ .debug_abbrev  0x00000cdc       0x51 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_exit.o)
+ .debug_abbrev  0x00000d2d       0x8b ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_sbrk.o)
+
+.debug_loc      0x00000000     0x1a2c
+ .debug_loc     0x00000000       0x3e ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(print.o)
+ .debug_loc     0x0000003e      0x86b ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_cache.o)
+ .debug_loc     0x000008a9      0x279 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_io.o)
+ .debug_loc     0x00000b22      0x531 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_printf.o)
+ .debug_loc     0x00001053      0x84b ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps.o)
+ .debug_loc     0x0000189e       0x4d ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_sinit.o)
+ .debug_loc     0x000018eb       0x21 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(outbyte.o)
+ .debug_loc     0x0000190c       0x62 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_assert.o)
+ .debug_loc     0x0000196e       0x9d ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_hw.o)
+ .debug_loc     0x00001a0b       0x21 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_sbrk.o)
+
+.debug_aranges  0x00000000      0x178
+ .debug_aranges
+                0x00000000       0x20 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(print.o)
+ .debug_aranges
+                0x00000020       0x20 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_cache.o)
+ .debug_aranges
+                0x00000040       0x20 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_io.o)
+ .debug_aranges
+                0x00000060       0x20 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_printf.o)
+ .debug_aranges
+                0x00000080       0x20 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps.o)
+ .debug_aranges
+                0x000000a0       0x20 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_sinit.o)
+ .debug_aranges
+                0x000000c0       0x20 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(outbyte.o)
+ .debug_aranges
+                0x000000e0       0x20 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_assert.o)
+ .debug_aranges
+                0x00000100       0x18 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_g.o)
+ .debug_aranges
+                0x00000118       0x20 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_hw.o)
+ .debug_aranges
+                0x00000138       0x20 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_exit.o)
+ .debug_aranges
+                0x00000158       0x20 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_sbrk.o)
+
+.debug_line     0x00000000      0xc8d
+ .debug_line    0x00000000       0x3b ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(print.o)
+ .debug_line    0x0000003b      0x2d3 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_cache.o)
+ .debug_line    0x0000030e       0xba ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_io.o)
+ .debug_line    0x000003c8      0x240 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_printf.o)
+ .debug_line    0x00000608      0x30f ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps.o)
+ .debug_line    0x00000917       0x6f ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_sinit.o)
+ .debug_line    0x00000986       0x6d ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(outbyte.o)
+ .debug_line    0x000009f3       0x58 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_assert.o)
+ .debug_line    0x00000a4b       0x59 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_g.o)
+ .debug_line    0x00000aa4       0x7d ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_hw.o)
+ .debug_line    0x00000b21       0xb5 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_exit.o)
+ .debug_line    0x00000bd6       0xb7 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_sbrk.o)
+
+.debug_str      0x00000000      0xa29
+ .debug_str     0x00000000       0x96 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(print.o)
+                                 0x9b (size before relaxing)
+ .debug_str     0x00000096      0x3fe ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_cache.o)
+                                0x4ab (size before relaxing)
+ .debug_str     0x00000494       0xa7 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_io.o)
+                                0x1b5 (size before relaxing)
+ .debug_str     0x0000053b      0x10a ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_printf.o)
+                                0x22b (size before relaxing)
+ .debug_str     0x00000645      0x2b5 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps.o)
+                                0x389 (size before relaxing)
+ .debug_str     0x000008fa       0x40 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_sinit.o)
+                                0x187 (size before relaxing)
+ .debug_str     0x0000093a       0x1b ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(outbyte.o)
+                                0x113 (size before relaxing)
+ .debug_str     0x00000955       0x64 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_assert.o)
+                                0x18a (size before relaxing)
+ .debug_str     0x000009b9        0xc ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_g.o)
+                                0x16a (size before relaxing)
+ .debug_str     0x000009c5       0x1e ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_hw.o)
+                                0x143 (size before relaxing)
+ .debug_str     0x000009e3       0x15 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_exit.o)
+                                0x127 (size before relaxing)
+ .debug_str     0x000009f8       0x31 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_sbrk.o)
+                                0x148 (size before relaxing)
+
+.debug_frame    0x00000000      0x950
+ .debug_frame   0x00000000       0x28 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(print.o)
+ .debug_frame   0x00000028      0x318 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_cache.o)
+ .debug_frame   0x00000340       0xd0 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_io.o)
+ .debug_frame   0x00000410       0x84 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_printf.o)
+ .debug_frame   0x00000494       0xe8 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps.o)
+ .debug_frame   0x0000057c       0x20 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_sinit.o)
+ .debug_frame   0x0000059c       0x20 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(outbyte.o)
+ .debug_frame   0x000005bc       0x38 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_assert.o)
+ .debug_frame   0x000005f4       0x48 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xuartps_hw.o)
+ .debug_frame   0x0000063c       0x20 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2\libgcc.a(_udivsi3.o)
+ .debug_frame   0x0000065c       0x28 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-exit.o)
+ .debug_frame   0x00000684       0x2c c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-fini.o)
+ .debug_frame   0x000006b0       0x2c c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-init.o)
+ .debug_frame   0x000006dc       0x30 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-malloc.o)
+ .debug_frame   0x0000070c       0x38 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-mallocr.o)
+ .debug_frame   0x00000744       0x30 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-mlock.o)
+ .debug_frame   0x00000774       0x2c c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-sbrkr.o)
+ .debug_frame   0x000007a0       0x20 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-strlen.o)
+ .debug_frame   0x000007c0       0x48 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x00000808       0x20 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-atexit.o)
+ .debug_frame   0x00000828       0x50 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-freer.o)
+ .debug_frame   0x00000878       0x68 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-reent.o)
+ .debug_frame   0x000008e0       0x30 c:/xilinx/14.6/ise_ds/edk/gnu/arm/nt/bin/../lib/gcc/arm-xilinx-eabi/4.7.2/../../../../arm-xilinx-eabi/lib\libc.a(lib_a-__atexit.o)
+ .debug_frame   0x00000910       0x20 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_exit.o)
+ .debug_frame   0x00000930       0x20 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(_sbrk.o)
+
+.debug_ranges   0x00000000       0x98
+ .debug_ranges  0x00000000       0x30 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_io.o)
+ .debug_ranges  0x00000030       0x68 ../../ucos-ii_demo_0_bsp/ps7_cortexa9_0/lib\libxil.a(xil_printf.o)

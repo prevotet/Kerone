@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="false" key="trial04_hw_platform-verifyFlash"/>
+	<item value="qspi_single" key="trial04_hw_platform-flashType"/>
+	<item value="" key="trial04_hw_platform-imgFile"/>
+	<item value="" key="trial04_hw_platform-offSet"/>
+	<item value="" key="trial04_hw_platform-fsblFile"/>
+</section>

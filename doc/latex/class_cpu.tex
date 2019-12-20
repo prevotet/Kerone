@@ -1,0 +1,38 @@
+\section{Cpu Class Reference}
+\label{class_cpu}\index{Cpu@{Cpu}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_cpu_aac7052533b1e16425e65b352ccce6b24}} 
+enum \{ \newline
+{\bfseries E\+X\+C\+\_\+\+NM} = 7, 
+{\bfseries E\+X\+C\+\_\+\+TS} = 10, 
+{\bfseries E\+X\+C\+\_\+\+GP} = 13, 
+{\bfseries E\+X\+C\+\_\+\+PF} = 14, 
+\newline
+{\bfseries E\+X\+C\+\_\+\+AC} = 17
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_cpu_a08c9042224bcf08e072f4400bec119c5}} 
+static A\+L\+W\+A\+Y\+S\+\_\+\+I\+N\+L\+I\+NE mword {\bfseries ttbr0} ()
+\item 
+\mbox{\label{class_cpu_acae9f9a816c8188d48936084d07ad953}} 
+A\+L\+W\+A\+Y\+S\+\_\+\+I\+N\+L\+I\+NE static N\+O\+R\+E\+T\+U\+RN void {\bfseries shutdown} ()
+\item 
+\mbox{\label{class_cpu_a2a4bb7a52abbb92daaa7369754937656}} 
+static A\+L\+W\+A\+Y\+S\+\_\+\+I\+N\+L\+I\+NE void {\bfseries flush\+\_\+tlb\+\_\+range} (mword addr, mword end)
+\item 
+\mbox{\label{class_cpu_a80645cce7ea1450434a69e33832f4fc9}} 
+static A\+L\+W\+A\+Y\+S\+\_\+\+I\+N\+L\+I\+NE void {\bfseries flush\+\_\+tlb\+\_\+page} (mword addr)
+\item 
+\mbox{\label{class_cpu_a53705c5d77106f182c4071125edef887}} 
+static A\+L\+W\+A\+Y\+S\+\_\+\+I\+N\+L\+I\+NE void {\bfseries flush\+\_\+tlb\+\_\+all} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/users/work/\+Kerone/kernel/cpu/cpu.\+h\end{DoxyCompactItemize}

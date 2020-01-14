@@ -11,13 +11,12 @@ CC=arm-xilinx-eabi-g++
 CFLAGS=-Wall -Os -g
 CFLAGS+=-I./cpu
 CFLAGS+=-I./include
-#CFLAGS+=-I../boards/zedboard/kerone_bsp/ps7_cortexa9_0/include
-CFLAGS+=-I../boards/zedboard/kerone_bsp/ps7_cortexa9_0/include #Trying this one
+CFLAGS+=-I../boards/zedboard/kerone_PR_bsp/ps7_cortexa9_0/libsrc/axidma_v9_3/src
+CFLAGS+=-I../boards/zedboard/kerone_PR_bsp/ps7_cortexa9_0/include #Trying this one
 CFLAGS+=-I../boards/zedboard/custom_bsp
 CFLAGS+=-I../boards/zedboard/custom_bsp/include
 CFLAGS+=-DNDEBUG -O2 -c -mfloat-abi=softfp -fdata-sections -freorder-blocks -MMD -MP -MMD -MP
-#LDFLAGS=-nostartfiles -n -mfloat-abi=hard -Wl,-T -Wl,./src/hypervisor.ld -L"D:\users\work\Xilinx\Vivado\2017.1\Zedboard\project_1\project_1.sdk\kerone_bsp\ps7_cortexa9_0\lib"
-LDFLAGS=-nostartfiles -n -mfloat-abi=hard -Wl,-T -Wl,./src/hypervisor.ld -L"../boards/zedboard/kerone_bsp/ps7_cortexa9_0/lib"
+LDFLAGS=-nostartfiles -n -mfloat-abi=hard -Wl,-T -Wl,./src/hypervisor.ld -L"../boards/zedboard/kerone_PR_bsp/ps7_cortexa9_0/lib"
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include src/subdir.mk

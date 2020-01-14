@@ -10,14 +10,13 @@ OBJDIR := build
 CC=arm-xilinx-eabi-g++
 CFLAGS=-Wall -Os -g
 CFLAGS= -fpermissive#
-#CFLAGS+=-I"D:\users\work\Xilinx\Vivado\2017.1\Zedboard\project_1\project_1.sdk\kerone_bsp\ps7_cortexa9_0\include"
-CFLAGS+=-I../boards/zedboard/kerone_bsp/ps7_cortexa9_0/include
+CFLAGS+=-I../boards/zedboard/kerone_PR_bsp/ps7_cortexa9_0/include
 CFLAGS+=-I./include
 CFLAGS+=-I../boards/zedboard/custom_bsp/include
 CFLAGS+=-DNDEBUG -O2 -c -mfloat-abi=softfp -fdata-sections -freorder-blocks -MMD -MP -MMD -MP
 #LDFLAGS=-nostartfiles -n -mfloat-abi=hard -Wl,-T -Wl,./src/hypervisor.ld -L"D:\users\work\Xilinx\Vivado\2017.1\Zedboard\project_1\project_1.sdk\kerone_bsp\ps7_cortexa9_0\lib"
 #LDFLAGS=-nostartfiles -n -mfloat-abi=softfp -Wl,-T -Wl,./src/user.ld -L../boards/zedboard/kerone_bsp/ps7_cortexa9_0/lib
-LDFLAGS=-nostartfiles -n -mfloat-abi=hard -Wl,-T -Wl,./src/user.ld -L"../boards/zedboard/kerone_bsp/ps7_cortexa9_0/lib" 
+LDFLAGS=-nostartfiles -n -mfloat-abi=hard -Wl,-T -Wl,./src/user.ld -L"../boards/zedboard/kerone_PR_bsp/ps7_cortexa9_0/lib" 
 #LDFLAGS=-nostartfiles -n -mfloat-abi=softfp -Wl,-T -Wl,./src/user.ld -L"D:\users\work\Xilinx\Vivado\2017.1\Zedboard\project_1\project_1.sdk\kerone_bsp\ps7_cortexa9_0\lib"
 # All of the sources participating in the build are defined here
 -include sources.mk
@@ -88,11 +87,11 @@ OBJS = \
 ./$(OBJDIR)/syscall_list.o \
 ./$(OBJDIR)/user.o \
 ./$(OBJDIR)/vpsr.o \
-./$(OBJDIR)/HWManager/HW_Task_Manager.o \
-./$(OBJDIR)/HWManager/HWManager_irq.o \
-./$(OBJDIR)/HWManager/HWmanager_Entry.o \
-./$(OBJDIR)/HWManager/performance.o \
-./$(OBJDIR)/HWManager/devcfg.o
+./$(OBJDIR)/HW_Task_Manager.o \
+./$(OBJDIR)/HWManager_irq.o \
+./$(OBJDIR)/HWmanager_Entry.o \
+./$(OBJDIR)/performance.o \
+./$(OBJDIR)/devcfg.o
 
 C_DEPS += \
 ./$(OBJDIR)/_exit.d \
@@ -106,7 +105,7 @@ S_UPPER_DEPS += \
 ./$(OBJDIR)/start.d \
 ./$(OBJDIR)/syscall.d \
 ./$(OBJDIR)/vpsr.d  \
-./$(OBJDIR)/HWManager/HWmanager_Entry.d 
+./$(OBJDIR)/HWmanager_Entry.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -140,6 +139,27 @@ $(OBJDIR)/%.o: src/%.cc
 	@echo ' '
 
 $(OBJDIR)/%.o: src/app/%.cc
+	@echo 'Building file: $<'
+	@echo 'Invoking: ARM g++ compiler'
+	$(CC) $(CFLAGS) -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+$(OBJDIR)/%.o: src/HWManager/%.cc
+	@echo 'Building file: $<'
+	@echo 'Invoking: ARM g++ compiler'
+	$(CC) $(CFLAGS) -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+$(OBJDIR)/%.o: src/HWManager/%.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: ARM g++ compiler'
+	$(CC) $(CFLAGS) -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+$(OBJDIR)/%.o: src/HWManager/%.S
 	@echo 'Building file: $<'
 	@echo 'Invoking: ARM g++ compiler'
 	$(CC) $(CFLAGS) -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"

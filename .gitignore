@@ -19,5 +19,4 @@
 /user/build
 /user/*.project
 /user/*.cproject
-*.elf
-*.elf.size
+

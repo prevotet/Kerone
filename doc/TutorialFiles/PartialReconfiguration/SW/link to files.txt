@@ -1,0 +1,9 @@
+kerone.elf is located in Kerone/kernel/
+user.elf is located in Kerone/user
+
+
+
+
+
+
+

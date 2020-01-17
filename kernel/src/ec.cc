@@ -42,6 +42,22 @@
 #include "cp15.h"
 
 
+//#include "ff.h"
+
+
+//extern void XTime_SetTime(unsigned long long);
+
+
+
+/*int i;
+int Index;
+int len;
+u8 *TxBufferPtr= (u8 *)TX_BUFFER_BASE;
+u8 *RxBufferPtr= (u8 *)RX_BUFFER_BASE;
+u8 Value;*/
+
+
+
 extern "C" XScuGic gicInst;
 extern mword KERN_PDIR;
 extern int IRQ_ID;
@@ -654,8 +670,29 @@ void Ec::sys_yield()
 
 void Ec::sys_dma()
 {
-
+	//dma_config(current->regs.r1, (mword*)current->regs.r2, (mword*)current->regs.r3);
+	/*switch(current->regs.r1){
+		//case 0:
+			//axi_dma_test();
+			//break;
+	xil_printf ("	---\n\r", current->regs.r1, current->regs.r3);
+		case 1:
+			dma_config(1, current->regs.r3);
+			break;
+		case 2:
+			dma_config(2, current->regs.r3);
+			break;
+		case 3:
+			dma_config(3, current->regs.r3);
+			break;
+		default:
+			print("Invalid operation! \n\r");
+			break;
+	}*/
 	switch(current->regs.r1){
+		//case 0:
+			//axi_dma_test();
+			//break;
 		case 1:
 			dma_config(1, (mword*)current->regs.r2, (mword*)current->regs.r3);
 			break;

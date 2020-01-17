@@ -29,9 +29,8 @@
 #include "xparameters.h"
 #include "xdebug.h"
 #include "xdevcfg.h"
-//#include "xil_io.h"
 #include "xil_types.h"
-//#include <stdio.h>
+
 #define MEM_BASE_ADDR       0x2000000//0xC0000000
 
 
@@ -39,11 +38,11 @@
 #define DMA_IN2     XPAR_DMA_IN2_DEVICE_ID
 #define DMA_OUT     XPAR_DMA_OUT_DEVICE_ID
 
-
+//#define TX_BUFFER_BASE      (MEM_BASE_ADDR + 0x00010000)//0x00100000)
+//#define RX_BUFFER_BASE      (MEM_BASE_ADDR + 0x00030000)//0x00300000)
 #define TX_BUFFER_In1      (MEM_BASE_ADDR + 0x00010000)
 #define TX_BUFFER_In2      (MEM_BASE_ADDR + 0x00020000)
 #define RX_BUFFER_Out      (MEM_BASE_ADDR + 0x00030000)
-
 
 #define N_samples		4
 
@@ -82,16 +81,6 @@ TmrCntrSetup SettingsTable[2] = {
 };
 
 
-//#define CPU_CLOCK_RATIO_MODE_SELECT		  0xF80001C4
-//#define CPU_Clock_RatioMode 			*(volatile unsigned long *)(CPU_CLOCK_RATIO_MODE_SELECT)
-
-//void check_ClockRatio(){
-//	while(CPU_Clock_RatioMode != 1){
-//		print("CPU Clock Ratio Mode 4:2:1 (533MHz 267MHz 267MHz 133MHz) \n\r");
-//		CPU_Clock_RatioMode = 1;
-//	}
-//	 print("CPU Clock Ratio Mode 6:2:1 (667MHz 333MHz 222MHz 111MHz) \n\r");
-//}
 
 void TTC_TmrCfg(int tmr_nbr, int freq){
 	TmrCntrSetup *TimerSetup = &SettingsTable[tmr_nbr];
@@ -178,9 +167,6 @@ void GIC_Init(){
 
 void irq_init(){
 	print("\n\r");
-	/* Check CPU clock ratio mode (6:2:1) */
-	//check_ClockRatio();
-
 	/* Initialize GPOS Timer (TTC 0) */
 	TTC_TmrInit(0);
 	XTtcPs_EnableInterrupts(&tmrInst[0], XTTCPS_IXR_INTERVAL_MASK);
@@ -348,7 +334,6 @@ int test_dma(mword id,/*mword N_samples, */mword Value_In1[], mword Value_In2[])
 	dma_init(DMA_IN2, &AxiDma_In2);
 	dma_init(DMA_OUT, &AxiDma_Out);
 
-
 	u8 *TxBufferPtr_In1= (u8 *)TX_BUFFER_In1;
 	u8 *TxBufferPtr_In2= (u8 *)TX_BUFFER_In2;
 	u8 *RxBufferPtr_Out= (u8 *)RX_BUFFER_Out;
@@ -428,9 +413,9 @@ int test_dma(mword id,/*mword N_samples, */mword Value_In1[], mword Value_In2[])
 }
 
 
-
 void dma_config(mword id,/* mword N_samples, */mword Value_In1[], mword Value_In2[])
 {
+
 	switch(id){
 		case 1:
 			test_dma(1, Value_In1, Value_In2);

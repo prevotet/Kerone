@@ -29,19 +29,27 @@
 #include "xparameters.h"
 #include "xdebug.h"
 #include "xdevcfg.h"
+//#include "xil_io.h"
 #include "xil_types.h"
+//#include <stdio.h>
+#define MEM_BASE_ADDR       0x2000000//0xC0000000
 
-#define MEM_BASE_ADDR       0x2000000
 
-#define DMA_IN1     XPAR_DMA_IN1_DEVICE_ID
+#define DMA_IN1		XPAR_DMA_IN1_DEVICE_ID
 #define DMA_IN2     XPAR_DMA_IN2_DEVICE_ID
 #define DMA_OUT     XPAR_DMA_OUT_DEVICE_ID
+
 
 #define TX_BUFFER_In1      (MEM_BASE_ADDR + 0x00010000)
 #define TX_BUFFER_In2      (MEM_BASE_ADDR + 0x00020000)
 #define RX_BUFFER_Out      (MEM_BASE_ADDR + 0x00030000)
 
+
+#define N_samples		4
+
 XAxiDma AxiDma_In1, AxiDma_In2, AxiDma_Out;
+
+mword Value_Out0[N_samples], Value_Out1[N_samples];
 
 XTtcPs_Config *tmrConfig[2];
 XTtcPs tmrInst[2]={0};
@@ -54,9 +62,6 @@ extern PMKernel PM_FLAG;
 #endif
 
 extern int IRQ_ID;
-
-#define N_samples		4
-mword Value_Out0[N_samples], Value_Out1[N_samples];
 
 void kerone_tmrHandler(void* data);
 void ucos_tmrHandler(void* data);
@@ -87,8 +92,6 @@ TmrCntrSetup SettingsTable[2] = {
 //	}
 //	 print("CPU Clock Ratio Mode 6:2:1 (667MHz 333MHz 222MHz 111MHz) \n\r");
 //}
-
-
 
 void TTC_TmrCfg(int tmr_nbr, int freq){
 	TmrCntrSetup *TimerSetup = &SettingsTable[tmr_nbr];
@@ -176,7 +179,7 @@ void GIC_Init(){
 void irq_init(){
 	print("\n\r");
 	/* Check CPU clock ratio mode (6:2:1) */
-	check_ClockRatio();
+	//check_ClockRatio();
 
 	/* Initialize GPOS Timer (TTC 0) */
 	TTC_TmrInit(0);
@@ -303,6 +306,8 @@ void vtimer_config(mword id, mword freq){
 	}
 }
 
+
+
 int dma_init(u32 DeviceId, XAxiDma * InstancePtr)
 {
 	XAxiDma_Config *CfgPtr;
@@ -334,21 +339,23 @@ int dma_init(u32 DeviceId, XAxiDma * InstancePtr)
 	return XST_SUCCESS;
 }
 
-int test_dma(mword id, mword Value_In1[], mword Value_In2[])
+int test_dma(mword id,/*mword N_samples, */mword Value_In1[], mword Value_In2[])
 {
 	mword BYTES_TO_TRANSFER = N_samples;
+
 
 	dma_init(DMA_IN1, &AxiDma_In1);
 	dma_init(DMA_IN2, &AxiDma_In2);
 	dma_init(DMA_OUT, &AxiDma_Out);
+
 
 	u8 *TxBufferPtr_In1= (u8 *)TX_BUFFER_In1;
 	u8 *TxBufferPtr_In2= (u8 *)TX_BUFFER_In2;
 	u8 *RxBufferPtr_Out= (u8 *)RX_BUFFER_Out;
 
     for(int Index = 0; Index < N_samples; Index++) {
-    	TxBufferPtr_In1[Index] = Value_In1[Index];
-    	TxBufferPtr_In2[Index] = Value_In2[Index];
+    	TxBufferPtr_In1[Index] = Value_In1[Index];//Value_In1--;
+    	TxBufferPtr_In2[Index] = Value_In2[Index];//Value_In2--;
     	RxBufferPtr_Out[Index] = 0;
     }
 
@@ -356,8 +363,7 @@ int test_dma(mword id, mword Value_In1[], mword Value_In2[])
     Xil_DCacheFlushRange((u32)TxBufferPtr_In2, BYTES_TO_TRANSFER);
     Xil_DCacheFlushRange((u32)RxBufferPtr_Out, BYTES_TO_TRANSFER);
 
-
-    int Status = XAxiDma_SimpleTransfer(&AxiDma_In1 ,(u32)TxBufferPtr_In1, BYTES_TO_TRANSFER, XAXIDMA_DMA_TO_DEVICE);
+	int Status = XAxiDma_SimpleTransfer(&AxiDma_In1 ,(u32)TxBufferPtr_In1, BYTES_TO_TRANSFER, XAXIDMA_DMA_TO_DEVICE);
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
@@ -422,10 +428,10 @@ int test_dma(mword id, mword Value_In1[], mword Value_In2[])
 }
 
 
+
 void dma_config(mword id,/* mword N_samples, */mword Value_In1[], mword Value_In2[])
 {
 	switch(id){
-
 		case 1:
 			test_dma(1, Value_In1, Value_In2);
 			break;
@@ -441,6 +447,7 @@ void dma_config(mword id,/* mword N_samples, */mword Value_In1[], mword Value_In
 		}
 
 }
+
 
 /* Insert Pending flag in virtual Pending States */
 void vGic_InsertPending(vGicContext* ctx, int irq_id){

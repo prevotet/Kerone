@@ -74,14 +74,11 @@ void main_func ()
 
 
 	int i = 1;
+	sys_create_ec (HW_Task_Manager_Bootloader, new_stack + i * 256, 1);
+	i++;
 	sys_create_ec (thread_function1, new_stack + i * 64, 0);
 	i++;
 	sys_create_ec (thread_function2, new_stack + i * 64, 0);
-	i++;
-	sys_create_ec (thread_function3, new_stack + i * 64, 0);
-	i++;
-
-	sys_create_ec (HW_Task_Manager_Bootloader, new_stack + i * 256, 3);
 
 
 	//boot_guest_os(guest_os_elf_01, 2, 1);

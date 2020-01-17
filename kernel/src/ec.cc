@@ -8,8 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
-
+//#include "D:/kernel_2017/boards/zedboard/kerone_bsp/ps7_cortexa9_0/libsrc/standalone_v6_2/src/xtime_l.h"
 /*#include "bsp/include/private_timer.h"
 #include "bsp/include/performance.h"
 #include "bsp/include/xil_printf.h"
@@ -464,8 +463,10 @@ void Ec::syscall_handler (uint8 swi_imm)
 	   current->vpsr->MaskedIRQ = 0;
 	   break;
 
-
    case 32:
+	   //sys_dma();
+	   break;
+   case 33:
 	   sys_dma();
 	   break;
 
@@ -648,25 +649,13 @@ void Ec::sys_yield()
 	sys_change_to_ec(current->next);
 }
 
-void Ec::sys_change_to_ec(Ec *successor)
-{
-	//xil_printf ("		---EC:%d : Change to next EC:%d\n\r", current->id, successor->id);
-	if(successor != current){
-		Fpc::vfp_disable();
-		vGic_Switch(&(current->vGicState), &(successor->vGicState));
-		successor->ttbr0_load();
-		successor->IVC_load();
-		successor->set_current();
-	}
-}
+
 
 
 void Ec::sys_dma()
 {
+
 	switch(current->regs.r1){
-		//case 0:
-			//axi_dma_test();
-			//break;
 		case 1:
 			dma_config(1, (mword*)current->regs.r2, (mword*)current->regs.r3);
 			break;
@@ -681,6 +670,20 @@ void Ec::sys_dma()
 			break;
 	}
 
+}
+
+
+void Ec::sys_change_to_ec(Ec *successor)
+{
+	//xil_printf ("		---EC:%d : Change to next EC:%d\n\r", current->id, successor->id);
+	if(successor != current){
+		Fpc::vfp_disable();
+		vGic_Switch(&(current->vGicState), &(successor->vGicState));
+		successor->ttbr0_load();
+		//successor->IVC_load();
+		successor->set_current();
+	}
+	print("\n");
 }
 
 void Ec::IVC_Channel_Send(int IVC_id, int message){

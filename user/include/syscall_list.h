@@ -13,7 +13,8 @@
 extern void sys_create_ec(void (*)(), void *, int);
 extern void sys_create_external_ec(mword, mword, int);
 extern void sys_yield(void);
-extern int *SUM(int, int[], int[]);
+extern void sys_dma(int, int[], int[]);/////////////
+extern int *SUM(int, int[], int[]);/////////////
 //extern void sys_irq_enable(void);
 extern void sys_dcache_disable(void);
 //extern void sys_irq_disable(void);

@@ -62,9 +62,9 @@
 
 //The reserved memory space for partial reconfig bit files
 // NOTE: for DMA Tranfer, scu is not functioning; so virt addr is useless here
-//#define PRECO_PHYS_ADDR 0x2000000
-//#define PRECO_SADDR		0x2000000
-//#define PRECO_E			0x2100000
+#define PRECO_PHYS_ADDR 0x2000000
+#define PRECO_SADDR		0x2000000
+#define PRECO_E			0x2100000
 
 #define REMAP_SADDR      0xdf000000
 #define USER_SPACE_REMAP 0xdf100000
@@ -91,8 +91,8 @@
 
 
 /* 0x40000000 - 0x7fffffff (General Purpose Port #0 to the PL, M_AXI_GP0) */
-//#define	AXI_GP0_ADDR	0x40000000
-//#define AXI_GP0_E		0x80000000
+#define	AXI_GP0_ADDR	0x40000000
+#define AXI_GP0_E		0x80000000
 
 //Vectors for exceptions, ARMV7 use high address vector table as default
 #define VEC_BASE		0xffff0000

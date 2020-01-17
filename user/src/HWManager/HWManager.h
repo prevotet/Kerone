@@ -25,10 +25,9 @@
 #define	PL_PR_STOP		90	// Preempt PR stop
 #define PL_NEW_SOLUTION	0	// A solution is found for waiting requests
 
-/* PRR 1*/
-#define hw_task_number			2////1 HW IP
-#define PARTIAL_RECONFIG_SUB    0x02003000
-#define PARTIAL_RECONFIG_ADDR   0x02000000
+/* task 1*/
+#define hw_task_number			1
+#define PARTIAL_RECONFIG_ADDR   0x2003000 //0x02000000
 #define PARTIAL_BINFILE_LEN 	0x65E64//0x0000e73c
 
 /* DevCfg Registers */
@@ -47,7 +46,6 @@
 #define MAX_VM_NUM		4
 #define MAX_DEVICE_NUM 	8
 #define MAX_PRR_NUM		4
-
 
 /* PR Interface Map(Physical) 	*/
 #define PR_Base	AXIGP_BASE_PHYS_ADDR
@@ -99,18 +97,17 @@
  * 	|Byte 3	|Byte 2	|Byte 1	|Byte 0	|
  * 	|						| PRID	|		*/
 #define	PR_STOP_CMD_OFFSET			0x2c
-#define	PR_START_CMD_OFFSET         0x30
 
 /* PR_STOP_INT
  *	|Byte 3	|Byte 2	|Byte 1	|Byte 0	|
  *	|VMID	|DevID	|PRID	|Int	|		*/
-#define PR_STOP_INT_OFFSET			0x34
+#define PR_STOP_INT_OFFSET			0x30
 
 /* PR_SOLUTION_INT
  * 	|Byte 3	|Byte 2	|Byte 1		|Byte 0	  	|
  * 	|				|15|14	   8|7	   1| 0	|
 	| VMID	| DevID	|R | Method	|PRID	|Int|	*/
-#define PR_NEW_SOLUTION_INT_OFFSET		0x38
+#define PR_NEW_SOLUTION_INT_OFFSET		0x34
 
 /* PR_CONNECTION_TABLE  (0xFF = Invalid)
  *	|Byte 3	|Byte 2	|Byte 1	|Byte 0	|
@@ -130,8 +127,6 @@
  */
 #define PR_HOST_LIST_OFFSET			0x3c
 
-#define	PR_MOVE_CMD_OFFSET			0x40
-
 enum Method{unavailable, assign, preempt,nonvalid};
 enum PRStat{IDLE, HOLD, BUSY, RCFG, WFSTOP};
 
@@ -146,7 +141,6 @@ typedef struct
 {
 	int 	VMID;	// VM ID that this IF is allocated to
 	int		DevID; 	// Device ID that this IF is mapped in VM memory space
-	int 	DevCNT;
 	int		IFID;
 	int 	PRID;	// PR connected to this IF, 0xff means invalid.
 	int		PRIO;	// Priority of VM
@@ -155,10 +149,22 @@ typedef struct
 
 typedef struct
 {
+	int 	VMID;	// VM ID that this IF is allocated to
+	int		DevID; 	// Device ID that this IF is mapped in VM memory space
+	//int		IFID;
+	int 	PRID;	// PR connected to this IF, 0xff means invalid.
+	int		PRIO;	// Priority of VM
+	Solution s = {false,nonvalid,0};
+} HWM_entry;
+
+
+typedef struct
+{
 	mword	Addr;
 	int 	Size;
 //	int		Overhead;
 } BitFile_entry;
+
 
 
 void 	HWManager_Main(int VM_id, mword Dev_Addr, int prio);
@@ -184,13 +190,7 @@ IF_entry* IF_alloc(int vm_id, int dev_id, int prio);
 		( ((VMID<<16)|(DevID<<8)|PRIO) & 0xffffff) )
 
 #define	PR_STOP(PRID)		\
-	PRRC_WriteReg(PR_STOP_CMD_OFFSET, PRID)
-
-#define	PR_START(PRID)		\
-	PRRC_WriteReg(PR_START_CMD_OFFSET, PRID)
-
-#define	PR_MOVE(DevID)		\
-	PRRC_WriteReg(PR_MOVE_CMD_OFFSET, DevID)
+	PRRC_WriteReg(PR_STOP_CMD_OFFSET, PRID  )
 
 #define PRR_IF_CONNECT(VMID, DEVID, PRIO, PRRID)\
 	PRRC_WriteReg(PR_IF_CONNECT_CMD_OFFSET, \

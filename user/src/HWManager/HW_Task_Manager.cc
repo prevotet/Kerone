@@ -45,14 +45,13 @@ IF_entry* IFIndexTable[MAX_VM_NUM][MAX_DEVICE_NUM]={
 		{0,0,0,0,0,0,0,0}
 };
 
-
 IF_entry* PRClientTable[MAX_PRR_NUM];
+
+HWM_entry* PRTable[MAX_PRR_NUM];
 
 IF_entry* Current_RCPG;
 
 XDcfg XDcfg_0;
-
-int CurrentDevSize;
 
 Solution s_empty = {false,nonvalid,0};
 
@@ -89,7 +88,6 @@ void PR_HOST_LIST_init(){
 			shift++;
 		}
 	//PRRC_WriteReg(PR_HOST_LIST_OFFSET, temp);
-
 }
 
 /*
@@ -106,6 +104,7 @@ void check_available(IF_entry *p){
 	p->s.PR_id 	= PR_Solution & 0xff;
 	p->s.M 		= (PR_Solution >> 8) & 0x7f;
 	p->s.Reconf = PR_Solution >> 15;
+	print ("	33333 \n\r");
 }
 
 
@@ -118,6 +117,7 @@ void check_available(IF_entry *p){
  */
 void IF_Disconnect(int PR_id){
 	IF_entry *p = PRClientTable[PR_id];
+
 	if(p){
 		p->PRID = 0xff;
 		PRClientTable[PR_id] = 0;
@@ -139,38 +139,8 @@ void IF_Connect(IF_entry *p, int PR_id){
 	PRR_IF_CONNECT(p->VMID, p->DevID, p->PRIO, PR_id);
 	sys_fpga_page_rw(p->VMID, HW_DEV0 + p->DevID * PR_IF_SIZE);
 }
-/*
- * 	Search the IP is not used frequently.
- * 	Move its content from PL to PS.
- * 	Otherwise, still in PL.
- */
-/*IF_entry* HWManager_search()
-{
-	if(CurrentDevSize > MAX_DEVICE_NUM)
-	{
-		  /*search min value */
-/*		    int min;
-		    int i, j;
-		    int hw_state;
 
-		    min = IFIndexTable[0][0]->DevCNT;
 
-			for(i=0; i<MAX_VM_NUM; i++)
-			{
-				for(j=0; j<MAX_DEVICE_NUM; j++)
-				{
-					if(IFIndexTable[i][j]->DevCNT < min)
-						min =  IFIndexTable[i][j]->DevCNT;
-				}
-			}
-
-			IFIndexTable[i][j]->DevCNT = 0;
-		    CurrentDevSize--;
-
-			return IFIndexTable[i][j];
-	}
-
-} */
 /*
  * 	Implement the solution given by the FPGA side.
  * 	This function returns 0 ONLY when the target device is READY to go.
@@ -178,7 +148,7 @@ void IF_Connect(IF_entry *p, int PR_id){
  */
 int Run_Solution(IF_entry *p){
 	BitFile_entry *bitfile;
-	IF_entry *q;
+
 	switch(p->s.M){
 	/*
 	 * Method.unavailable means no appropriate PR for now.
@@ -194,8 +164,7 @@ int Run_Solution(IF_entry *p){
 	 * 		1. Launch PCAP Transfer
 	 * 		2. PRSTATE.stat = RCFG
 	 * 		3. Suspend current Solution until PCAP is done.
-	 * 		4. Restore HW IP registers
-	 * 		5. Return 1 (WAIT)
+	 * 		4. Return 1 (WAIT)
 	 * 	3) If don't need reconfiguration:
 	 * 		1. Connect PR with current IF, and now the PR is ready to be used
 	 * 		2. Clear IF.Solution
@@ -240,14 +209,15 @@ int Run_Solution(IF_entry *p){
 	return 0;
 }
 
+
 /*	Get HW Task information:
  *  R0: Virtual Machine ID
  *  R1: Device Interface Address
  *  R2: VM Priority
  */
 NORETURN
-void HWManager_Main(int VM_id, mword Dev_Addr, int prio) asm ("HWManager_Main");
-void HWManager_Main(int VM_id, mword Dev_Addr, int prio)
+void HWManager_Main_IF(int VM_id, mword Dev_Addr, int prio) asm ("HWManager_Main_IF");
+void HWManager_Main_IF(int VM_id, mword Dev_Addr, int prio)
 {
 	static int Dev_id;
 	static IF_entry *p_IF;
@@ -312,13 +282,80 @@ void HWManager_Main(int VM_id, mword Dev_Addr, int prio)
 	while(1);
 }
 
-void HW_Task_Manager()//simple reconfig PRR with two HW IPs
+
+
+/*	Get HW Task information:
+ *  R0: Task ID
+ *  R1: Device ID
+ *  R2: Task Priority
+ */
+NORETURN
+void HWManager_Main(int VM_id, int Dev_id, int prio) asm ("HWManager_Main");
+void HWManager_Main(int VM_id, int Dev_id, int prio)
+{
+
+	static IF_entry *p_IF;
+
+#if IS_PRR_MANAGER_ASSIGN_TEST | IS_PRR_MANAGER_PREEMT_TEST | IS_PRR_MANAGER_RCFG_TEST
+	XTime_SetTime(0);
+#endif
+
+	// Check HW Task Index Table -- if the target HW IP exists
+	if(!IFIndexTable[VM_id][Dev_id]) // Check if the IF of (VM, Device) exists
+		IFIndexTable[VM_id][Dev_id] = IF_alloc(VM_id, Dev_id, prio);
+
+	p_IF = IFIndexTable[VM_id][Dev_id];
+
+	/* If this IF is still linked with a PR, then this is an error.
+	 * Otherwise, search for PRs for an appropriate solution */
+	if(p_IF->PRID != 0xff){
+		print("Error: IF was not correctly cleared (unlinked) \n\r");
+		while(1);
+	}
+	// If this IF is now having a valid solution, means the solution is not over
+	else if(p_IF->s.M != nonvalid){
+		sys_IVC_Send(p_IF->VMID, IVC_DEV_WAIT, p_IF->DevID);
+		print("Wait more \n\r");
+	}
+	else{
+		check_available(p_IF);
+		if(Run_Solution(p_IF))
+		/* Run_Solution() returning 1 means waiting  */
+			sys_IVC_Send(p_IF->VMID, IVC_DEV_WAIT, p_IF->DevID);
+	}
+
+	*hwmgr_vpsr_cpsr &=0xffffff7f;
+
+#if IS_PRR_MANAGER_ASSIGN_TEST
+	PM_record(Xil_In32(GLOBAL_TMR_BASEADDR+GTIMER_COUNTER_LOWER_OFFSET));
+#endif
+
+#if IS_PRR_MANAGER_PREEMT_TEST
+	//PM_record(Xil_In32(GLOBAL_TMR_BASEADDR+GTIMER_COUNTER_LOWER_OFFSET));
+	if(!IFIndexTable[3][1])
+		IFIndexTable[3][1] = IF_alloc(3, 1, 1);
+	IF_Connect(IFIndexTable[3][1], 1);
+	PRRC_WriteReg(PR_STOP_INT_OFFSET, (3<<24)|(0<<16)|(1<<8));
+	PRRC_WriteReg(0,1);
+#endif
+
+#if IS_PRR_MANAGER_RCFG_TEST
+	PM_record(Xil_In32(GLOBAL_TMR_BASEADDR+GTIMER_COUNTER_LOWER_OFFSET));
+	PRRC_WriteReg(0,1);
+#endif
+
+	sys_suspend((mword)HWManager_Main_Entry);
+
+	// Should not get here!
+	while(1);
+}
+
+
+void HW_Task_Manager()
 {
 	if(XDcfg_TransferBitfile(&XDcfg_0, PARTIAL_RECONFIG_ADDR, PARTIAL_BINFILE_LEN ))
 		print("PCAP Error!  \n\r");
-	print("\n\rHW_Task_Manager done\n\r");
 }
-
 
 
 NORETURN
@@ -342,18 +379,30 @@ void HW_Task_Manager_Bootloader()
 	HWManager_Irq_init();
 
 	/* Set up the PR_HOST_LIST register in PR Contromller */
-	//PR_HOST_LIST_init();
+	//////////////PR_HOST_LIST_init();
 
 	// irq enable
 	//VM_IRQ_En();
 
+
 	HW_Task_Manager();
+
+	/*int x = 0;
+	//while(1){
+	XTime_SetTime(0);
+	if(x=XDcfg_TransferBitfile(&XDcfg_0, 0x10000, 0xc350 ))
+					xil_printf("PCAP Error (%d)!  \n\r", x);
+	xil_printf("%d ",Xil_In32(GLOBAL_TMR_BASEADDR+GTIMER_COUNTER_LOWER_OFFSET));
+	while(x < 33333333){
+		x++;
+	}
+	}*/
 
 #if IS_PRR_MANAGER_ASSIGN_TEST
 	PRRC_WriteReg(PR_SEARCH_RESULT_OFFSET, (0<<15)|(assign<<8)|1);
 #endif
 #if IS_PRR_MANAGER_PREEMT_TEST
-	//PRRC_WriteReg(PR_SEARCH_RESULT_OFFSET, (0<<15)|(preempt<<8)|1);
+	//////////////////PRRC_WriteReg(PR_SEARCH_RESULT_OFFSET, (0<<15)|(preempt<<8)|1);
 #endif
 #if IS_PRR_MANAGER_RCFG_TEST
 	PRRC_WriteReg(PR_SEARCH_RESULT_OFFSET, (1<<15)|(assign<<8)|1);
@@ -365,3 +414,4 @@ void HW_Task_Manager_Bootloader()
 
 	while(1);
 }
+

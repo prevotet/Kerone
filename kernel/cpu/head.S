@@ -185,9 +185,9 @@ _start:
 
 		// Setup AXI-4Lite GPIO 0  Memory
 		// 	mapping (phys)0x40000000 - 0x7fffffff to (virt)0x40000000 - 0x7fffffff
-/*		mov			r3, #AXI_GP0_ADDR		//r3 = 0x40000000
+		mov			r3, #AXI_GP0_ADDR		//r3 = 0x40000000
 		mov			r6, r3					//r6 = 0x40000000
-		ldr			r5, =SECT_FLAG_AXI_GP0	//r5 = 0x00C06
+		ldr			r5, =SECT_FLAG_DEV//SECT_FLAG_AXI_GP0	//r5 = 0x00C06
 		add			r5, r5, r3				//r5 = 0x40000C06
 		mov			r7, #AXI_GP0_ADDR >> 20	//r7 = 0x400
 		mov			r7, r7, lsl #2			//r7 = 0x1000
@@ -197,15 +197,15 @@ _start:
 		add			r5, r5, #0x100000
 		add			r6, r6, #0x100000
 		cmp			r6, r3
-		bne			1b*/
+		bne			1b
 
 		// Setup Partial Reconficuration bitfile Memory
 		// 	mapping (phys)0x2000000 - 0x200fffff to (virt)0x2000000 - 0x21fffff (1M)
 		// This section is mapped directly to its physical area
 		// cause DMA donn't support virtual address
-/*		mov			r3, #PRECO_PHYS_ADDR	//r3 = 0x2000000
+		mov			r3, #PRECO_PHYS_ADDR	//r3 = 0x2000000
 		ldr			r6, =PRECO_SADDR		//r6 = 0xD0100000
-		ldr			r5, =SECT_FLAG_PRECO	//r5 = 0x00C06
+		ldr			r5, =0x00C06//SECT_FLAG_PRECO	//r5 = 0x00C06
 		add			r5, r5, r3				//r5 = 0x2000C06
 		ldr			r7, =PRECO_SADDR >> 20	//r7 = 0x20
 		mov			r7, r7, lsl #2			//r7 = 0x80
@@ -216,7 +216,7 @@ _start:
 		add			r6, r6, #0x100000
 		cmp			r6, r3
 		bne			1b
-*/
+
 
 
 		// Setup Performance Measurement Memory

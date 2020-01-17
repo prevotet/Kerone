@@ -86,6 +86,7 @@ void init ()
 	Ptab::insert_mapping (IOBMP_SADDR, iobm, 1);
 	Ptab::insert_mapping (IOBMP_SADDR + PAGE_SIZE, iobm + PAGE_SIZE, 1);
 
+
 	//for (void (**func)() = &CTORS_G; func != &CTORS_L; (*--func)()) ;
 
 	/*

@@ -79,7 +79,7 @@ const unsigned long ReserveIrqMask[3] {0x2000FFFF,0x00000800,0x04040000};
 
 void irq_init();
 void vtimer_config(mword, mword);
-void dma_config(mword, mword[], mword[]);
+void dma_config(mword, mword[], mword[]);///////////
 void vGic_InsertPending(vGicContext *ctx, int irq_id);
 void vGic_Switch(vGicContext *prev, vGicContext *next);
 void vGIC_GetPriority(int virq_id, u8 *Priority);
@@ -90,9 +90,11 @@ void vGIC_DisableInterrupt(int virq_id);
 int  vGIC_ACK(vGicContext * vgctx);
 void vGIC_EOI(vGicContext * vgctx, int virq_id);
 void vGic_SetPending(int irq_id);
-void check_ClockRatio(void);
+
 #define kerone_getTimeSlice Private_TmrRd
 #define kerone_setTimeSlice Private_TmrWr
+
+
 
 /*
 ALWAYS_INLINE

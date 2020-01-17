@@ -85,9 +85,14 @@ void sys_yield()
 	syscall (1, 0, 0, 0);
 }
 
+void sys_dma(/*int id, int ec_prio,*/ int N_samples, int Value_In1[], int Value_In2[])/////////////////////
+{
+	syscall (32, /*id, ec_prio,*/ N_samples, Value_In1, Value_In2);
+}
+
 int *SUM(int id,  int Value_In1[], int Value_In2[])/////////////////////
 {
-	syscall (32, id, Value_In1, Value_In2);
+	syscall (33, id, Value_In1, Value_In2);
 }
 //void sys_irq_enable()
 //{

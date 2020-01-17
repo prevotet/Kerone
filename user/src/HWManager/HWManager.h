@@ -28,7 +28,7 @@
 /* task 1*/
 #define hw_task_number			1
 #define PARTIAL_RECONFIG_ADDR   0x2003000 //0x02000000
-#define PARTIAL_BINFILE_LEN 	0x65E64//0x0000e73c
+#define PARTIAL_BINFILE_LEN 	0x824E4//0x65E64
 
 /* DevCfg Registers */
 #define	DevCfg_INT_STS		0xF800700C

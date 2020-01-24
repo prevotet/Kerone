@@ -19,8 +19,9 @@
 #include "../include/vpsr.h"
 
 #include "HWManager.h"
-
 //#include <stdlib.h>
+//#define HW_DEV0 		0x10001000
+#define HW_DEV1 		0x10002000
 
 #if IS_PRR_MANAGER_RCFG_TEST
 int False_PCAP_Transfer(XDcfg *Instance, u32 StartAddress, u32 WordLength){
@@ -351,12 +352,16 @@ void HWManager_Main(int VM_id, int Dev_id, int prio)
 }
 
 
-void HW_Task_Manager()
+void HW_Task_Manager_Boot()
 {
-	if(XDcfg_TransferBitfile(&XDcfg_0, PARTIAL_RECONFIG_ADDR, PARTIAL_BINFILE_LEN ))
-		print("PCAP Error!  \n\r");
+	int x = 0;
+	if(x = XDcfg_TransferBitfile(&XDcfg_0, PARTIAL_RECONFIG_ADD_ADDR, PARTIAL_BINFILE_LEN ))
+			xil_printf("PCAP Error (%d)!  \n\r", x);
+	print("000000000000!  \n\r");
+	if(x = XDcfg_TransferBitfile(&XDcfg_0, PARTIAL_RECONFIG_SUB_ADDR, PARTIAL_BINFILE_LEN ))
+			print("PCAP Error!  \n\r");
+	print("11111111111!  \n\r");
 }
-
 
 NORETURN
 void HW_Task_Manager_Bootloader()
@@ -384,8 +389,8 @@ void HW_Task_Manager_Bootloader()
 	// irq enable
 	//VM_IRQ_En();
 
-
-	HW_Task_Manager();
+	//HW_Task_Manager_Boot();
+	//HW_Task_Manager();
 
 	/*int x = 0;
 	//while(1){
@@ -415,3 +420,43 @@ void HW_Task_Manager_Bootloader()
 	while(1);
 }
 
+void HW_Task_Manager(int Option)
+{
+	//XDcfg_Initialize(&XDcfg_0, XPAR_XDCFG_0_DEVICE_ID);
+		//print("DevCfg initialization done.\n\r");
+
+	int x = 0;
+	int status = 0;
+
+	while(x < 33333333){
+			x++;
+			//xil_printf("xxxxxxxxxxx (%d)!  \n\r", x);
+		}
+	//*(unsigned long int*)(HW_DEV0 + 4) = 0x1;
+	//xil_printf("%d ",Option);
+	 switch(Option){
+	 	 case 0:
+	 		print ("USER: Task 1. \n\r");
+	 		if(status = XDcfg_TransferBitfile(&XDcfg_0, HW_DEV0, PARTIAL_BINFILE_LEN ))
+	 			print ("0	PCAP Error  \n\r");
+	 			//xil_printf("0	PCAP Error (%d)!  \n\r", status);
+	 		//xil_printf("0000000000 (x=%d) (status=%d)! \n\r", x, status);
+	 		break ;
+
+	    case 1:
+	    	print ("USER: Task 2. \n\r");
+	    	if(status = XDcfg_TransferBitfile(&XDcfg_0, HW_DEV1, PARTIAL_BINFILE_LEN ))
+	    		print ("1s	PCAP Error  \n\r");
+	    		//xil_printf("1	PCAP Error (%d)!  \n\r", status);
+	    	//xil_printf("1111111111 (x=%d) (status=%d)! \n\r", x , status);
+	    	break ;
+
+	    default :
+	    	//while(x < 33333333){
+
+	    //	/*if(XDcfg_TransferBitfile(&XDcfg_0, HW_DEV1 /*PARTIAL_RECONFIG_SUB_ADDR*/, PARTIAL_BINFILE_LEN))
+		/*	    			xil_printf("2	PCAP Error (%d)!  \n\r", x);
+	    	xil_printf("xxxxxxxxxxx (%d)!  \n\r", x);*/
+	    	break;
+	    }
+}

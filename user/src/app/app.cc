@@ -16,7 +16,7 @@ app.cc
 #include "vpsr.h"
 
 extern void HW_Task_Manager_Bootloader();
-
+extern void HW_Task_Manager(int);
 #define N_samples		4
 
 int Value_In1_TF1[4] = {44, 33, 22, 11};
@@ -31,9 +31,11 @@ void thread_function1 ()
 {
 	while (1){
 
-		print ("USER: Task 1. \n\r");
-		//HW_Task_Manager(0);// start PR HW IP 0
+		//print ("USER: Task 1. \n\r");
+		HW_Task_Manager(0);// start PR HW IP 0
 		Value_Out0 = SUM(1, Value_In1_TF1, Value_In1_TF2);
+		HW_Task_Manager(1);
+		Value_Out1 = SUM(2, Value_In2_TF1, Value_In2_TF2);
 		sys_yield();
 	}
 }
@@ -43,9 +45,9 @@ void thread_function2 ()
 {
 	while (1){
 
-		print ("USER: Task 2. \n\r");
-		//HW_Task_Manager(1);// start PR HW IP 1
-		Value_Out1 = SUM(2, Value_In2_TF1, Value_In2_TF2);
+		//print ("USER: Task 2. \n\r");
+		HW_Task_Manager(1);// start PR HW IP 1
+		//Value_Out1 = SUM(2, Value_In2_TF1, Value_In2_TF2);
 		sys_yield();
 	}
 }
@@ -72,13 +74,12 @@ void main_func ()
 
 	char new_stack[512];
 
-
 	int i = 1;
 	sys_create_ec (HW_Task_Manager_Bootloader, new_stack + i * 256, 1);
 	i++;
 	sys_create_ec (thread_function1, new_stack + i * 64, 0);
-	i++;
-	sys_create_ec (thread_function2, new_stack + i * 64, 0);
+	//i++;
+	//sys_create_ec (thread_function2, new_stack + i * 64, 0);
 
 
 	//boot_guest_os(guest_os_elf_01, 2, 1);

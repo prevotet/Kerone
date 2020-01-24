@@ -26,8 +26,9 @@
 #define PL_NEW_SOLUTION	0	// A solution is found for waiting requests
 
 /* task 1*/
-#define hw_task_number			1
-#define PARTIAL_RECONFIG_ADDR   0x2003000 //0x02000000
+#define hw_task_number			2
+#define PARTIAL_RECONFIG_ADD_ADDR   0x2001000
+#define PARTIAL_RECONFIG_SUB_ADDR   0x2003000 //0x02000000
 #define PARTIAL_BINFILE_LEN 	0x65E64//0x0000e73c
 
 /* DevCfg Registers */

@@ -6,6 +6,7 @@
 
 RM := rm -rf
 OBJDIR := build
+MKDIR := mkdir -p
 
 CC=arm-xilinx-eabi-g++
 CFLAGS=-Wall -Os -g
@@ -118,27 +119,27 @@ OBJS = \
 ./$(OBJDIR)/vec.o \
 ./$(OBJDIR)/vfp.o \
 ./$(OBJDIR)/vgic.o \
-./$(OBJDIR)/custom_bsp/custom_api.o \
-./$(OBJDIR)/custom_bsp/performance.o \
-./$(OBJDIR)/custom_bsp/private_timer.o \
-./$(OBJDIR)/arch/zynq/timer.o \
-./$(OBJDIR)/cpu/entry.o \
-./$(OBJDIR)/cpu/head.o \
-./$(OBJDIR)/cpu/shutdown.o \
-./$(OBJDIR)/cpu/tlb-v7.o \
-./$(OBJDIR)/cpu/vector.o 
+./$(OBJDIR)/custom_api.o \
+./$(OBJDIR)/performance.o \
+./$(OBJDIR)/private_timer.o \
+./$(OBJDIR)/timer.o \
+./$(OBJDIR)/entry.o \
+./$(OBJDIR)/head.o \
+./$(OBJDIR)/shutdown.o \
+./$(OBJDIR)/tlb-v7.o \
+./$(OBJDIR)/vector.o 
 
 C_DEPS += \
 ./$(OBJDIR)/_exit.d \
 ./$(OBJDIR)/print.d \
-./$(OBJDIR)/custom_bsp/custom_api.d \
-./$(OBJDIR)/custom_bsp/private_timer.d 
+./$(OBJDIR)/custom_api.d \
+./$(OBJDIR)/private_timer.d 
 
 S_UPPER_DEPS += \
-./$(OBJDIR)/cpu/entry.d \
-./$(OBJDIR)/cpu/head.d \
-./$(OBJDIR)/cpu/tlb-v7.d \
-./$(OBJDIR)/cpu/vector.d 
+./$(OBJDIR)/entry.d \
+./$(OBJDIR)/head.d \
+./$(OBJDIR)/tlb-v7.d \
+./$(OBJDIR)/vector.d 
 
 # Each subdirectory must supply rules for building sources it contributes
 
@@ -160,20 +161,17 @@ kerone.elf.size: kerone.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
-$(OBJDIR):
-	mkdir -p $(OBJDIR)
-	mkdir -p $(OBJDIR)/custom_bsp
-	mkdir -p $(OBJDIR)/cpu
-	mkdir -p $(OBJDIR)/arch/zynq
+
 
 $(OBJDIR)/%.o: src/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: ARM g++ compiler'
 	$(CC) $(CFLAGS) -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
 	@echo 'Finished building: $<'
-	@echo ' '
+	
+	
 
-$(OBJDIR)/custom_bsp/%.o: ../boards/zedboard/custom_bsp/%.c
+$(OBJDIR)/%.o: ../boards/zedboard/custom_bsp/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: ARM g++ compiler'
 	$(CC) $(CFLAGS) -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
@@ -187,14 +185,14 @@ $(OBJDIR)/%.o: src/%.cc
 	@echo 'Finished building: $<'
 	@echo ' '
 
-$(OBJDIR)/custom_bsp/%.o: ../boards/zedboard/custom_bsp/%.cc
+$(OBJDIR)/%.o: ../boards/zedboard/custom_bsp/%.cc
 	@echo 'Building file: $<'
 	@echo 'Invoking: ARM g++ compiler'
 	$(CC) $(CFLAGS) -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '	
 
-$(OBJDIR)/arch/zynq/%.o: ../arch/zynq/%.cc
+$(OBJDIR)/%.o: ../arch/zynq/%.cc
 	@echo 'Building file: $<'
 	@echo 'Invoking: ARM g++ compiler'
 	$(CC) $(CFLAGS) -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
@@ -202,22 +200,29 @@ $(OBJDIR)/arch/zynq/%.o: ../arch/zynq/%.cc
 	@echo ' '	
 
 
-
-
-$(OBJDIR)/cpu/%.o: cpu/%.S
+$(OBJDIR)/%.o: cpu/%.S
 	@echo 'Building file: $<'
 	@echo 'Invoking: ARM g++ compiler'
 	$(CC) $(CFLAGS) -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-$(OBJDIR)/cpu/%.o: cpu/%.cc
+$(OBJDIR)/%.o: cpu/%.cc
 	@echo 'Building file: $<'
 	@echo 'Invoking: ARM g++ compiler'
 	$(CC) $(CFLAGS) -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
 	@echo 'Finished building: $<'
-	@echo ' '	
+	@echo ' '
+	@echo 'Creating directories' 
+	@echo ' '
 	
+
+$(OBJDIR):
+	@mkdir -p $(OBJDIR)
+	@mkdir -p $(OBJDIR)/custom_bsp
+	@mkdir -p $(OBJDIR)/cpu
+	@mkdir -p $(OBJDIR)/arch/zynq			
+
 	
 # Other Targets
 clean:

@@ -70,9 +70,9 @@ CC_DEPS += \
 ./$(OBJDIR)/irq.d \
 ./$(OBJDIR)/syscall_list.d \
 ./$(OBJDIR)/user.d  \
-./$(OBJDIR)/HWManager/HW_Task_Manager.d\
-./$(OBJDIR)/HWManager/HWManager_irq.d\
-./$(OBJDIR)/HWManager/performance.d
+./$(OBJDIR)/HW_Task_Manager.d\
+./$(OBJDIR)/HWManager_irq.d\
+./$(OBJDIR)/performance.d
 
 OBJS = \
 ./$(OBJDIR)/app.o \
@@ -129,7 +129,7 @@ user.elf.size: user.elf
 	@echo ' '
 
 $(OBJDIR):
-	mkdir -p build
+#	mkdir -p build
 
 $(OBJDIR)/%.o: src/%.cc
 	@echo 'Building file: $<'

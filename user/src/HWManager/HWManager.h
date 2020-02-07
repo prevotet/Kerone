@@ -60,7 +60,8 @@
 
 /* Device Interface Map(Virtual) */
 #define PRCTRL 		AXIGP_BASE_VIRT_ADDR
-#define HW_DEV0		(AXIGP_BASE_VIRT_ADDR + 1*PR_IF_SIZE)
+#define HW_DEV0		(AXIGP_BASE_VIRT_ADDR + 1*PR_IF_SIZE) // Adder device
+#define HW_DEV1		(AXIGP_BASE_VIRT_ADDR + 2*PR_IF_SIZE) // Substractor device
 
 /* PR Controller Registers Offset		*/
 

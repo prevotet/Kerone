@@ -129,7 +129,7 @@ user.elf.size: user.elf
 	@echo ' '
 
 $(OBJDIR):
-#	mkdir -p build
+	mkdir -p build
 
 $(OBJDIR)/%.o: src/%.cc
 	@echo 'Building file: $<'

@@ -14,6 +14,7 @@ app.cc
 
 #include "irq.h"
 #include "vpsr.h"
+#include "../src/HWManager/HWManager.h"
 
 extern void HW_Task_Manager_Bootloader();
 extern void HW_Task_Manager(int);
@@ -31,11 +32,12 @@ void thread_function1 ()
 {
 	while (1){
 
-		//print ("USER: Task 1. \n\r");
-		HW_Task_Manager(0);// start PR HW IP 0
+		print("USER: Task1. \n\r");
+		 // indicates that we want to use HW_DEV0 i.e the adder
+		// If the adder is not in the PRR then trap => HWManager_Main_Entry
+		*(unsigned int*)(HW_DEV0)=0x01;
+		// Perform the addition
 		Value_Out0 = SUM(1, Value_In1_TF1, Value_In1_TF2);
-		HW_Task_Manager(1);
-		Value_Out1 = SUM(2, Value_In2_TF1, Value_In2_TF2);
 		sys_yield();
 	}
 }
@@ -45,24 +47,17 @@ void thread_function2 ()
 {
 	while (1){
 
-		//print ("USER: Task 2. \n\r");
-		HW_Task_Manager(1);// start PR HW IP 1
-		//Value_Out1 = SUM(2, Value_In2_TF1, Value_In2_TF2);
+		print ("USER: Task 2. \n\r");
+		 // indicates that we want to use HW_DEV0 i.e the subtractor
+		// If the adder is not in the PRR then trap => HWManager_Main_Entry
+		*(unsigned int*)(HW_DEV1)=0x01;
+		Value_Out1 = SUM(2, Value_In2_TF1, Value_In2_TF2);
 		sys_yield();
 	}
 }
 
 
-void thread_function3 ()
-{
-	while (1){
 
-		print ("USER: Task 3. \n\r");
-		//HW_Task_Manager(1);// start PR HW IP 1
-		Value_Out2 = SUM(3, Value_Out0, Value_Out1);
-		sys_yield();
-	}
-}
 
 
 
@@ -75,12 +70,11 @@ void main_func ()
 	char new_stack[512];
 
 	int i = 1;
-	sys_create_ec (HW_Task_Manager_Bootloader, new_stack + i * 256, 1);
-	i++;
 	sys_create_ec (thread_function1, new_stack + i * 64, 0);
-	//i++;
-	//sys_create_ec (thread_function2, new_stack + i * 64, 0);
-
+	i++;
+	sys_create_ec (thread_function2, new_stack + i * 64, 0);
+	i++;
+	sys_create_ec (HW_Task_Manager_Bootloader, new_stack + i * 256, 1);
 
 	//boot_guest_os(guest_os_elf_01, 2, 1);
 	//boot_guest_os(guest_os_elf_02, 1, 0);

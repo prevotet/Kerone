@@ -99,12 +99,16 @@ void PR_HOST_LIST_init(){
 void check_available(IF_entry *p){
 	mword PR_Solution;
 
-	PR_SEARCH_SOLUTION(p->VMID, p->DevID, p->PRIO);
-	PR_Solution = PRRC_ReadReg(PR_SEARCH_RESULT_OFFSET);
+	// Check if the IP can be implemented in the PRR
+	// It is OK if the previous IP has finished its job
+
+	//PR_SEARCH_SOLUTION(p->VMID, p->DevID, p->PRIO);
+	//PR_Solution = PRRC_ReadReg(PR_SEARCH_RESULT_OFFSET);
 
 	p->s.PR_id 	= PR_Solution & 0xff;
 	p->s.M 		= (PR_Solution >> 8) & 0x7f;
 	p->s.Reconf = PR_Solution >> 15;
+
 	print ("	33333 \n\r");
 }
 
@@ -312,18 +316,18 @@ void HWManager_Main(int VM_id, int Dev_id, int prio)
 	if(p_IF->PRID != 0xff){
 		print("Error: IF was not correctly cleared (unlinked) \n\r");
 		while(1);
-	}
+		}
 	// If this IF is now having a valid solution, means the solution is not over
 	else if(p_IF->s.M != nonvalid){
-		sys_IVC_Send(p_IF->VMID, IVC_DEV_WAIT, p_IF->DevID);
+		//sys_IVC_Send(p_IF->VMID, IVC_DEV_WAIT, p_IF->DevID);
 		print("Wait more \n\r");
-	}
+		}
 	else{
 		check_available(p_IF);
-		if(Run_Solution(p_IF))
+		if(Run_Solution(p_IF)){}
 		/* Run_Solution() returning 1 means waiting  */
-			sys_IVC_Send(p_IF->VMID, IVC_DEV_WAIT, p_IF->DevID);
-	}
+			//sys_IVC_Send(p_IF->VMID, IVC_DEV_WAIT, p_IF->DevID);
+		}
 
 	*hwmgr_vpsr_cpsr &=0xffffff7f;
 
@@ -352,16 +356,16 @@ void HWManager_Main(int VM_id, int Dev_id, int prio)
 }
 
 
-void HW_Task_Manager_Boot()
-{
-	int x = 0;
-	if(x = XDcfg_TransferBitfile(&XDcfg_0, PARTIAL_RECONFIG_ADD_ADDR, PARTIAL_BINFILE_LEN ))
-			xil_printf("PCAP Error (%d)!  \n\r", x);
-	print("000000000000!  \n\r");
-	if(x = XDcfg_TransferBitfile(&XDcfg_0, PARTIAL_RECONFIG_SUB_ADDR, PARTIAL_BINFILE_LEN ))
-			print("PCAP Error!  \n\r");
-	print("11111111111!  \n\r");
-}
+//void HW_Task_Manager_Boot()
+//{
+//	int x = 0;
+//	if(x = XDcfg_TransferBitfile(&XDcfg_0, PARTIAL_RECONFIG_ADD_ADDR, PARTIAL_BINFILE_LEN ))
+//			xil_printf("PCAP Error (%d)!  \n\r", x);
+//	print("000000000000!  \n\r");
+//	if(x = XDcfg_TransferBitfile(&XDcfg_0, PARTIAL_RECONFIG_SUB_ADDR, PARTIAL_BINFILE_LEN ))
+//			print("PCAP Error!  \n\r");
+//	print("11111111111!  \n\r");
+//}
 
 NORETURN
 void HW_Task_Manager_Bootloader()
@@ -374,8 +378,8 @@ void HW_Task_Manager_Bootloader()
 	XDcfg_Initialize(&XDcfg_0, XPAR_XDCFG_0_DEVICE_ID);
 	print("DevCfg initialization done.\n\r");
 
-	sys_hwmgr_register();
 
+	sys_hwmgr_register();
 	/* Add mapping to access PRR Monitor registers , the VM id of hw manager is 2 */
 	sys_insert_fpga_mapping(2, AXIGP_BASE_VIRT_ADDR, AXIGP_BASE_PHYS_ADDR);
 	sys_fpga_page_rw(2, AXIGP_BASE_VIRT_ADDR);
@@ -420,43 +424,43 @@ void HW_Task_Manager_Bootloader()
 	while(1);
 }
 
-void HW_Task_Manager(int Option)
-{
-	//XDcfg_Initialize(&XDcfg_0, XPAR_XDCFG_0_DEVICE_ID);
-		//print("DevCfg initialization done.\n\r");
-
-	int x = 0;
-	int status = 0;
-
-	while(x < 33333333){
-			x++;
-			//xil_printf("xxxxxxxxxxx (%d)!  \n\r", x);
-		}
-	//*(unsigned long int*)(HW_DEV0 + 4) = 0x1;
-	//xil_printf("%d ",Option);
-	 switch(Option){
-	 	 case 0:
-	 		print ("USER: Task 1. \n\r");
-	 		if(status = XDcfg_TransferBitfile(&XDcfg_0, HW_DEV0, PARTIAL_BINFILE_LEN ))
-	 			print ("0	PCAP Error  \n\r");
-	 			//xil_printf("0	PCAP Error (%d)!  \n\r", status);
-	 		//xil_printf("0000000000 (x=%d) (status=%d)! \n\r", x, status);
-	 		break ;
-
-	    case 1:
-	    	print ("USER: Task 2. \n\r");
-	    	if(status = XDcfg_TransferBitfile(&XDcfg_0, HW_DEV1, PARTIAL_BINFILE_LEN ))
-	    		print ("1s	PCAP Error  \n\r");
-	    		//xil_printf("1	PCAP Error (%d)!  \n\r", status);
-	    	//xil_printf("1111111111 (x=%d) (status=%d)! \n\r", x , status);
-	    	break ;
-
-	    default :
-	    	//while(x < 33333333){
-
-	    //	/*if(XDcfg_TransferBitfile(&XDcfg_0, HW_DEV1 /*PARTIAL_RECONFIG_SUB_ADDR*/, PARTIAL_BINFILE_LEN))
-		/*	    			xil_printf("2	PCAP Error (%d)!  \n\r", x);
-	    	xil_printf("xxxxxxxxxxx (%d)!  \n\r", x);*/
-	    	break;
-	    }
-}
+//void HW_Task_Manager(int Option)
+//{
+//	//XDcfg_Initialize(&XDcfg_0, XPAR_XDCFG_0_DEVICE_ID);
+//		//print("DevCfg initialization done.\n\r");
+//
+//	int x = 0;
+//	int status = 0;
+//
+//	while(x < 33333333){
+//			x++;
+//			//xil_printf("xxxxxxxxxxx (%d)!  \n\r", x);
+//		}
+//	//*(unsigned long int*)(HW_DEV0 + 4) = 0x1;
+//	//xil_printf("%d ",Option);
+//	 switch(Option){
+//	 	 case 0:
+//	 		print ("USER: Task 1. \n\r");
+//	 		if(status = XDcfg_TransferBitfile(&XDcfg_0, HW_DEV0, PARTIAL_BINFILE_LEN ))
+//	 			print ("0	PCAP Error  \n\r");
+//	 			//xil_printf("0	PCAP Error (%d)!  \n\r", status);
+//	 		//xil_printf("0000000000 (x=%d) (status=%d)! \n\r", x, status);
+//	 		break ;
+//
+//	    case 1:
+//	    	print ("USER: Task 2. \n\r");
+//	    	if(status = XDcfg_TransferBitfile(&XDcfg_0, HW_DEV1, PARTIAL_BINFILE_LEN ))
+//	    		print ("1s	PCAP Error  \n\r");
+//	    		//xil_printf("1	PCAP Error (%d)!  \n\r", status);
+//	    	//xil_printf("1111111111 (x=%d) (status=%d)! \n\r", x , status);
+//	    	break ;
+//
+//	    default :
+//	    	//while(x < 33333333){
+//
+//	    //	/*if(XDcfg_TransferBitfile(&XDcfg_0, HW_DEV1 /*PARTIAL_RECONFIG_SUB_ADDR*/, PARTIAL_BINFILE_LEN))
+//		/*	    			xil_printf("2	PCAP Error (%d)!  \n\r", x);
+//	    	xil_printf("xxxxxxxxxxx (%d)!  \n\r", x);*/
+//	    	break;
+//	    }
+//}

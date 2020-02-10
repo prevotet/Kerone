@@ -35,9 +35,10 @@ void thread_function1 ()
 		print("USER: Task1. \n\r");
 		 // indicates that we want to use HW_DEV0 i.e the adder
 		// If the adder is not in the PRR then trap => HWManager_Main_Entry
-		*(unsigned int*)(HW_DEV0)=0x01;
-		// Perform the addition
-		Value_Out0 = SUM(1, Value_In1_TF1, Value_In1_TF2);
+	//	while(1);
+	//	*(unsigned int*)(HW_DEV0)=0x01;
+		// Perform the addition because the dev is ready
+	//	Value_Out0 = SUM(1, Value_In1_TF1, Value_In1_TF2);
 		sys_yield();
 	}
 }
@@ -50,8 +51,8 @@ void thread_function2 ()
 		print ("USER: Task 2. \n\r");
 		 // indicates that we want to use HW_DEV0 i.e the subtractor
 		// If the adder is not in the PRR then trap => HWManager_Main_Entry
-		*(unsigned int*)(HW_DEV1)=0x01;
-		Value_Out1 = SUM(2, Value_In2_TF1, Value_In2_TF2);
+	//	*(unsigned int*)(HW_DEV1)=0x01;
+	//	Value_Out1 = SUM(2, Value_In2_TF1, Value_In2_TF2);
 		sys_yield();
 	}
 }
@@ -70,11 +71,14 @@ void main_func ()
 	char new_stack[512];
 
 	int i = 1;
+	print("create EC Thread1\n");
 	sys_create_ec (thread_function1, new_stack + i * 64, 0);
 	i++;
+	print("create EC Thread2\n");
 	sys_create_ec (thread_function2, new_stack + i * 64, 0);
 	i++;
-	sys_create_ec (HW_Task_Manager_Bootloader, new_stack + i * 256, 1);
+	//print("create EC HW_TASK_Manager_Bootloader\n");
+	//sys_create_ec (HW_Task_Manager_Bootloader, &new_stack[511], 1);
 
 	//boot_guest_os(guest_os_elf_01, 2, 1);
 	//boot_guest_os(guest_os_elf_02, 1, 0);

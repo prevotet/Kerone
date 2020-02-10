@@ -12,9 +12,9 @@
 #include "../include/vpsr.h"
 #include "xil_io.h"
 
-#define IS_PRR_MANAGER_TEST 		1
+#define IS_PRR_MANAGER_TEST 		0
 #define IS_PRR_MANAGER_ASSIGN_TEST 	0
-#define IS_PRR_MANAGER_PREEMT_TEST 	1
+#define IS_PRR_MANAGER_PREEMT_TEST 	0
 #define IS_PRR_MANAGER_RCFG_TEST 	0
 
 /* IRQs used by PR Manager */
@@ -32,8 +32,7 @@
 #define PARTIAL_RECONFIG_SUB_ADDR   0x2003000 //0x02000000
 #define PARTIAL_BINFILE_LEN 	0x65E64//0x0000e73c
 
-#define hw_task_number			1
-#define PARTIAL_RECONFIG_ADDR   0x2003000 //0x02000000
+//#define PARTIAL_RECONFIG_ADDR   0x2003000 //0x02000000
 #define PARTIAL_BINFILE_LEN 	0x65E64 //0x824E4
 
 
@@ -44,7 +43,7 @@
 
 /* PL Mapping information */
 #define AXIGP_BASE_PHYS_ADDR   		0x64000000	// Physical address of PR Interfaces
-#define AXIGP_BASE_VIRT_ADDR 		0x10000000  // This is temp to ease the test, should be 0xE0300000
+#define AXIGP_BASE_VIRT_ADDR 		0xE0300000  //  0x10000000
 //0xE0300000 	//(0xE0300000 - 0xE0FFFFFF) 13MB (3328 pages)
 #define PR_IF_SIZE					0x1000 		// 4KB for each PR device
 

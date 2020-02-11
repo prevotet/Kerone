@@ -125,6 +125,7 @@ Ec::Ec (void (*f)(), mword mbi) : cont (f)
 	vmid_counter = 1;
 	vm_list[id] = this;
 
+
 	vGicState.VMInterruptPriorityLevel = IRQPriorityVM;
 
 	xil_printf("(VMID=%d)\n\r", id);
@@ -587,7 +588,7 @@ void Ec::schedule(){
 	/* Load new EC (Switch VM)	*/
 	sys_change_to_ec(ec);
 
-	//xil_printf ("	---Ec:Schedule: Activate EC=%x\n\r", ec);
+	xil_printf ("	---Ec:Schedule: Activate EC=%x\n\r", ec);
 
 	return;
 }
@@ -712,7 +713,7 @@ void Ec::sys_dma()
 
 void Ec::sys_change_to_ec(Ec *successor)
 {
-	//xil_printf ("		---EC:%d : Change to next EC:%d\n\r", current->id, successor->id);
+	xil_printf ("		---EC:%d : Change to next EC:%d\n\r", current->id, successor->id);
 	if(successor != current){
 		Fpc::vfp_disable();
 		vGic_Switch(&(current->vGicState), &(successor->vGicState));
@@ -1117,7 +1118,9 @@ void Ec::abort_handler(){
 	mword AbtAddr = mfcp(XREG_CP15_DATA_FAULT_ADDRESS);
 	mword AbtStat = mfcp(XREG_CP15_DATA_FAULT_STATUS);
 
-	//xil_printf("DATA ABORT: PC=%x, Addr=%x, OP=%x\n\r", current->regs.pc,AbtAddr, AbtStat&DFSR_WnR);
+	xil_printf("DATA ABORT: PC=%x, Addr=%x, OP=%x\n\r", current->regs.pc,AbtAddr, AbtStat&DFSR_WnR);
+	xil_printf("r0 : %d; r2 : %d; hw_mgr_id: %d \n",current->id,current->prio,hw_mgr_id);
+
 
 	/* If trying to access PL Accelerators */
 	if( (AbtAddr>=PL_BASE_ADDR) & (AbtAddr<PL_E) ){

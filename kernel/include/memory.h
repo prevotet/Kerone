@@ -74,8 +74,8 @@
 #define IOP_E			0xe0300000
 
 /* PL AXI_GP Base Address */
-#define PL_BASE_ADDR 	0xe0300000 //0x10000000
-#define PL_E			0xe1000000 //0x11000000
+#define PL_BASE_ADDR 	0x10000000   //e0300000
+#define PL_E			0x11000000  //e1000000
 
 /* SMC Memories */
 #define SMC_ADDR		0xe1000000

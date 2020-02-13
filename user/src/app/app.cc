@@ -28,8 +28,26 @@ int Value_In2_TF2[4] = {4, 3, 2, 1};
 int *Value_Out0, *Value_Out1, *Value_Out2;
 
 //NORETURN
+
+
+void lock_PR(int *a, int *b)
+{
+*a=*b;
+*b=1;
+}
+
+
+
+
+int lock=0;
+
+
+
+
+
 void thread_function1 ()
 {
+	int test=0;
 	while (1){
 
 		print("USER: Task1. \n\r");
@@ -37,21 +55,29 @@ void thread_function1 ()
 		// If the adder is not in the PRR then trap => HWManager_Main_Entry
 		*(unsigned int*)(HW_DEV0)=0x01;
 		// Perform the addition because the dev is ready
+		print ("USER: Task 1. before sys_yield\n\r");
+		lock_PR(test,&lock);
+		while(test==1) lock_PR(&test,&lock); //to make sure that 2 threads dont access the same PR
 		Value_Out0 = SUM(1, Value_In1_TF1, Value_In1_TF2);
 		sys_yield();
+		print ("USER: Task 1. after sys_yield\n\r");
 	}
 }
 
 
 void thread_function2 ()
-{
+{int test=0;
 	while (1){
 
 		print ("USER: Task 2. \n\r");
 		 // indicates that we want to use HW_DEV0 i.e the subtractor
 		// If the adder is not in the PRR then trap => HWManager_Main_Entry
+
 		*(unsigned int*)(HW_DEV1)=0x01;
+		lock_PR(test,&lock);
+		while(test==1) lock_PR(&test,&lock); //to make sure that 2 threads dont access the same PR
 		Value_Out1 = SUM(2, Value_In2_TF1, Value_In2_TF2);
+
 		sys_yield();
 	}
 }
@@ -70,14 +96,16 @@ void main_func ()
 	char new_stack[1024];
 
 	int i = 1;
+	print("create EC HW_TASK_Manager_Bootloader\n");
+	sys_create_ec (HW_Task_Manager_Bootloader,  new_stack+ i*256, 2);
 	print("create EC Thread1\n");
-	sys_create_ec (thread_function1, new_stack + i * 64, 0);
+	i++;
+	sys_create_ec (thread_function1, new_stack + i * 64, 1);
 	i++;
 	print("create EC Thread2\n");
-	sys_create_ec (thread_function2, new_stack + i * 64, 0);
+	sys_create_ec (thread_function2, new_stack + i * 64, 1);
 	i++;
-	print("create EC HW_TASK_Manager_Bootloader\n");
-	sys_create_ec (HW_Task_Manager_Bootloader,  new_stack+ i*64, 1);
+
 
 	//sys_create_ec (tmp, new_stack+ i*64, 1);
 	//boot_guest_os(guest_os_elf_01, 2, 1);

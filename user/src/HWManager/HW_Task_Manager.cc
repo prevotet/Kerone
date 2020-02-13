@@ -17,11 +17,11 @@
 #include "../include/compiler.h"
 #include "../include/irq.h"
 #include "../include/vpsr.h"
-
+#include "stdlib.h"
 #include "HWManager.h"
 //#include <stdlib.h>
 //#define HW_DEV0 		0x10001000
-#define HW_DEV1 		0x10002000
+//#define HW_DEV1 		0x10002000
 
 #if IS_PRR_MANAGER_RCFG_TEST
 int False_PCAP_Transfer(XDcfg *Instance, u32 StartAddress, u32 WordLength){
@@ -49,7 +49,7 @@ IF_entry* IFIndexTable[MAX_VM_NUM][MAX_DEVICE_NUM]={
 IF_entry* PRClientTable[MAX_PRR_NUM];
 
 HWM_entry* PRTable[MAX_PRR_NUM];
-
+IF_entry current_entry;
 IF_entry* Current_RCPG;
 
 XDcfg XDcfg_0;
@@ -61,7 +61,8 @@ mword HWManager_STK[512];
 mword *main_stack_top = &HWManager_STK[511];
 
 IF_entry* IF_alloc(int vm_id, int dev_id, int prio){
-	IF_entry* p;// = malloc(sizeof(IF_entry));
+
+	IF_entry* p=&current_entry; // Mandatory to use global variable here since there is a malloc issue
 
 	p->VMID = vm_id;
 	p->DevID= dev_id;
@@ -71,8 +72,9 @@ IF_entry* IF_alloc(int vm_id, int dev_id, int prio){
 	p->s = s_empty;
 
 	/* Insert the IF mapping page to VM as Read-Only page	*/
+	//xil_printf("(IF_alloc): IF mapping page to VM as read-only vm_id = %d; dev_id=%d , IF_id = %dn PRID=%d \n",vm_id,dev_id,p->IFID,p->PRID);
 	sys_insert_fpga_mapping(vm_id, dev_id * PR_IF_SIZE + HW_DEV0, PR_IF0 + p->IFID * PR_IF_SIZE);
-
+    xil_printf("(IF_alloc): Insert FPGA mapping fom virt: %x to phy :%x \r\n",dev_id * PR_IF_SIZE + HW_DEV0,PR_IF0 + p->IFID * PR_IF_SIZE);
 	return p;
 }
 
@@ -215,116 +217,66 @@ int Run_Solution(IF_entry *p){
 }
 
 
+
+
+
 /*	Get HW Task information:
- *  R0: Virtual Machine ID
+ *  R0: VM ID
  *  R1: Device Interface Address
- *  R2: VM Priority
- */
-NORETURN
-void HWManager_Main_IF(int VM_id, mword Dev_Addr, int prio) asm ("HWManager_Main_IF");
-void HWManager_Main_IF(int VM_id, mword Dev_Addr, int prio)
-{
-	static int Dev_id;
-	static IF_entry *p_IF;
-
-	//mtgpr(13, &HWManager_STK[511]); //Reset Stack pointer for every invoking
-
-#if IS_PRR_MANAGER_ASSIGN_TEST | IS_PRR_MANAGER_PREEMT_TEST | IS_PRR_MANAGER_RCFG_TEST
-	XTime_SetTime(0);
-#endif
-
-	// Identify the device ID according to the trapped address
-	Dev_id = (Dev_Addr - HW_DEV0)/PR_IF_SIZE;
-
-	//xil_printf("HWManager Invoked: %d (VM=%d, Pr=%d) \n\r",Dev_id,VM_id,prio);
-
-	if(!IFIndexTable[VM_id][Dev_id]) // Check if the IF of (VM, Device) exists
-		IFIndexTable[VM_id][Dev_id] = IF_alloc(VM_id, Dev_id, prio);
-
-	p_IF = IFIndexTable[VM_id][Dev_id];
-
-	/* If this IF is still linked with a PR, then this is an error.
-	 * Otherwise, search for PRs for an appropriate solution */
-	if(p_IF->PRID != 0xff){
-		print("Error: IF was not correctly cleared (unlinked) \n\r");
-		while(1);
-	}
-	// If this IF is now having a valid solution, means the solution is not over
-	else if(p_IF->s.M != nonvalid){
-		sys_IVC_Send(p_IF->VMID, IVC_DEV_WAIT, p_IF->DevID);
-		print("Wait more \n\r");
-	}
-	else{
-		check_available(p_IF);
-		if(Run_Solution(p_IF))
-		/* Run_Solution() returning 1 means waiting  */
-			sys_IVC_Send(p_IF->VMID, IVC_DEV_WAIT, p_IF->DevID);
-	}
-
-	*hwmgr_vpsr_cpsr &=0xffffff7f;
-
-#if IS_PRR_MANAGER_ASSIGN_TEST
-	PM_record(Xil_In32(GLOBAL_TMR_BASEADDR+GTIMER_COUNTER_LOWER_OFFSET));
-#endif
-
-#if IS_PRR_MANAGER_PREEMT_TEST
-	//PM_record(Xil_In32(GLOBAL_TMR_BASEADDR+GTIMER_COUNTER_LOWER_OFFSET));
-	if(!IFIndexTable[3][1])
-		IFIndexTable[3][1] = IF_alloc(3, 1, 1);
-	IF_Connect(IFIndexTable[3][1], 1);
-	PRRC_WriteReg(PR_STOP_INT_OFFSET, (3<<24)|(0<<16)|(1<<8));
-	PRRC_WriteReg(0,1);
-#endif
-
-#if IS_PRR_MANAGER_RCFG_TEST
-	PM_record(Xil_In32(GLOBAL_TMR_BASEADDR+GTIMER_COUNTER_LOWER_OFFSET));
-	PRRC_WriteReg(0,1);
-#endif
-
-	sys_suspend((mword)HWManager_Main_Entry);
-
-	// Should not get here!
-	while(1);
-}
-
-
-
-/*	Get HW Task information:
- *  R0: Task ID
- *  R1: Device ID
  *  R2: Task Priority
  */
 NORETURN
-void HWManager_Main(int VM_id, int Dev_id, int prio) asm ("HWManager_Main");
-void HWManager_Main(int VM_id, int Dev_id, int prio)
+void HWManager_Main(int VM_id, mword Dev_Addr, int prio) asm ("HWManager_Main");
+void HWManager_Main(int VM_id, mword Dev_Addr, int prio)
 {
-
+	int Dev_id;
 	static IF_entry *p_IF;
 
 #if IS_PRR_MANAGER_ASSIGN_TEST | IS_PRR_MANAGER_PREEMT_TEST | IS_PRR_MANAGER_RCFG_TEST
 	XTime_SetTime(0);
 #endif
 
-	// Check HW Task Index Table -- if the target HW IP exists
-	if(!IFIndexTable[VM_id][Dev_id]) // Check if the IF of (VM, Device) exists
-		IFIndexTable[VM_id][Dev_id] = IF_alloc(VM_id, Dev_id, prio);
+	Dev_id = (Dev_Addr - HW_DEV0)/PR_IF_SIZE;
+   xil_printf("(HWManager_Main)HWManager Invoked:  Dev_id : %d ; VM_id=%d, Prio=%d) \n\r",Dev_id,VM_id,prio);
 
-	p_IF = IFIndexTable[VM_id][Dev_id];
+
+
+   // Check HW Task Index Table -- if the target HW IP exists
+   //xil_printf("(HWManager_Main) IFIndexTable[%d][%d]=%x \n\r",VM_id,Dev_id,VM_id,IFIndexTable[VM_id][Dev_id]);
+   if(!IFIndexTable[VM_id][Dev_id]) // Check if the IF of (VM, Device) exists
+	{
+	// if it does not exist, we need to create it
+	IFIndexTable[VM_id][Dev_id] = IF_alloc(VM_id, Dev_id, prio);
+	xil_printf("Creation of the IF done: Dev_id : %d ; VM_id=%d, Prio=%d,PR_ID=%d) \n\r",Dev_id,VM_id,prio,IFIndexTable[VM_id][Dev_id]->PRID);
+	}
+
+   p_IF = IFIndexTable[VM_id][Dev_id];
+
 
 	/* If this IF is still linked with a PR, then this is an error.
 	 * Otherwise, search for PRs for an appropriate solution */
+	//xil_printf("P_IF->PRID = %d\n\r ",p_IF->PRID);
+
+
 	if(p_IF->PRID != 0xff){
 		print("Error: IF was not correctly cleared (unlinked) \n\r");
 		while(1);
 		}
 	// If this IF is now having a valid solution, means the solution is not over
 	else if(p_IF->s.M != nonvalid){
+		xil_printf("p_IF->S.M = %d",p_IF->s.M);
 		//sys_IVC_Send(p_IF->VMID, IVC_DEV_WAIT, p_IF->DevID);
 		print("Wait more \n\r");
 		}
 	else{
-		check_available(p_IF);
-		if(Run_Solution(p_IF)){}
+		//check_available(p_IF);
+		p_IF->s.M=assign;
+		p_IF->s.Reconf=TRUE;
+
+		if(Run_Solution(p_IF)){
+			print("(HWManager_Main) (Run_Solution) \n\r");
+			xil_printf("p_IF->S.M = %d",p_IF->s.M);
+		}
 		/* Run_Solution() returning 1 means waiting  */
 			//sys_IVC_Send(p_IF->VMID, IVC_DEV_WAIT, p_IF->DevID);
 		}
@@ -380,7 +332,10 @@ void HW_Task_Manager_Bootloader()
 
 
 	sys_hwmgr_register();
+
 	/* Add mapping to access PRR Monitor registers , the VM id of hw manager is 2 */
+	print("Insert FPGA mapping\n");
+
 	sys_insert_fpga_mapping(2, AXIGP_BASE_VIRT_ADDR, AXIGP_BASE_PHYS_ADDR);
 	sys_fpga_page_rw(2, AXIGP_BASE_VIRT_ADDR);
 
@@ -418,6 +373,7 @@ void HW_Task_Manager_Bootloader()
 #endif
 
 	print("\n\rUser: Boot Over\n\r");
+
 
 	sys_suspend((mword)HWManager_Main_Entry);
 

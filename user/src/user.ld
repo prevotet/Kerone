@@ -12,6 +12,8 @@
 
 /* Define Memories in the system */
 
+_HEAP_SIZE = DEFINED(_HEAP_SIZE) ? _HEAP_SIZE : 0x400;
+
 MEMORY
 {
    ps7_ddr_0_S_AXI_BASEADDR : ORIGIN = 0x00100000, LENGTH = 0x3FF00000
@@ -168,7 +170,15 @@ AT( ADDR(.fini) )
    *(.fini)
 } : text
 
-
+.heap (NOLOAD) : {
+   . = ALIGN(16);
+   _heap = .;
+   HeapBase = .;
+   _heap_start = .;
+   . += _HEAP_SIZE;
+   _heap_end = .;
+   HeapLimit = .;
+} > ps7_ddr_0_S_AXI_BASEADDR
 
 _end = .;
 

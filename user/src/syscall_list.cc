@@ -152,6 +152,7 @@ void sys_suspend(mword rtn){
 }
 
 void sys_hwmgr_register(){
+	print("in sys_hwmgr_register\n");
 	syscall (19, 0, 0, 0);
 }
 

@@ -43,7 +43,7 @@
 
 /* PL Mapping information */
 #define AXIGP_BASE_PHYS_ADDR   		0x64000000	// Physical address of PR Interfaces
-#define AXIGP_BASE_VIRT_ADDR 		0xE0300000  //  0x10000000
+#define AXIGP_BASE_VIRT_ADDR 		0x10000000 //0xE0300000
 //0xE0300000 	//(0xE0300000 - 0xE0FFFFFF) 13MB (3328 pages)
 #define PR_IF_SIZE					0x1000 		// 4KB for each PR device
 

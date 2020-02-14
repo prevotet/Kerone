@@ -56,9 +56,6 @@ void thread_function1 ()
 		*(unsigned int*)(HW_DEV0)=0x01;
 		// Perform the addition because the dev is ready
 		print ("USER: Task 1. before sys_yield\n\r");
-		lock_PR(test,&lock);
-		while(test==1) lock_PR(&test,&lock); //to make sure that 2 threads dont access the same PR
-		Value_Out0 = SUM(1, Value_In1_TF1, Value_In1_TF2);
 		sys_yield();
 		print ("USER: Task 1. after sys_yield\n\r");
 	}
@@ -74,11 +71,10 @@ void thread_function2 ()
 		// If the adder is not in the PRR then trap => HWManager_Main_Entry
 
 		*(unsigned int*)(HW_DEV1)=0x01;
-		lock_PR(test,&lock);
-		while(test==1) lock_PR(&test,&lock); //to make sure that 2 threads dont access the same PR
-		Value_Out1 = SUM(2, Value_In2_TF1, Value_In2_TF2);
-
+		print ("USER: Task 2. before sys_yield\n\r");
+		//Value_Out1 = SUM(2, Value_In2_TF1, Value_In2_TF2);
 		sys_yield();
+		print ("USER: Task 2. after sys_yield\n\r");
 	}
 }
 

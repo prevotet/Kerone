@@ -588,7 +588,7 @@ void Ec::schedule(){
 	/* Load new EC (Switch VM)	*/
 	sys_change_to_ec(ec);
 
-	xil_printf ("---Ec:Schedule: Activate EC=%x\n\r", ec);
+	xil_printf ("---Ec:Schedule: Activate EC= %x\n\r", ec);
 
 	return;
 }
@@ -1118,8 +1118,8 @@ void Ec::abort_handler(){
 	mword AbtAddr = mfcp(XREG_CP15_DATA_FAULT_ADDRESS);
 	mword AbtStat = mfcp(XREG_CP15_DATA_FAULT_STATUS);
 
-	xil_printf("DATA ABORT: PC=%x, Addr=%x, OP=%x \n\r", current->regs.pc,AbtAddr, AbtStat&DFSR_WnR);
-	xil_printf("r0 : %d; r2 : %d; hw_mgr_id: %d \n\r",current->id,current->prio,hw_mgr_id);
+	xil_printf("(abort_handler) DATA ABORT: PC=%x, Addr=%x, OP=%x \n\r", current->regs.pc,AbtAddr, AbtStat&DFSR_WnR);
+	xil_printf("(abort_handler) r0 : %d; r2 : %d; hw_mgr_id: %d \n\r",current->id,current->prio,hw_mgr_id);
 
 
 	/* If trying to access PL Accelerators */

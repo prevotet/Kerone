@@ -32,7 +32,7 @@ int False_PCAP_Transfer(XDcfg *Instance, u32 StartAddress, u32 WordLength){
 
 extern mword *hwmgr_vpsr_cpsr;
 
-BitFile_entry* BitFileIndexTable[MAX_PRR_NUM][MAX_DEVICE_NUM] = {
+BitFile_entry BitFileIndexTable[MAX_PRR_NUM][MAX_DEVICE_NUM] = {
 		{0,0,0,0,0,0,0,0},
 		{0,0,0,0,0,0,0,0},
 		{0,0,0,0,0,0,0,0},
@@ -49,8 +49,11 @@ IF_entry* IFIndexTable[MAX_VM_NUM][MAX_DEVICE_NUM]={
 IF_entry* PRClientTable[MAX_PRR_NUM];
 
 HWM_entry* PRTable[MAX_PRR_NUM];
+
 IF_entry current_entry;
+BitFile_entry current_Bitfile_entry;
 IF_entry* Current_RCPG;
+
 
 XDcfg XDcfg_0;
 
@@ -80,15 +83,28 @@ IF_entry* IF_alloc(int vm_id, int dev_id, int prio){
 
 
 
+void BitFileIndexTable_Init(void)
+{
+	// [PRR_NUM][DEVICE_NUM]
+	// adder
+	BitFileIndexTable[0][0].Addr =PARTIAL_RECONFIG_ADD_ADDR;
+	BitFileIndexTable[0][0].Size =PARTIAL_BINFILE_LEN ;
+	//sub
+	BitFileIndexTable[0][1].Addr =PARTIAL_RECONFIG_SUB_ADDR;
+	BitFileIndexTable[0][1].Size =PARTIAL_BINFILE_LEN ;
+
+}
+
+
 void PR_HOST_LIST_init(){
 	mword temp = 0;
 	int shift = 0;
 
 	for(int i=0; i<MAX_DEVICE_NUM; i++)
 		for(int j=0; j<MAX_PRR_NUM; j++){
-			if(BitFileIndexTable[j][i])
-				temp |=  1<<shift;
-			shift++;
+			//if(BitFileIndexTable[j][i])
+			//	temp |=  1<<shift;
+			//shift++;
 		}
 	//PRRC_WriteReg(PR_HOST_LIST_OFFSET, temp);
 }
@@ -126,6 +142,7 @@ void IF_Disconnect(int PR_id){
 	IF_entry *p = PRClientTable[PR_id];
 
 	if(p){
+		xil_printf("(IF_Disconnect) \n\r");
 		p->PRID = 0xff;
 		PRClientTable[PR_id] = 0;
 		PRR_DISCONNECT(PR_id);
@@ -154,7 +171,8 @@ void IF_Connect(IF_entry *p, int PR_id){
  * 	Otherwise, it returns 1 to make VM wait.
  */
 int Run_Solution(IF_entry *p){
-	BitFile_entry *bitfile;
+	BitFile_entry bitfile;
+
 
 	switch(p->s.M){
 	/*
@@ -163,6 +181,7 @@ int Run_Solution(IF_entry *p){
 	 * 	1) Return 1 (WAIT)
  	 */
 	case unavailable:
+		xil_printf("(Run Solution) unavailable \n\r");
 		return 1;
 
 	/* Method.assign means to assign an IDLE PR to IF, including:
@@ -179,21 +198,27 @@ int Run_Solution(IF_entry *p){
 	 * 		4. Return 0 (READY)
 	 */
 	case assign:
+		xil_printf("(Run Solution) assign \n\r");
 		IF_Disconnect(p->s.PR_id);
 		if(p->s.Reconf == true){
+			xil_printf("(Run_solution) (assign) BitFileIndexTAble[%d][%d] \n\r ",p->s.PR_id,p->DevID);
 			bitfile = BitFileIndexTable[p->s.PR_id][p->DevID];
 #if IS_PRR_MANAGER_RCFG_TEST
 			if(!False_PCAP_Transfer(&XDcfg_0, bitfile->Addr, bitfile->Size ))
 				print("PCAP Error!  \n\r");
 #else
-			if(XDcfg_TransferBitfile(&XDcfg_0, bitfile->Addr, bitfile->Size ))
+			xil_printf("(Run_solution) Transfer bitfile addr:%x, size:%d",bitfile.Addr,bitfile.Size);
+			if(XDcfg_TransferBitfile(&XDcfg_0, bitfile.Addr, bitfile.Size ))
 				print("PCAP Error!  \n\r");
 #endif
-			PRR_STATE_RCFG_SET(p->s.PR_id);
-			Current_RCPG = p;
+			xil_printf("(Run_solution) Transfer bitfile done \n\r");
+			//PRR_STATE_RCFG_SET(p->s.PR_id);
+			//Current_RCPG = p;
+			xil_printf("(Run_solution) Return \n\r");
 			return 1;
 		}
 		else{
+			xil_printf("(Run_solution) Reconf is FALSE \n\r");
 			IF_Connect(p, p->s.PR_id);
 			p->s = s_empty;
 			PRR_STATE_HOLD_SET(p->s.PR_id);
@@ -205,6 +230,7 @@ int Run_Solution(IF_entry *p){
 	 * 	2) Return 1 (WAIT)
 	 */
 	case preempt:
+		xil_printf("(Run_solution) Preempt \n\r");
 		PR_STOP(p->s.PR_id);
 		return 1;
 
@@ -212,7 +238,7 @@ int Run_Solution(IF_entry *p){
 	default:
 		print("ERROR: Undefined Solution Method! \n\r");
 	}
-
+	xil_printf("(Run_solution) Return \n\r");
 	return 0;
 }
 
@@ -247,7 +273,7 @@ void HWManager_Main(int VM_id, mword Dev_Addr, int prio)
 	{
 	// if it does not exist, we need to create it
 	IFIndexTable[VM_id][Dev_id] = IF_alloc(VM_id, Dev_id, prio);
-	xil_printf("Creation of the IF done: Dev_id : %d ; VM_id=%d, Prio=%d,PR_ID=%d) \n\r",Dev_id,VM_id,prio,IFIndexTable[VM_id][Dev_id]->PRID);
+	xil_printf("(HWManager_Main) IF allocated: Dev_id : %d ; VM_id=%d, Prio=%d,PR_ID=%d) \n\r",Dev_id,VM_id,prio,IFIndexTable[VM_id][Dev_id]->PRID);
 	}
 
    p_IF = IFIndexTable[VM_id][Dev_id];
@@ -259,20 +285,22 @@ void HWManager_Main(int VM_id, mword Dev_Addr, int prio)
 
 
 	if(p_IF->PRID != 0xff){
-		print("Error: IF was not correctly cleared (unlinked) \n\r");
+		print("(HWManager_Main) Error: IF was not correctly cleared (unlinked) \n\r");
 		while(1);
 		}
 	// If this IF is now having a valid solution, means the solution is not over
 	else if(p_IF->s.M != nonvalid){
-		xil_printf("p_IF->S.M = %d",p_IF->s.M);
+		xil_printf("p_IF->S.M = %d \n\r",p_IF->s.M);
 		//sys_IVC_Send(p_IF->VMID, IVC_DEV_WAIT, p_IF->DevID);
-		print("Wait more \n\r");
+		print("(HWManager_Main) Wait more \n\r");
 		}
 	else{
 		//check_available(p_IF);
 		p_IF->s.M=assign;
 		p_IF->s.Reconf=TRUE;
+		p_IF->s.PR_id 	= 0;
 
+		xil_printf("(HWManager_Main)p_IF->PRID = %d \n\r",p_IF->s.PR_id);
 		if(Run_Solution(p_IF)){
 			print("(HWManager_Main) (Run_Solution) \n\r");
 			xil_printf("p_IF->S.M = %d",p_IF->s.M);
@@ -301,6 +329,7 @@ void HWManager_Main(int VM_id, mword Dev_Addr, int prio)
 	PRRC_WriteReg(0,1);
 #endif
 
+	xil_printf("(HWManagerMain) suspend \n\r");
 	sys_suspend((mword)HWManager_Main_Entry);
 
 	// Should not get here!
@@ -336,9 +365,12 @@ void HW_Task_Manager_Bootloader()
 	/* Add mapping to access PRR Monitor registers , the VM id of hw manager is 2 */
 	print("Insert FPGA mapping\n");
 
+
 	sys_insert_fpga_mapping(2, AXIGP_BASE_VIRT_ADDR, AXIGP_BASE_PHYS_ADDR);
 	sys_fpga_page_rw(2, AXIGP_BASE_VIRT_ADDR);
 
+	print("BitFileIndexTable Init \n\r");
+	BitFileIndexTable_Init();
 	/* PL interrupt Initialization	*/
 	HWManager_Irq_init();
 

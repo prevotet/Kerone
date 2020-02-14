@@ -207,7 +207,7 @@ int Run_Solution(IF_entry *p){
 			if(!False_PCAP_Transfer(&XDcfg_0, bitfile->Addr, bitfile->Size ))
 				print("PCAP Error!  \n\r");
 #else
-			xil_printf("(Run_solution) Transfer bitfile addr:%x, size:%d",bitfile.Addr,bitfile.Size);
+			xil_printf("(Run_solution) Transfer bitfile addr: %x, size: %x",bitfile.Addr,bitfile.Size);
 			if(XDcfg_TransferBitfile(&XDcfg_0, bitfile.Addr, bitfile.Size ))
 				print("PCAP Error!  \n\r");
 #endif
@@ -302,8 +302,8 @@ void HWManager_Main(int VM_id, mword Dev_Addr, int prio)
 
 		xil_printf("(HWManager_Main)p_IF->PRID = %d \n\r",p_IF->s.PR_id);
 		if(Run_Solution(p_IF)){
-			print("(HWManager_Main) (Run_Solution) \n\r");
-			xil_printf("p_IF->S.M = %d",p_IF->s.M);
+			print("(HWManager_Main) (Run_Solution done) \n\r");
+			xil_printf("p_IF->S.M = %d \n\r",p_IF->s.M);
 		}
 		/* Run_Solution() returning 1 means waiting  */
 			//sys_IVC_Send(p_IF->VMID, IVC_DEV_WAIT, p_IF->DevID);

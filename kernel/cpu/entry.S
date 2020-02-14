@@ -134,7 +134,7 @@ vector_und:
  */
 vector_abort:
 	CLEAR_GLOBAL_TIMER
-	subs	lr, lr, #0x8	//adjust the return pc address
+	subs	lr, lr, #0x4	//adjust the return pc address
 	sub		sp, sp, #0xc	//sp_irq = 0xcfffd000 - 0xc
 	stmia   sp!, {r0, lr}
 	mrs    	r0, spsr

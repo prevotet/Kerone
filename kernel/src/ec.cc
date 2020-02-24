@@ -450,6 +450,9 @@ void Ec::syscall_handler (uint8 swi_imm)
     	e_handler = vm_list[current->regs.r1];
     	Ptab::set_page_attribute(e_handler->ttbr0, current->regs.r2,
     								current->regs.r3, e_handler->asid);
+    	xil_printf("e_handler=%x, current->regs.r1=%d \n\r", e_handler,current->regs.r1);
+    	xil_printf("(set_page_attribute) e_handler->ttbr0= %x; current->regs.r2= %d; current->regs.r3= %d; e_handler->asid= %d\n\r ",e_handler->ttbr0, current->regs.r2,
+    								current->regs.r3, e_handler->asid);
     	break;
 
     case 26: // Return VM's physical address

@@ -54,7 +54,7 @@ IF_entry current_entry;
 BitFile_entry current_Bitfile_entry;
 IF_entry* Current_RCPG;
 
-
+PRR_Monitor Monitor;
 XDcfg XDcfg_0;
 
 Solution s_empty = {false,nonvalid,0};
@@ -62,6 +62,8 @@ Solution s_empty = {false,nonvalid,0};
 mword HWManager_STK[512];
 
 mword *main_stack_top = &HWManager_STK[511];
+
+//PrStat PRSTATE;
 
 IF_entry* IF_alloc(int vm_id, int dev_id, int prio){
 
@@ -77,7 +79,7 @@ IF_entry* IF_alloc(int vm_id, int dev_id, int prio){
 	/* Insert the IF mapping page to VM as Read-Only page	*/
 	//xil_printf("(IF_alloc): IF mapping page to VM as read-only vm_id = %d; dev_id=%d , IF_id = %dn PRID=%d \n",vm_id,dev_id,p->IFID,p->PRID);
 	sys_insert_fpga_mapping(vm_id, dev_id * PR_IF_SIZE + HW_DEV0, PR_IF0 + p->IFID * PR_IF_SIZE);
-    xil_printf("(IF_alloc): Insert FPGA mapping fom virt: %x to phy :%x \r\n",dev_id * PR_IF_SIZE + HW_DEV0,PR_IF0 + p->IFID * PR_IF_SIZE);
+    xil_printf("(IF_alloc): vm_id= %d , Insert FPGA mapping fom virt: %x to phy :%x \r\n",vm_id,dev_id * PR_IF_SIZE + HW_DEV0,PR_IF0 + p->IFID * PR_IF_SIZE);
 	return p;
 }
 
@@ -117,17 +119,30 @@ void PR_HOST_LIST_init(){
 void check_available(IF_entry *p){
 	mword PR_Solution;
 
+	p->s.PR_id 	= 0;
 	// Check if the IP can be implemented in the PRR
 	// It is OK if the previous IP has finished its job
 
 	//PR_SEARCH_SOLUTION(p->VMID, p->DevID, p->PRIO);
 	//PR_Solution = PRRC_ReadReg(PR_SEARCH_RESULT_OFFSET);
 
-	p->s.PR_id 	= PR_Solution & 0xff;
-	p->s.M 		= (PR_Solution >> 8) & 0x7f;
-	p->s.Reconf = PR_Solution >> 15;
+	//p->s.PR_id 	= PR_Solution & 0xff;
+	//p->s.M 		= (PR_Solution >> 8) & 0x7f;
+	//p->s.Reconf = PR_Solution >> 15;
+	p->s.M = assign;
+	if (p->DevID != Monitor.CurrentDevID)
+	{
+		p->s.Reconf=TRUE;
 
-	print ("	33333 \n\r");
+
+	}
+	else
+	{
+		p->s.Reconf=FALSE;
+	}
+
+	xil_printf("(Check available %d \n\r",p->s.Reconf);
+	//print ("	33333 \n\r");
 }
 
 
@@ -145,8 +160,9 @@ void IF_Disconnect(int PR_id){
 		xil_printf("(IF_Disconnect) \n\r");
 		p->PRID = 0xff;
 		PRClientTable[PR_id] = 0;
-		PRR_DISCONNECT(PR_id);
+		//PRR_DISCONNECT(PR_id);
 		sys_fpga_page_ro(p->VMID, HW_DEV0 + p->DevID * PR_IF_SIZE);
+		xil_printf("(IF_DisConnect) VMID: %d, address: %d\n\r", p->VMID,HW_DEV0 + p->DevID * PR_IF_SIZE);
 	}
 }
 
@@ -162,6 +178,8 @@ void IF_Connect(IF_entry *p, int PR_id){
 	PRClientTable[PR_id] = p;
 	PRR_IF_CONNECT(p->VMID, p->DevID, p->PRIO, PR_id);
 	sys_fpga_page_rw(p->VMID, HW_DEV0 + p->DevID * PR_IF_SIZE);
+	xil_printf("(IF_Connect) VMID: %d, address: %d\n\r", p->VMID,HW_DEV0 + p->DevID * PR_IF_SIZE);
+
 }
 
 
@@ -200,28 +218,37 @@ int Run_Solution(IF_entry *p){
 	case assign:
 		xil_printf("(Run Solution) assign \n\r");
 		IF_Disconnect(p->s.PR_id);
+
 		if(p->s.Reconf == true){
 			xil_printf("(Run_solution) (assign) BitFileIndexTAble[%d][%d] \n\r ",p->s.PR_id,p->DevID);
 			bitfile = BitFileIndexTable[p->s.PR_id][p->DevID];
-#if IS_PRR_MANAGER_RCFG_TEST
-			if(!False_PCAP_Transfer(&XDcfg_0, bitfile->Addr, bitfile->Size ))
-				print("PCAP Error!  \n\r");
-#else
+
+
+//#if IS_PRR_MANAGER_RCFG_TEST
+//			if(!False_PCAP_Transfer(&XDcfg_0, bitfile->Addr, bitfile->Size ))
+//				print("PCAP Error!  \n\r");
+//#else
 			xil_printf("(Run_solution) Transfer bitfile addr: %x, size: %x",bitfile.Addr,bitfile.Size);
 			if(XDcfg_TransferBitfile(&XDcfg_0, bitfile.Addr, bitfile.Size ))
 				print("PCAP Error!  \n\r");
-#endif
+			// In reconfiguration state
+			//PRSTATE=RCFG;
+//#endif
 			xil_printf("(Run_solution) Transfer bitfile done \n\r");
+
+
 			//PRR_STATE_RCFG_SET(p->s.PR_id);
 			//Current_RCPG = p;
 			xil_printf("(Run_solution) Return \n\r");
+			Monitor.CurrentDevID =p->DevID;
 			return 1;
 		}
 		else{
 			xil_printf("(Run_solution) Reconf is FALSE \n\r");
 			IF_Connect(p, p->s.PR_id);
 			p->s = s_empty;
-			PRR_STATE_HOLD_SET(p->s.PR_id);
+			//PRR_STATE_HOLD_SET(p->s.PR_id);
+
 		}
 		break;
 	/*
@@ -262,6 +289,8 @@ void HWManager_Main(int VM_id, mword Dev_Addr, int prio)
 	XTime_SetTime(0);
 #endif
 
+	Monitor.CurrentDevID=0xFF;
+
 	Dev_id = (Dev_Addr - HW_DEV0)/PR_IF_SIZE;
    xil_printf("(HWManager_Main)HWManager Invoked:  Dev_id : %d ; VM_id=%d, Prio=%d) \n\r",Dev_id,VM_id,prio);
 
@@ -274,6 +303,7 @@ void HWManager_Main(int VM_id, mword Dev_Addr, int prio)
 	// if it does not exist, we need to create it
 	IFIndexTable[VM_id][Dev_id] = IF_alloc(VM_id, Dev_id, prio);
 	xil_printf("(HWManager_Main) IF allocated: Dev_id : %d ; VM_id=%d, Prio=%d,PR_ID=%d) \n\r",Dev_id,VM_id,prio,IFIndexTable[VM_id][Dev_id]->PRID);
+	xil_printf("p_IF = IFIndexTable[%d][%d]= %x \n\r",VM_id, Dev_id,IFIndexTable[VM_id][Dev_id]);
 	}
 
    p_IF = IFIndexTable[VM_id][Dev_id];
@@ -289,16 +319,13 @@ void HWManager_Main(int VM_id, mword Dev_Addr, int prio)
 		while(1);
 		}
 	// If this IF is now having a valid solution, means the solution is not over
-	else if(p_IF->s.M != nonvalid){
-		xil_printf("p_IF->S.M = %d \n\r",p_IF->s.M);
+	//else if(p_IF->s.M != nonvalid){
+	//	xil_printf("p_IF->S.M = %d \n\r",p_IF->s.M);
 		//sys_IVC_Send(p_IF->VMID, IVC_DEV_WAIT, p_IF->DevID);
-		print("(HWManager_Main) Wait more \n\r");
-		}
+	//	print("(HWManager_Main) Wait more \n\r");
+	//	}
 	else{
-		//check_available(p_IF);
-		p_IF->s.M=assign;
-		p_IF->s.Reconf=TRUE;
-		p_IF->s.PR_id 	= 0;
+		check_available(p_IF);
 
 		xil_printf("(HWManager_Main)p_IF->PRID = %d \n\r",p_IF->s.PR_id);
 		if(Run_Solution(p_IF)){

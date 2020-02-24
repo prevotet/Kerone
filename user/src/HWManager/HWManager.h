@@ -172,7 +172,10 @@ typedef struct
 //	int		Overhead;
 } BitFile_entry;
 
-
+typedef struct
+{
+int CurrentDevID;
+} PRR_Monitor;
 
 void 	HWManager_Main(int VM_id, mword Dev_Addr, int prio);
 int 	Run_Solution(IF_entry *p);

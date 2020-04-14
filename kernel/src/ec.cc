@@ -440,18 +440,21 @@ void Ec::syscall_handler (uint8 swi_imm)
     case 23:
     	Ptab::insert_shadow_mapping(vm_list[current->regs.r1]->ttbr0, current->regs.r2,
     								current->regs.r3, 2);
-       	break;
+    	xil_printf("Insert_shadow_mapping(vm_list[%d]->ttbr0 = %x, regs.r2 = %x, regs.r3=%x, 2) \n\r", current->regs.r1,vm_list[current->regs.r1]->ttbr0,current->regs.r2,current->regs.r3);
+    	break;
     /*
      * This hyper call is only used by << HW Manager >>:
      * Change fpga mapping attribute(4K) for user:
-     * (r1 = VM ID, r2 = virt addr, r3 = phys addr)
-     */
+     *(r1 = VM ID, r2 = virt addr, r3 = phys addr)
+    */
+    //(r1 = VM ID, r2 = virt addr, r3 = attr
     case 24:
     	e_handler = vm_list[current->regs.r1];
     	Ptab::set_page_attribute(e_handler->ttbr0, current->regs.r2,
     								current->regs.r3, e_handler->asid);
+
     	xil_printf("e_handler=%x, current->regs.r1=%d \n\r", e_handler,current->regs.r1);
-    	xil_printf("(set_page_attribute) e_handler->ttbr0= %x; current->regs.r2= %d; current->regs.r3= %d; e_handler->asid= %d\n\r ",e_handler->ttbr0, current->regs.r2,
+    	xil_printf("(set_page_attribute) e_handler->ttbr0= %x; current->regs.r2 (virt)= %x; current->regs.r3 (attr)= %x; e_handler->asid= %d\n\r ",e_handler->ttbr0, current->regs.r2,
     								current->regs.r3, e_handler->asid);
     	break;
 

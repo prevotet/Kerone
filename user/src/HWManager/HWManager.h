@@ -17,6 +17,7 @@
 #define IS_PRR_MANAGER_PREEMT_TEST 	0
 #define IS_PRR_MANAGER_RCFG_TEST 	0
 
+#define PRR_MONITOR_IN_SW 1 // 1 if in software, 0 in HW
 /* IRQs used by PR Manager */
 #define IVC_DEV_WAIT 	0	// SGI #0: Tell VM to wait for device
 #define IVC_DEV_READY 	1	// SGI #1: Tell VM the waiting device is ready to use.
@@ -49,9 +50,10 @@
 
 
 /* System parameters */
-#define MAX_VM_NUM		4
+#define MAX_VM_NUM		5
 #define MAX_DEVICE_NUM 	8
 #define MAX_PRR_NUM		4
+#define PRR_NUM 		1
 
 /* PR Interface Map(Physical) 	*/
 #define PR_Base	AXIGP_BASE_PHYS_ADDR
@@ -59,8 +61,13 @@
 
 /* Device Interface Map(Virtual) */
 #define PRCTRL 		AXIGP_BASE_VIRT_ADDR
-#define HW_DEV0		(AXIGP_BASE_VIRT_ADDR + 1*PR_IF_SIZE) // Adder device
-#define HW_DEV1		(AXIGP_BASE_VIRT_ADDR + 2*PR_IF_SIZE) // Substractor device
+#define HW_DEV0		(AXIGP_BASE_VIRT_ADDR + 1*PR_IF_SIZE) // Adder device		:0x10001000
+#define HW_DEV1		(AXIGP_BASE_VIRT_ADDR + 2*PR_IF_SIZE) // Substractor device :0x10002000
+
+#if PRR_MONITOR_IN_SW
+void PR_SEARCH_SOLUTION (int VMID, int DevID, int PRIO);
+mword PRRC_ReadReg(int offset);
+#endif
 
 /* PR Controller Registers Offset		*/
 
@@ -84,7 +91,7 @@
 	|		|		| 		|PRR_id | 		*/
 #define PR_PRR_STATE_RCFG_SET_CMD_OFFSET		0x18
 
-/* 	PR_RRR_STATE_HOLD_SET
+/* 	PR_PRR_STATE_HOLD_SET
  * 	|Byte 3	|Byte 2	|Byte 1	|Byte 0	|
 	|		|		| 		|PRR_id | 		*/
 #define PR_PRR_STATE_HOLD_SET_CMD_OFFSET		0x1c
@@ -94,7 +101,7 @@
 	|		| VMID	| DevID	| Prio	| 		*/
 #define PR_SEARCH_CMD_OFFSET		0x24
 
-/* PR_SEARCH_RST
+/* PR_SEARCH_RESULT_OFFSET
  * 	|Byte 3	|Byte 2	|Byte 1		|Byte 0	|
  * 	|				|15|14	   8|7	   0|
  * 	|				|R | Method	|PRID	| 	*/
@@ -146,23 +153,25 @@ typedef struct
 
 typedef struct
 {
+	bool 	IS_Allocated;
+	bool    IS_Connected;
+	PRStat  Status; // Added by JC to obtain the status of the HWDeV
 	int 	VMID;	// VM ID that this IF is allocated to
 	int		DevID; 	// Device ID that this IF is mapped in VM memory space
 	int		IFID;
 	int 	PRID;	// PR connected to this IF, 0xff means invalid.
 	int		PRIO;	// Priority of VM
-	Solution s = {false,nonvalid,0};
+	Solution s;
 } IF_entry;
 
 typedef struct
 {
-	int 	VMID;	// VM ID that this IF is allocated to
+	PRStat  Status;
+	//int 	VMID;	// VM ID that this IF is allocated to
 	int		DevID; 	// Device ID that this IF is mapped in VM memory space
-	//int		IFID;
-	int 	PRID;	// PR connected to this IF, 0xff means invalid.
-	int		PRIO;	// Priority of VM
-	Solution s = {false,nonvalid,0};
-} HWM_entry;
+	int 	PRID;	// PR id
+	//int		PRIO;	// Priority of VM
+} PRR_descriptor;
 
 
 typedef struct
@@ -170,12 +179,21 @@ typedef struct
 	mword	Addr;
 	int 	Size;
 //	int		Overhead;
-} BitFile_entry;
+} HW_Task_Descriptor;
 
+#if PRR_MONITOR_IN_SW
 typedef struct
 {
-int CurrentDevID;
-} PRR_Monitor;
+PRR_descriptor PRTable[MAX_PRR_NUM];
+// List of internal registers of PRR_MONITOR
+mword PR_SEARCH_CMD_REG;
+mword PR_SEARCH_RESULT_REG;
+
+}SW_PRR_MONITOR;
+#endif
+
+
+
 
 void 	HWManager_Main(int VM_id, mword Dev_Addr, int prio);
 int 	Run_Solution(IF_entry *p);
@@ -183,21 +201,25 @@ void 	HWManager_Irq_init();
 
 extern "C" void HWManager_Main_Entry();
 extern "C" void HWManager_IRQ_Entry();
-
-IF_entry* IF_alloc(int vm_id, int dev_id, int prio);
+void IF_alloc(int vm_id, int dev_id, int prio);
 
 #define PRRC_WriteReg(RegOffset, Data)	\
 	Xil_Out32(PRCTRL + RegOffset, (Data))
 
-#define PRRC_ReadReg(RegOffset)		\
-	Xil_In32 (PRCTRL + (RegOffset))
 
 #define PRRC_WriteRegByte(RegOffset, Data)	\
 	Xil_Out8(PRCTRL + RegOffset, (Data))
 
+#if PRR_MONITOR_IN_SW
+#else
 #define PR_SEARCH_SOLUTION(VMID, DevID, PRIO)	\
 	PRRC_WriteReg(PR_SEARCH_CMD_OFFSET, 	\
 		( ((VMID<<16)|(DevID<<8)|PRIO) & 0xffffff) )
+
+#define PRRC_ReadReg(RegOffset)		\
+	Xil_In32 (PRCTRL + (RegOffset))
+#endif
+
 
 #define	PR_STOP(PRID)		\
 	PRRC_WriteReg(PR_STOP_CMD_OFFSET, PRID  )

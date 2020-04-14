@@ -29,32 +29,32 @@ int *Value_Out0, *Value_Out1, *Value_Out2;
 
 //NORETURN
 
+extern IF_entry IFIndexTable[MAX_VM_NUM][MAX_DEVICE_NUM];
 
-void lock_PR(int *a, int *b)
-{
-*a=*b;
-*b=1;
-}
-
-
-
-
-int lock=0;
-
-
-
-
+// VMD
+// VMID=1 HW_bootloader
+// VMID=2 VirtualDevice Manager : C13FFDC0
+// VMID=3 Thread_function 1 :  C13FFCA0
+// VMID=4 Thread_function 2 :  C13FFB80
 
 void thread_function1 ()
 {
-	int test=0;
+
 	while (1){
 
 		print("USER: Task1. \n\r");
 		 // indicates that we want to use HW_DEV0 i.e the adder
 		// If the adder is not in the PRR then trap => HWManager_Main_Entry
 		*(unsigned int*)(HW_DEV0)=0x01;
-		// Perform the addition because the dev is ready
+		print("USER: Task 1. state state to BUSY \n\r");
+		IFIndexTable[3][0].Status= BUSY; // VM_ID =3 ; DEV_ID=0;
+
+		// Provides inputs
+		// Get results
+		Value_Out1 = SUM(1, Value_In2_TF1, Value_In2_TF2);
+		print("USER: Task 1. state state to IDLE \n\r");
+		IFIndexTable[3][0].Status= IDLE; // VM_ID =3 ; DEV_ID=0;
+
 		print ("USER: Task 1. before sys_yield\n\r");
 		sys_yield();
 		print ("USER: Task 1. after sys_yield\n\r");
@@ -63,7 +63,8 @@ void thread_function1 ()
 
 
 void thread_function2 ()
-{int test=0;
+{
+
 	while (1){
 
 		print ("USER: Task 2. \n\r");
@@ -71,8 +72,13 @@ void thread_function2 ()
 		// If the adder is not in the PRR then trap => HWManager_Main_Entry
 
 		*(unsigned int*)(HW_DEV1)=0x01;
+		print("USER: Task 2. state state to BUSY \n\r");
+		IFIndexTable[4][0].Status= BUSY; // VM_ID =4 ; DEV_ID=0;
+
 		print ("USER: Task 2. before sys_yield\n\r");
-		//Value_Out1 = SUM(2, Value_In2_TF1, Value_In2_TF2);
+		Value_Out2 = SUM(2, Value_In2_TF1, Value_In2_TF2);
+		print("USER: Task 2. state state to IDLE \n\r");
+		IFIndexTable[4][0].Status= IDLE; // VM_ID =4 ; DEV_ID=0;
 		sys_yield();
 		print ("USER: Task 2. after sys_yield\n\r");
 	}

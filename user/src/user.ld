@@ -170,7 +170,7 @@ AT( ADDR(.fini) )
    *(.fini)
 } : text
 
-.heap (NOLOAD) : {
+/*.heap (NOLOAD) : {
    . = ALIGN(16);
    _heap = .;
    HeapBase = .;
@@ -178,7 +178,7 @@ AT( ADDR(.fini) )
    . += _HEAP_SIZE;
    _heap_end = .;
    HeapLimit = .;
-} > ps7_ddr_0_S_AXI_BASEADDR
+} > ps7_ddr_0_S_AXI_BASEADDR*/
 
 _end = .;
 

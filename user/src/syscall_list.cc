@@ -161,7 +161,7 @@ void sys_hwmgr_register(){
 //}
 
 /*
- * Create 4k page in VM's space for FPGA Accellerator IFs
+ * Create 4k page in VM's space for FPGA Accelerator IFs
  * This page is by default READ-ONLY in user space
  */
 int sys_insert_fpga_mapping(int ec_id, mword virt_addr, mword phys_addr){
@@ -180,10 +180,13 @@ int sys_insert_fpga_mapping(int ec_id, mword virt_addr, mword phys_addr){
  */
 void sys_delete_fpga_mapping(int ec_id, mword virt_addr){
 	syscall (24, ec_id, virt_addr, 0);}
+
 void sys_fpga_page_ro(int ec_id, mword virt_addr){
-	syscall (24, ec_id, virt_addr, 1);}
+	xil_printf("(Sys_fpga_page_ro) ec_id=%d; virt_addr=%x \n\r", ec_id, virt_addr);
+	syscall (24, ec_id, virt_addr, 1);
+}
 void sys_fpga_page_rw(int ec_id, mword virt_addr){
-	xil_printf("(Sys_fpga_page_rw) ec_id=%d; virt_addr=%d \n\r", ec_id, virt_addr);
+	xil_printf("(Sys_fpga_page_rw) ec_id=%d; virt_addr=%x \n\r", ec_id, virt_addr);
 	syscall (24, ec_id, virt_addr, 2);}
 
 void sys_IVC_Send(int vm_id, int irq_id, int dev_id){

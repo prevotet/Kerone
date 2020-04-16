@@ -206,11 +206,14 @@ void Ptab::set_page_attribute(mword user_pdir, mword virt, int attr, int asid){
 	mword* pdir = static_cast<mword*>(Kalloc::phys2virt(user_pdir));
 	mword* lv2_ptab;
 	mword	tlb_flush_value;
+	xil_printf("(Ptab::set_page_attribute) : user_pdir=%x, attr=%d, asid=%d \n\r",user_pdir,attr,asid);
+	xil_printf("(Ptab::set_page_attribute) : pdir = %x \n\r",pdir);
 
 	if( ( pdir[virt>>20] & 1 ) == 0)
 		print("Ptab:: page does not exist. \n\r");
 	else{
 		lv2_ptab = static_cast<mword*>(Kalloc::phys2virt (pdir[virt >> 20] & ~PAGE_MASK));
+		xil_printf("(Ptab::set_page_attribute) : lv2_ptab = %x \n\r",lv2_ptab);
 		switch(attr){
 			case 0:
 				lv2_ptab[ (virt>>12) & 0xff ] = 0;
@@ -220,18 +223,20 @@ void Ptab::set_page_attribute(mword user_pdir, mword virt, int attr, int asid){
 				lv2_ptab[(virt>>12)&0xff] = lv2_ptab[(virt>>12)&0xff] & ~LV2_PAGE_ENTRY_AP_MASK | LV2_PAGE_ENTRY_AP_RO;
 				break;
 			case 2:
+				xil_printf("(Ptab::set_page_attribute) case 2 before : lv2_ptab[%x] = %x,\n\r",(virt>>12)&0xff , lv2_ptab[(virt>>12)&0xff]);
 				lv2_ptab[(virt>>12)&0xff] = lv2_ptab[(virt>>12)&0xff] & ~LV2_PAGE_ENTRY_AP_MASK | LV2_PAGE_ENTRY_AP_RW;
+				xil_printf("(Ptab::set_page_attribute) case 2 after : lv2_ptab[%x] = %x,\n\r",(virt>>12)&0xff , lv2_ptab[(virt>>12)&0xff]);
 				break;
 			default:
 				print("Ptab: Unknwon page attr \n\r");
 		}
 
 //		/* Invalidate entire unified TLB */
-//		asm volatile ("mcr p15, 0, %0, c8, c7, 0" : : "r" (0));
+		asm volatile ("mcr p15, 0, %0, c8, c7, 0" : : "r" (0));
 //		/* Invalidate entire data TLB */
-//		asm volatile ("mcr p15, 0, %0, c8, c6, 0" : : "r" (0));
+		asm volatile ("mcr p15, 0, %0, c8, c6, 0" : : "r" (0));
 //		/* Invalidate entire instruction TLB */
-//		asm volatile ("mcr p15, 0, %0, c8, c5, 0" : : "r" (0));
+		asm volatile ("mcr p15, 0, %0, c8, c5, 0" : : "r" (0));
 
 		tlb_flush_value = (virt & (~(PAGE_MASK)))|(asid & 0xf);
 		// Wrtite TLBIMVAIS register to invalidate unified TLB entry by ASID and MVA

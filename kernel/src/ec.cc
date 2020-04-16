@@ -453,7 +453,7 @@ void Ec::syscall_handler (uint8 swi_imm)
     	Ptab::set_page_attribute(e_handler->ttbr0, current->regs.r2,
     								current->regs.r3, e_handler->asid);
 
-    	xil_printf("e_handler=%x, current->regs.r1=%d \n\r", e_handler,current->regs.r1);
+    	xil_printf("e_handler->ttbr0=%x, current->regs.r1=%d \n\r", e_handler->ttbr0,current->regs.r1);
     	xil_printf("(set_page_attribute) e_handler->ttbr0= %x; current->regs.r2 (virt)= %x; current->regs.r3 (attr)= %x; e_handler->asid= %d\n\r ",e_handler->ttbr0, current->regs.r2,
     								current->regs.r3, e_handler->asid);
     	break;

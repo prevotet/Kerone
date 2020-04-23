@@ -47,10 +47,11 @@ void thread_function1 ()
 		// If the adder is not in the PRR then trap => HWManager_Main_Entry
 		*(unsigned int*)(HW_DEV0)=0x01;
 		print("USER: Task 1. state state to BUSY \n\r");
-		IFIndexTable[3][0].Status= BUSY; // VM_ID =3 ; DEV_ID=0;
+
 
 		// Provides inputs
 		// Get results
+		IFIndexTable[3][0].Status= BUSY; // VM_ID =3 ; DEV_ID=0;
 		Value_Out1 = SUM(1, Value_In2_TF1, Value_In2_TF2);
 		print("USER: Task 1. state state to IDLE \n\r");
 		IFIndexTable[3][0].Status= IDLE; // VM_ID =3 ; DEV_ID=0;

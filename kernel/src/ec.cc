@@ -438,9 +438,11 @@ void Ec::syscall_handler (uint8 swi_imm)
      * (r1 = VM ID, r2 = virt addr, r3 = phys addr)
      */
     case 23:
-    	Ptab::insert_shadow_mapping(vm_list[current->regs.r1]->ttbr0, current->regs.r2,
-    								current->regs.r3, 2);
-    	xil_printf("Insert_shadow_mapping(vm_list[%d]->ttbr0 = %x, regs.r2 = %x, regs.r3=%x, 2) \n\r", current->regs.r1,vm_list[current->regs.r1]->ttbr0,current->regs.r2,current->regs.r3);
+    	//xil_printf("vm_list[%d]->ttbr0 = %x, current->regs.r2= %x,current->regs.r3=%x, 2  \n\r", current->regs.r1,vm_list[current->regs.r1]->ttbr0,current->regs.r2,current->regs.r3);
+
+    	Ptab::insert_shadow_mapping(vm_list[current->regs.r1]->ttbr0, current->regs.r2,current->regs.r3, 2);
+
+    	//xil_printf("Insert_shadow_mapping(vm_list[%d]->ttbr0 = %x, regs.r2 = %x, regs.r3=%x, 2) \n\r", current->regs.r1,vm_list[current->regs.r1]->ttbr0,current->regs.r2,current->regs.r3);
     	break;
     /*
      * This hyper call is only used by << HW Manager >>:
@@ -453,9 +455,9 @@ void Ec::syscall_handler (uint8 swi_imm)
     	Ptab::set_page_attribute(e_handler->ttbr0, current->regs.r2,
     								current->regs.r3, e_handler->asid);
 
-    	xil_printf("e_handler->ttbr0=%x, current->regs.r1=%d \n\r", e_handler->ttbr0,current->regs.r1);
-    	xil_printf("(set_page_attribute) e_handler->ttbr0= %x; current->regs.r2 (virt)= %x; current->regs.r3 (attr)= %x; e_handler->asid= %d\n\r ",e_handler->ttbr0, current->regs.r2,
-    								current->regs.r3, e_handler->asid);
+    	//xil_printf("e_handler->ttbr0=%x, current->regs.r1=%d \n\r", e_handler->ttbr0,current->regs.r1);
+    	//xil_printf("(set_page_attribute) e_handler->ttbr0= %x; current->regs.r2 (virt)= %x; current->regs.r3 (attr)= %x; e_handler->asid= %d\n\r ",e_handler->ttbr0, current->regs.r2,
+    	//							current->regs.r3, e_handler->asid);
     	break;
 
     case 26: // Return VM's physical address
@@ -1007,12 +1009,12 @@ void Ec::ttbr0_load()
 	    		ttbr0_value = (ttbr0_value & 0x3ff) + ttbr0;
 
 	    		/* load ttbr0 value */
-	    		//xil_printf("		---TTBR0 is changed to: %x \n\r", ttbr0_value);
+	    		xil_printf("ttbr0_load()	---TTBR0 is changed to: %x \n\r", ttbr0_value);
 	    		mtcp(XREG_CP15_TTBR0, ttbr0_value);
 
 	    		/* Set ASID register */
 	    		mtcp(XREG_CP15_CONTEXT_ID, asid);
-	    		//	xil_printf("ASID is %x \n\r", asid);
+	    		xil_printf("ttbr0_load() ASID is %x \n\r", asid);
 
 //	    		/* Invalidate entire unified TLB */
 //	    		asm volatile ("mcr p15, 0, %0, c8, c7, 0" : : "r" (0));

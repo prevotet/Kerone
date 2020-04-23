@@ -18,6 +18,7 @@
 #include "mmu.h"
 #include "print.h"
 
+#define AXIGP_BASE_VIRT_ADDR 		0x10000000 //to remove after test
 /* add 4k mappings only
  * the parameter 'attr' is to indicate whether the page is accessible to user code
  * attr = 0: full access
@@ -142,6 +143,7 @@ void  Ptab::user_remap(mword addr){
  * attr = 2: device interface page (R/O)
  */
 void Ptab::insert_shadow_mapping(mword user_pdir, mword virt, mword phys, int attr){
+	unsigned long *p;
 	mword* pdir = static_cast<mword*>(Kalloc::phys2virt(user_pdir));
 	mword* ptab;
 
@@ -164,6 +166,8 @@ void Ptab::insert_shadow_mapping(mword user_pdir, mword virt, mword phys, int at
 		ptab[ (virt>>12) & 0xff ] = (phys & ~PAGE_MASK) + PAGE_ENRTY_FLAG_DEV_RO;
 		break;
 	}
+
+
 	//xil_printf("Ptab: a shadow 4K page is inserted at %x (%x) \n\r", virt, phys);
 }
 
@@ -206,14 +210,14 @@ void Ptab::set_page_attribute(mword user_pdir, mword virt, int attr, int asid){
 	mword* pdir = static_cast<mword*>(Kalloc::phys2virt(user_pdir));
 	mword* lv2_ptab;
 	mword	tlb_flush_value;
-	xil_printf("(Ptab::set_page_attribute) : user_pdir=%x, attr=%d, asid=%d \n\r",user_pdir,attr,asid);
-	xil_printf("(Ptab::set_page_attribute) : pdir = %x \n\r",pdir);
+	//xil_printf("(Ptab::set_page_attribute) : user_pdir=%x, attr=%d, asid=%d \n\r",user_pdir,attr,asid);
+	//xil_printf("(Ptab::set_page_attribute) : pdir = %x \n\r",pdir);
 
 	if( ( pdir[virt>>20] & 1 ) == 0)
 		print("Ptab:: page does not exist. \n\r");
 	else{
 		lv2_ptab = static_cast<mword*>(Kalloc::phys2virt (pdir[virt >> 20] & ~PAGE_MASK));
-		xil_printf("(Ptab::set_page_attribute) : lv2_ptab = %x \n\r",lv2_ptab);
+	//	xil_printf("(Ptab::set_page_attribute) : lv2_ptab = %x \n\r",lv2_ptab);
 		switch(attr){
 			case 0:
 				lv2_ptab[ (virt>>12) & 0xff ] = 0;
@@ -223,9 +227,9 @@ void Ptab::set_page_attribute(mword user_pdir, mword virt, int attr, int asid){
 				lv2_ptab[(virt>>12)&0xff] = lv2_ptab[(virt>>12)&0xff] & ~LV2_PAGE_ENTRY_AP_MASK | LV2_PAGE_ENTRY_AP_RO;
 				break;
 			case 2:
-				xil_printf("(Ptab::set_page_attribute) case 2 before : lv2_ptab[%x] = %x,\n\r",(virt>>12)&0xff , lv2_ptab[(virt>>12)&0xff]);
+		//		xil_printf("(Ptab::set_page_attribute) case 2 before : lv2_ptab[%x] = %x,\n\r",(virt>>12)&0xff , lv2_ptab[(virt>>12)&0xff]);
 				lv2_ptab[(virt>>12)&0xff] = lv2_ptab[(virt>>12)&0xff] & ~LV2_PAGE_ENTRY_AP_MASK | LV2_PAGE_ENTRY_AP_RW;
-				xil_printf("(Ptab::set_page_attribute) case 2 after : lv2_ptab[%x] = %x,\n\r",(virt>>12)&0xff , lv2_ptab[(virt>>12)&0xff]);
+		//		xil_printf("(Ptab::set_page_attribute) case 2 after : lv2_ptab[%x] = %x,\n\r",(virt>>12)&0xff , lv2_ptab[(virt>>12)&0xff]);
 				break;
 			default:
 				print("Ptab: Unknwon page attr \n\r");

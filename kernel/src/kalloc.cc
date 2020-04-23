@@ -32,7 +32,7 @@ void * Kalloc::alloc (unsigned size)
 
     end -= size;
 
-    //xil_printf("Kalloc::alloc_page: end is changed: %x\n\r", end);
+   // xil_printf("Kalloc::alloc_page: end is changed: %x\n\r", end);
 
     return reinterpret_cast<void*>(end);
 }
@@ -40,6 +40,7 @@ void * Kalloc::alloc (unsigned size)
 void * Kalloc::alloc_page (unsigned size, Fill fill)
 {
 	void * p = reinterpret_cast<void*>(begin);
+	//xil_printf("(Kalloc::alloc_page) p =%x \n\r",p);
 
 	if (begin + size * PAGE_SIZE > end)
 		panic ("Kalloc::alloc_page: kernel has no mem\n");
@@ -47,8 +48,10 @@ void * Kalloc::alloc_page (unsigned size, Fill fill)
     begin += size * PAGE_SIZE;
 
     if (fill)
+    {
     	memset (p, fill == FILL_0 ? 0 : ~0, size * PAGE_SIZE);
-
+    }
+  //  xil_printf("(Kalloc::alloc_page) memset(%x,%x,%d)\n\r",p,fill,size * PAGE_SIZE);
    // xil_printf("Kalloc::alloc_page: begin is changed: %x\n\r", begin);
 
     return p;
@@ -57,13 +60,17 @@ void * Kalloc::alloc_page (unsigned size, Fill fill)
 void * Kalloc::phys2virt (mword phys)
 {
     mword virt = phys + reinterpret_cast<mword>(&OFFSET);
-	return reinterpret_cast<void*>(virt);
+  //  xil_printf("(Kalloc::phy2virt) phys= %x virt=%x \n\r",phys,virt);
+
+
+    return reinterpret_cast<void*>(virt);
 }
 
 mword Kalloc::virt2phys (void * virt)
 {
     mword phys = reinterpret_cast<mword>(virt) - reinterpret_cast<mword>(&OFFSET);
     //mword phys = reinterpret_cast<mword>(virt) - OFFSET;
+    //xil_printf("(Kalloc::virt2phys) virt= %x phys=%x \n\r",virt,phys);
     return phys;
 }
 
@@ -86,7 +93,7 @@ mword Kalloc::alloc_shadow_pdir()
 
 	begin += 4 * PAGE_SIZE;
 
-	xil_printf("Kalloc::alloc_shadow_pdir: begin is changed: %x\n\r", begin);
+	//xil_printf("Kalloc::alloc_shadow_pdir: begin is changed: %x\n\r", begin);
 
 	return virt2phys((void*)p);
 

@@ -103,13 +103,13 @@ _start:
 		// mapping (phys)0x400000 - 0x17FFFFF to (virt)0xC0000000 - 0xC13FFFFF
 
 		ldr			r3, =LINK_P				//r3 = 0x400000
+		mov			r6, r3
 		ldr			r5, =SECT_FLAG_SVC		//r5 = 0x1140E
 		add			r5, r5, r3				//r5 = 0x41140E
-		mov			r7, #LINK_ADDR >> 20	//0xC00
-		mov			r7, r7, lsl #2
-		add			r7, r4, r7				//r7 = 0x407000
+		mov			r7, #LINK_ADDR >> 20	//0x00000C00
+		mov			r7, r7, lsl #2			//0x00003000
+		add			r7, r4, r7				//r7 = 0x413000
 		ldr			r3, =LINK_E				//r3 = 0x1800000
-		mov			r6, #0x400000
 1:		str			r5, [r7], #4
 		add			r5, r5, #0x100000
 		add			r6, r6, #0x100000
@@ -182,17 +182,16 @@ _start:
 		blt			1b
 
 
-
-		// Setup AXI-4Lite GPIO 0  Memory
+		// Setup AXI-DMA Memory
 		// 	mapping (phys)0x40000000 - 0x7fffffff to (virt)0x40000000 - 0x7fffffff
-		mov			r3, #AXI_GP0_ADDR		//r3 = 0x40000000
+		mov			r3, #AXI_DMA_ADDR		//r3 = 0x40000000
 		mov			r6, r3					//r6 = 0x40000000
-		ldr			r5, =SECT_FLAG_DEV//SECT_FLAG_AXI_GP0	//r5 = 0x00C06
+		ldr			r5, =SECT_FLAG_DEV		//SECT_FLAG_AXI_GP0	//r5 = 0x00C06
 		add			r5, r5, r3				//r5 = 0x40000C06
-		mov			r7, #AXI_GP0_ADDR >> 20	//r7 = 0x400
+		mov			r7, #AXI_DMA_ADDR >> 20	//r7 = 0x400
 		mov			r7, r7, lsl #2			//r7 = 0x1000
 		add			r7, r4, r7				//r7 = 0x
-		mov			r3, #AXI_GP0_E			//r3 = 0x80000000
+		mov			r3, #AXI_DMA_E			//r3 =  0x80000000
 1:		str			r5, [r7], #4
 		add			r5, r5, #0x100000
 		add			r6, r6, #0x100000
@@ -322,6 +321,7 @@ _start:
 		msr	cpsr, r6			/* Switch to Prefetch mode */
 		ldr	sp,=PRE_STCK_E		/* set Prefetch stack pointer */
 		msr	cpsr, r7			/* switch back to SVC mode */
+
 
         /*
          * Set SVC_PC = INIT_STCK(0x202000)

@@ -25,7 +25,7 @@
 #define LOAD_ADDR       0x200000
 
 #define PM_DATA_ADDR	0xc1800000
-#define PM_DATA_PHYS	0x10000000
+#define PM_DATA_PHYS	0x40400000
 #define PM_DATA_SIZE	0x400000 //4M
 #define PM_DATA_E		PM_DATA_ADDR + PM_DATA_SIZE
 
@@ -76,6 +76,10 @@
 /* PL AXI_GP Base Address */
 #define PL_BASE_ADDR 	0x10000000   //e0300000
 #define PL_E			0x11000000  //e1000000
+//#define PL_BASE_ADDR 	0x40400000
+//#define PL_E			0x4042FFFF
+
+
 
 /* SMC Memories */
 #define SMC_ADDR		0xe1000000
@@ -91,8 +95,14 @@
 
 
 /* 0x40000000 - 0x7fffffff (General Purpose Port #0 to the PL, M_AXI_GP0) */
-#define	AXI_GP0_ADDR	0x40000000
-#define AXI_GP0_E		0x80000000
+//#define	AXI_GP0_ADDR	0x40000000
+//#define AXI_GP0_E		0x80000000
+
+#define AXI_DMA_ADDR	 0x40000000
+#define AXI_DMA_E		 0x80000000
+
+#define	AXI_GP0_ADDR	0xe000a000
+#define AXI_GP0_E		0xe000c000
 
 //Vectors for exceptions, ARMV7 use high address vector table as default
 #define VEC_BASE		0xffff0000

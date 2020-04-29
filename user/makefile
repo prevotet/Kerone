@@ -8,15 +8,21 @@ RM := rm -rf
 OBJDIR := build
 
 CC=arm-xilinx-eabi-g++
-CFLAGS=-Wall -Os -g
-CFLAGS= -fpermissive#
-CFLAGS+=-I../boards/zedboard/kerone_PR_bsp/ps7_cortexa9_0/include
+#CFLAGS=-Wall -Os -g
+CFLAGS=-Wall -g
+CFLAGS= -fpermissive
 CFLAGS+=-I./include
+CFLAGS+=-I../boards/zedboard/kerone_PR_bsp/ps7_cortexa9_0/libsrc/axidma_v9_3/src
+CFLAGS+=-I../boards/zedboard/kerone_PR_bsp/ps7_cortexa9_0/include #Trying this one
+CFLAGS+=-I../boards/zedboard/custom_bsp
 CFLAGS+=-I../boards/zedboard/custom_bsp/include
-CFLAGS+=-DNDEBUG -O2 -c -mfloat-abi=softfp -fdata-sections -freorder-blocks -MMD -MP -MMD -MP
+
+
+CFLAGS+=-DNDEBUG -O0 -g -c -mfloat-abi=softfp -fdata-sections -freorder-blocks -MMD -MP 
 #LDFLAGS=-nostartfiles -n -mfloat-abi=hard -Wl,-T -Wl,./src/hypervisor.ld -L"D:\users\work\Xilinx\Vivado\2017.1\Zedboard\project_1\project_1.sdk\kerone_bsp\ps7_cortexa9_0\lib"
 #LDFLAGS=-nostartfiles -n -mfloat-abi=softfp -Wl,-T -Wl,./src/user.ld -L../boards/zedboard/kerone_bsp/ps7_cortexa9_0/lib
 LDFLAGS=-nostartfiles -n -mfloat-abi=hard -Wl,-T -Wl,./src/user.ld -L"../boards/zedboard/kerone_PR_bsp/ps7_cortexa9_0/lib" 
+
 #LDFLAGS=-nostartfiles -n -mfloat-abi=softfp -Wl,-T -Wl,./src/user.ld -L"D:\users\work\Xilinx\Vivado\2017.1\Zedboard\project_1\project_1.sdk\kerone_bsp\ps7_cortexa9_0\lib"
 # All of the sources participating in the build are defined here
 -include sources.mk
@@ -35,34 +41,34 @@ LD_SRCS += \
 ./src/user.ld 
 
 CC_SRCS += \
-src/app/app.cc \
-src/IVC_Channel.cc \
-src/irq.cc \
-src/syscall_list.cc \
-src/user.cc \
+./src/app/app.cc \
+./src/IVC_Channel.cc \
+./src/irq.cc \
+./src/syscall_list.cc \
+./src/user.cc \
 ../boards/zedboard/custom_bsp/performance.cc \
-src/HWManager/HW_Task_Manager.cc \
-src/HWManager/HWManager_irq.cc \
-src/HWManager/performance.cc
+./src/HWManager/HW_Task_Manager.cc \
+./src/HWManager/HWManager_irq.cc \
+./src/HWManager/performance.cc
 
 C_SRCS = \
-src/_exit.c \
-src/abort.c \
-src/print.c \
-src/HWManager/devcfg.c
+./src/_exit.c \
+./src/abort.c \
+./src/print.c \
+./src/HWManager/devcfg.c
 
 S_UPPER_SRCS += \
-src/IntEentry.S \
-src/Start.S \
-src/syscall.S \
-src/vpsr.S  \
-src/HWManager/HWmanager_Entry.S
+./src/IntEentry.S \
+./src/Start.S \
+./src/syscall.S \
+./src/vpsr.S  \
+./src/HWManager/HWmanager_Entry.S
 
 C_SRCS = \
-src/_exit.c \
-src/abort.c \
-src/print.c  \
-src/HWManager/devcfg.c
+./src/_exit.c \
+./src/abort.c \
+./src/print.c  \
+./src/HWManager/devcfg.c
 
 CC_DEPS += \
 ./$(OBJDIR)/app.d \
@@ -109,7 +115,7 @@ S_UPPER_DEPS += \
 
 
 # Each subdirectory must supply rules for building sources it contributes
-
+#-Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
 
 # All Target
 all: user.elf secondary-outputs
@@ -118,7 +124,7 @@ all: user.elf secondary-outputs
 user.elf: $(OBJDIR) $(OBJS) ./src/user.ld $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: ARM g++ linker'
-	$(CC) $(LDFLAGS) -o "user.elf" $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+	$(CC) $(LDFLAGS) -o "user.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

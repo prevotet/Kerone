@@ -83,23 +83,23 @@ int XDcfg_TransferBitfile(XDcfg *Instance, u32 StartAddress, u32 WordLength)
 
 
 	// Transfer bitstream from DDR into fabric in non secure mode    //////4
-	Status = XDcfg_Transfer(Instance, (u32 *) StartAddress, WordLength/4, (u32 *) XDCFG_DMA_INVALID_ADDRESS, 0, XDCFG_NON_SECURE_PCAP_WRITE);
+	Status = XDcfg_Transfer(Instance, (u32 *) StartAddress, WordLength, (u32 *) XDCFG_DMA_INVALID_ADDRESS, 0, XDCFG_NON_SECURE_PCAP_WRITE);
 	if (Status != XST_SUCCESS)
 		return Status;
 
 	// Poll PCAP Done Interrupt
-	//while ((IntrStsReg & XDCFG_IXR_D_P_DONE_MASK) != XDCFG_IXR_D_P_DONE_MASK)
-	//	IntrStsReg = XDcfg_IntrGetStatus(Instance);
+	while ((IntrStsReg & XDCFG_IXR_D_P_DONE_MASK) != XDCFG_IXR_D_P_DONE_MASK)
+		IntrStsReg = XDcfg_IntrGetStatus(Instance);
 
 	// Enable the level - shifters from PS to PL.
-	//Xil_Out32 (SLCR_UNLOCK , SLCR_UNLOCK_VAL) ;
-	//Xil_Out32 (LVL_SHFTR_EN , 0xF) ;
-	//Xil_Out32 (SLCR_LOCK , SLCR_LOCK_VAL) ;
+	Xil_Out32 (SLCR_UNLOCK , SLCR_UNLOCK_VAL) ;
+	Xil_Out32 (LVL_SHFTR_EN , 0xF) ;
+	Xil_Out32 (SLCR_LOCK , SLCR_LOCK_VAL) ;
 
 	// Clear interrupt bits
-	//XDcfg_IntrClear ( Instance , XDCFG_IXR_D_P_DONE_MASK ) ;
-	//XDcfg_IntrClear ( Instance , XDCFG_IXR_PCFG_DONE_MASK ) ;
-	//XDcfg_IntrClear ( Instance , XDCFG_IXR_DMA_DONE_MASK ) ;
+	XDcfg_IntrClear ( Instance , XDCFG_IXR_D_P_DONE_MASK ) ;
+	XDcfg_IntrClear ( Instance , XDCFG_IXR_PCFG_DONE_MASK ) ;
+	XDcfg_IntrClear ( Instance , XDCFG_IXR_DMA_DONE_MASK ) ;
 
 	return XST_SUCCESS;
 }

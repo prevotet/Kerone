@@ -12,7 +12,8 @@
 #include "devcfg.h"
 //#include "../bsp/include/xparameters_user.h"C
 #include "performance.h"
-
+#include "xil_printf.h"
+//#include "xil_cache.h"
 #include "../include/syscall_list.h"
 #include "../include/compiler.h"
 #include "../include/irq.h"
@@ -116,7 +117,8 @@ void IF_alloc(int vm_id, int dev_id, int prio){
 	IFIndexTable[vm_id][dev_id].Status= IDLE;
 	IFIndexTable[vm_id][dev_id].VMID = vm_id;
 	IFIndexTable[vm_id][dev_id].DevID= dev_id;
-	IFIndexTable[vm_id][dev_id].IFID = (vm_id-3)*MAX_VM_NUM + dev_id; // First OS is VM3, this is temporary
+	//IFIndexTable[vm_id][dev_id].IFID = (vm_id-3)*MAX_VM_NUM + dev_id; // First OS is VM3, this is temporary
+	IFIndexTable[vm_id][dev_id].IFID = (vm_id-3)*MAX_VM_NUM + dev_id;
 	IFIndexTable[vm_id][dev_id].PRID = 0xFF;
 	IFIndexTable[vm_id][dev_id].PRIO = prio;
 	IFIndexTable[vm_id][dev_id].s = s_empty;
@@ -124,8 +126,11 @@ void IF_alloc(int vm_id, int dev_id, int prio){
 	IFIndexTable[vm_id][dev_id].IS_Allocated= true;
 
 	/* Insert the IF mapping page to VM as Read-Only page	*/
-	sys_insert_fpga_mapping(vm_id, dev_id * PR_IF_SIZE + HW_DEV0, PR_IF0 + IFIndexTable[vm_id][dev_id].IFID * PR_IF_SIZE);
-    xil_printf("(IF_alloc): vm_id= %d , Insert IF mapping page to VM as read-only fom virt: %x to phy :%x \r\n",vm_id,dev_id * PR_IF_SIZE + HW_DEV0,PR_IF0 +  IFIndexTable[vm_id][dev_id].IFID * PR_IF_SIZE);
+	//sys_insert_fpga_mapping(int ec_id, mword virt_addr, mword phys_addr)
+	sys_insert_fpga_mapping(vm_id, dev_id * PR_IF_SIZE + HW_DEV0,                PR_IF0 + IFIndexTable[vm_id][dev_id].IFID * PR_IF_SIZE);
+
+
+	xil_printf("(IF_alloc): vm_id= %d , Insert IF mapping page to VM as read-only fom virt: %x to phy :%x \r\n",vm_id,dev_id * PR_IF_SIZE + HW_DEV0,PR_IF0 +  IFIndexTable[vm_id][dev_id].IFID * PR_IF_SIZE);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -232,7 +237,8 @@ void IF_Connect(IF_entry *p, int PR_id){
  */
 int Run_Solution(IF_entry *p){
 	HW_Task_Descriptor bitfile;
-
+	unsigned int *addr;
+	int status;
 
 	switch(p->s.M){
 	/*
@@ -267,11 +273,14 @@ int Run_Solution(IF_entry *p){
 			bitfile.Addr= HWTaskIndexTable[p->s.PR_id][p->DevID].Addr;
 			bitfile.Size= HWTaskIndexTable[p->s.PR_id][p->DevID].Size;
 
-
-			xil_printf("(Run_solution) Transfer bitfile addr: %x, size: %x \n\r",bitfile.Addr,bitfile.Size);
-			if(XDcfg_TransferBitfile(&XDcfg_0, bitfile.Addr, bitfile.Size ))
-				print("PCAP Error!  \n\r");
-
+			xil_printf("(Run solution) (assign) bitfile.Addr= %x \n\r",bitfile.Addr);
+			xil_printf("(Run solution) (assign) bitfile.Size= %x \n\r",bitfile.Size);
+			status = XDcfg_TransferBitfile(&XDcfg_0, bitfile.Addr, bitfile.Size );
+			if (status != XST_SUCCESS)
+								{
+								xil_printf("PCAP Error (%d)!  \n\r", status);
+								while(1);
+								}
 
 			xil_printf("(Run_solution) Transfer bitfile done \n\r");
 
@@ -427,7 +436,11 @@ void HWManager_Main(int VM_id, mword Dev_Addr, int prio)
 NORETURN
 void HW_Task_Manager_Bootloader()
 {
-	unsigned int*p;
+	unsigned long *p;
+	unsigned long *q;
+	unsigned long *r;
+	int status = 0;
+
 	//sys_irq_disable();
 	//VM_IRQ_Dis();
 
@@ -439,13 +452,54 @@ void HW_Task_Manager_Bootloader()
 
 
 
-	print("Insert FPGA mapping\n\r");
-	sys_insert_fpga_mapping(2, AXIGP_BASE_VIRT_ADDR, AXIGP_BASE_PHYS_ADDR);
-	sys_fpga_page_rw(2, AXIGP_BASE_VIRT_ADDR);
-	print("reading p\n\r");
-	p=(unsigned int*)AXIGP_BASE_VIRT_ADDR;
-	print("writing p\n\r");
-	*p=3;
+	//print("Insert FPGA mapping\n\r");
+	//sys_insert_fpga_mapping(2, AXIGP_BASE_VIRT_ADDR, AXIGP_BASE_PHYS_ADDR);
+	//sys_fpga_page_rw(2, AXIGP_BASE_VIRT_ADDR);
+
+
+
+
+
+
+
+
+	status = XDcfg_TransferBitfile(&XDcfg_0, PARTIAL_RECONFIG_ADD_ADDR, PARTIAL_BINFILE_LEN );
+	if (status != XST_SUCCESS)
+					{
+					xil_printf("PCAP Error (%d)!  \n\r", status);
+					while(1);
+					}
+	xil_printf("Adder loaded in PL \n\r");
+
+
+
+		status = XDcfg_TransferBitfile(&XDcfg_0, PARTIAL_RECONFIG_SUB_ADDR, PARTIAL_BINFILE_LEN );
+		if (status != XST_SUCCESS)
+							{
+							xil_printf("PCAP Error (%d)!  \n\r", status);
+							while(1);
+							}
+		xil_printf("sub loaded in PL \n\r");
+
+
+
+	status = XDcfg_TransferBitfile(&XDcfg_0, PARTIAL_RECONFIG_SUB_ADDR, PARTIAL_BINFILE_LEN );
+		if (status != XST_SUCCESS)
+							{
+							xil_printf("PCAP Error (%d)!  \n\r", status);
+							while(1);
+							}
+		xil_printf("sub loaded in PL \n\r");
+
+
+
+		status = XDcfg_TransferBitfile(&XDcfg_0, PARTIAL_RECONFIG_ADD_ADDR, PARTIAL_BINFILE_LEN );
+			if (status != XST_SUCCESS)
+							{
+							xil_printf("PCAP Error (%d)!  \n\r", status);
+							while(1);
+							}
+			xil_printf("Adder loaded in PL \n\r");
 
 	sys_hwmgr_register();
 
@@ -471,7 +525,7 @@ void HW_Task_Manager_Bootloader()
 
 
 
-	/* Set up the PR_HOST_LIST register in PR Contromller */
+	/* Set up the PR_HOST_LIST register in PR Controller */
 	//////////////PR_HOST_LIST_init();
 
 	// irq enable

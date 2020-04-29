@@ -30,11 +30,11 @@
 
 #define hw_task_number			2
 #define PARTIAL_RECONFIG_ADD_ADDR   0x2001000
-#define PARTIAL_RECONFIG_SUB_ADDR   0x2003000 //0x02000000
-#define PARTIAL_BINFILE_LEN 	0x65E64//0x0000e73c
+#define PARTIAL_RECONFIG_SUB_ADDR   0x2090000
+#define PARTIAL_BINFILE_LEN 	0x20939  //length in words //0x65E64//0x0000e73c
 
 //#define PARTIAL_RECONFIG_ADDR   0x2003000 //0x02000000
-#define PARTIAL_BINFILE_LEN 	0x65E64 //0x824E4
+//#define PARTIAL_BINFILE_LEN 	0x20939  //length in words //0x65E64 //0x824E4
 
 
 /* DevCfg Registers */
@@ -43,8 +43,13 @@
 #define D_P_DONE_INT_BIT 	12
 
 /* PL Mapping information */
-#define AXIGP_BASE_PHYS_ADDR   		0x64000000	// Physical address of PR Interfaces
+#define AXIGP_BASE_PHYS_ADDR   		0x40400000	// Physical address of PR Interfaces
+//#define AXIGP_BASE_PHYS_ADDR   	0x40400000
 #define AXIGP_BASE_VIRT_ADDR 		0x10000000 //0xE0300000
+
+
+
+
 //0xE0300000 	//(0xE0300000 - 0xE0FFFFFF) 13MB (3328 pages)
 #define PR_IF_SIZE					0x1000 		// 4KB for each PR device
 
@@ -52,17 +57,23 @@
 /* System parameters */
 #define MAX_VM_NUM		5
 #define MAX_DEVICE_NUM 	8
+
 #define MAX_PRR_NUM		4
 #define PRR_NUM 		1
 
 /* PR Interface Map(Physical) 	*/
 #define PR_Base	AXIGP_BASE_PHYS_ADDR
-#define	PR_IF0	(PR_Base + 1*PR_IF_SIZE)
+#define	PR_IF0	(PR_Base + 1*PR_IF_SIZE) //0xe000b000
 
 /* Device Interface Map(Virtual) */
 #define PRCTRL 		AXIGP_BASE_VIRT_ADDR
 #define HW_DEV0		(AXIGP_BASE_VIRT_ADDR + 1*PR_IF_SIZE) // Adder device		:0x10001000
 #define HW_DEV1		(AXIGP_BASE_VIRT_ADDR + 2*PR_IF_SIZE) // Substractor device :0x10002000
+
+
+
+
+
 
 #if PRR_MONITOR_IN_SW
 void PR_SEARCH_SOLUTION (int VMID, int DevID, int PRIO);
